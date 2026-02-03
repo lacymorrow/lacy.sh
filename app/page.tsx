@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import HeroBeam from "./hero-beam";
 
 const tabs = [
   {
@@ -180,6 +181,9 @@ export default function Home() {
       </header>
 
       <main>
+        <div className="hero-beam-wrap">
+          <HeroBeam />
+        </div>
         <div className="wrap">
           {/* hero */}
           <section className="hero">
