@@ -187,7 +187,7 @@ export default function Home() {
         <div className="wrap">
           {/* hero */}
           <section className="hero">
-            <div className="hero-label reveal">open source</div>
+            <div className="hero-label reveal">your terminal, upgraded</div>
             <h1 className="reveal reveal-d1">
               Talk to
               <br />
