@@ -181,9 +181,6 @@ export default function Home() {
       </header>
 
       <main>
-        <div className="hero-beam-wrap">
-          <HeroBeam />
-        </div>
         <div className="wrap">
           {/* hero */}
           <section className="hero">
@@ -399,6 +396,9 @@ export default function Home() {
 
           {/* bottom */}
           <section className="bottom">
+            <div className="bottom-beam-wrap">
+              <HeroBeam />
+            </div>
             <h2>
               Open terminal.
               <br />

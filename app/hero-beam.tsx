@@ -20,12 +20,10 @@ interface Band {
   phase: number;
   speed: number;
   opacity: number;
-  amp2: number;
-  phase2: number;
-  speed2: number;
   width: number;
   yOffset: number;
   blur: number;
+  useSin: boolean;
 }
 
 function createBands(): Band[] {
@@ -33,16 +31,14 @@ function createBands(): Band[] {
   for (let i = 0; i < BAND_COUNT; i++) {
     const t = i / BAND_COUNT;
     bands.push({
-      amplitude: 20 + Math.random() * 100,
+      amplitude: 60 + Math.pow(Math.random(), 0.5) * 80,
       phase: Math.random() * Math.PI * 2,
       speed: 0.15 + Math.random() * 0.3,
       opacity: 0.06 + Math.random() * 0.12,
-      amp2: 10 + Math.random() * 40,
-      phase2: Math.random() * Math.PI * 2,
-      speed2: 0.08 + Math.random() * 0.2,
-      width: 3 + Math.random() * 8,
-      yOffset: (t - 0.5) * 40,
+      width: 4 + Math.pow(Math.random(), 0.5) * 10,
+      yOffset: (t - 0.5) * 18,
       blur: 4 + Math.random() * 16,
+      useSin: Math.random() < 0.25,
     });
   }
   return bands;
@@ -101,7 +97,12 @@ export default function HeroBeam() {
     }
 
     // Wide soft ambient horizontal band
-    const hGrad = ctx.createLinearGradient(0, cy - 160 * dpr, 0, cy + 160 * dpr);
+    const hGrad = ctx.createLinearGradient(
+      0,
+      cy - 160 * dpr,
+      0,
+      cy + 160 * dpr,
+    );
     const hAlpha = 0.04 + Math.sin(t * 0.25) * 0.012;
     hGrad.addColorStop(0, "rgba(167, 139, 250, 0)");
     hGrad.addColorStop(0.25, `rgba(139, 92, 246, ${hAlpha * 0.3})`);
@@ -132,22 +133,24 @@ export default function HeroBeam() {
         const cd2 = cd * cd; // 0 to 1, smooth parabola
 
         // Envelope: 1 at center, drops steeply — concentrates waves near middle
-        const envelope = Math.pow(1 - cd2, 4);
+        const envelope = Math.pow(1 - cd2, 5);
 
-        const wave1 =
-          Math.sin(pct * Math.PI * 2.5 + b.phase + -t * b.speed) *
-          b.amplitude *
-          envelope;
-
-        const wave2 =
-          Math.sin(pct * Math.PI * 4 + b.phase2 + -t * b.speed2) *
-          b.amp2 *
-          envelope;
+        let wave: number;
+        if (b.useSin) {
+          wave =
+            Math.sin((pct - 0.5) * Math.PI * 2.5 + b.phase + -t * b.speed) *
+            b.amplitude *
+            envelope;
+        } else {
+          const spatial = Math.cos((pct - 0.5) * Math.PI * 2.5);
+          const temporal = Math.sin(b.phase + -t * b.speed);
+          wave = spatial * temporal * b.amplitude * envelope;
+        }
 
         // Pinch: bands converge to center line at edges
         const pinch = Math.pow(cd2, 0.8);
         const yBase = cy + b.yOffset * (1 - pinch);
-        const y = yBase + (wave1 + wave2) * breathe;
+        const y = yBase + wave * breathe;
 
         if (s === 0) ctx.moveTo(x, y);
         else ctx.lineTo(x, y);
@@ -183,29 +186,30 @@ export default function HeroBeam() {
         const cd = (pct - 0.5) * 2;
         const cd2 = cd * cd;
 
-        const envelope = Math.pow(1 - cd2, 4);
+        const envelope = Math.pow(1 - cd2, 5);
 
-        const wave1 =
-          Math.sin(pct * Math.PI * 2.5 + b.phase + -t * b.speed) *
-          b.amplitude *
-          envelope;
-
-        const wave2 =
-          Math.sin(pct * Math.PI * 4 + b.phase2 + -t * b.speed2) *
-          b.amp2 *
-          envelope;
+        let wave: number;
+        if (b.useSin) {
+          wave =
+            Math.sin((pct - 0.5) * Math.PI * 2.5 + b.phase + -t * b.speed) *
+            b.amplitude *
+            envelope;
+        } else {
+          const spatial = Math.cos((pct - 0.5) * Math.PI * 2.5);
+          const temporal = Math.sin(b.phase + -t * b.speed);
+          wave = spatial * temporal * b.amplitude * envelope;
+        }
 
         const pinch = Math.pow(cd2, 0.8);
         const yBase = cy + b.yOffset * (1 - pinch);
-        const y = yBase + (wave1 + wave2) * breathe;
+        const y = yBase + wave * breathe;
 
         if (s === 0) ctx.moveTo(x, y);
         else ctx.lineTo(x, y);
       }
 
       const lineGrad = ctx.createLinearGradient(0, cy, w, cy);
-      const baseAlpha =
-        b.opacity * (1 + Math.sin(t * 0.5 + b.phase) * 0.25);
+      const baseAlpha = b.opacity * (1 + Math.sin(t * 0.5 + b.phase) * 0.25);
       lineGrad.addColorStop(0, "rgba(167, 139, 250, 0)");
       lineGrad.addColorStop(0.06, `rgba(167, 139, 250, ${baseAlpha * 0.12})`);
       lineGrad.addColorStop(0.2, `rgba(185, 165, 255, ${baseAlpha * 0.5})`);
@@ -292,11 +296,5 @@ export default function HeroBeam() {
     };
   }, [draw]);
 
-  return (
-    <canvas
-      ref={canvasRef}
-      className="hero-beam"
-      aria-hidden="true"
-    />
-  );
+  return <canvas ref={canvasRef} className="hero-beam" aria-hidden="true" />;
 }
