@@ -31,12 +31,12 @@ function createBands(): Band[] {
   for (let i = 0; i < BAND_COUNT; i++) {
     const t = i / BAND_COUNT;
     bands.push({
-      amplitude: 60 + Math.pow(Math.random(), 0.5) * 80,
+      amplitude: 4 + Math.pow(Math.random(), 0.5) * 100,
       phase: Math.random() * Math.PI * 2,
       speed: 0.15 + Math.random() * 0.3,
       opacity: 0.06 + Math.random() * 0.12,
       width: 4 + Math.pow(Math.random(), 0.5) * 10,
-      yOffset: (t - 0.5) * 18,
+      yOffset: (t - 0.5) * 5,
       blur: 4 + Math.random() * 16,
       useSin: Math.random() < 0.25,
     });

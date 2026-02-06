@@ -181,7 +181,6 @@ export default function Home() {
       </header>
 
       <main>
-        <div className="hero-beam-wrap">{/*<HeroBeam />*/}</div>
         <div className="wrap">
           {/* hero */}
           <section className="hero">
@@ -388,9 +387,12 @@ export default function Home() {
               </div>
             </div>
           </section>
+        </div>
 
-          {/* bottom */}
-          <section className="bottom">
+        {/* bottom — full-bleed beam behind */}
+        <div className="bottom-beam-wrap">
+          <HeroBeam />
+          <section className="cta-section wrap">
             <h2>
               Open terminal.
               <br />
@@ -399,7 +401,7 @@ export default function Home() {
               Ship code.
             </h2>
             <div
-              className="bottom-cmd"
+              className="cta-section-cmd"
               role="button"
               tabIndex={0}
               aria-label="Copy install command"
