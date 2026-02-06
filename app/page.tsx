@@ -181,6 +181,7 @@ export default function Home() {
       </header>
 
       <main>
+        <div className="hero-beam-wrap">{/*<HeroBeam />*/}</div>
         <div className="wrap">
           {/* hero */}
           <section className="hero">
@@ -316,16 +317,13 @@ export default function Home() {
                   Preheated
                 </div>
                 <p>
-                  Background servers and session reuse eliminate cold-start. Your
-                  AI tool is ready before you finish typing.
+                  Background servers and session reuse eliminate cold-start.
+                  Your AI tool is ready before you finish typing.
                 </p>
               </div>
               <div className="how-cell">
                 <div className="how-cell-head">
-                  <span
-                    className="dot"
-                    style={{ background: "var(--blue)" }}
-                  />
+                  <span className="dot" style={{ background: "var(--blue)" }} />
                   No API keys
                 </div>
                 <p>
@@ -345,10 +343,7 @@ export default function Home() {
               {tools.map((tool) => (
                 <div className="tool-row" key={tool.name}>
                   <div className="tool-name">
-                    <span
-                      className="dot"
-                      style={{ background: tool.color }}
-                    />
+                    <span className="dot" style={{ background: tool.color }} />
                     {tool.name}
                   </div>
                   <div className="tool-cmd">{tool.cmd}</div>
@@ -396,9 +391,6 @@ export default function Home() {
 
           {/* bottom */}
           <section className="bottom">
-            <div className="bottom-beam-wrap">
-              <HeroBeam />
-            </div>
             <h2>
               Open terminal.
               <br />
