@@ -359,29 +359,35 @@ export default function Home() {
             <div className="modes-label">Modes</div>
             <div className="modes-row">
               <div className="mode-cell">
-                <div
-                  className="mode-cell-bar"
-                  style={{ background: "var(--green)" }}
-                />
-                <h3>Shell</h3>
+                <div className="mode-cell-head">
+                  <div
+                    className="mode-cell-bar"
+                    style={{ background: "var(--green)" }}
+                  />
+                  <h3>Shell</h3>
+                </div>
                 <p>Everything goes to your shell. Normal terminal.</p>
                 <span className="key">Ctrl+Space</span>
               </div>
               <div className="mode-cell">
-                <div
-                  className="mode-cell-bar"
-                  style={{ background: "var(--magenta)" }}
-                />
-                <h3>Agent</h3>
+                <div className="mode-cell-head">
+                  <div
+                    className="mode-cell-bar"
+                    style={{ background: "var(--magenta)" }}
+                  />
+                  <h3>Agent</h3>
+                </div>
                 <p>Everything goes to AI. Every line is a prompt.</p>
                 <span className="key">Ctrl+Space</span>
               </div>
               <div className="mode-cell">
-                <div
-                  className="mode-cell-bar"
-                  style={{ background: "var(--blue)" }}
-                />
-                <h3>Auto</h3>
+                <div className="mode-cell-head">
+                  <div
+                    className="mode-cell-bar"
+                    style={{ background: "var(--blue)" }}
+                  />
+                  <h3>Auto</h3>
+                </div>
                 <p>Smart routing. Commands to shell, questions to AI.</p>
                 <span className="key">default</span>
               </div>

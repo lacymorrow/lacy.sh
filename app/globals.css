@@ -473,17 +473,24 @@ header {
     background: var(--surface);
     padding: 28px 24px;
 }
+.mode-cell-head {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
 .mode-cell-bar {
     width: 3px;
-    height: 20px;
+    min-height: 16px;
     border-radius: 1px;
-    margin-bottom: 14px;
+    flex: 0 0 3px;
 }
-.mode-cell h3 {
+.mode-cell-head h3 {
     font-size: 13px;
     font-weight: 500;
-    margin-bottom: 6px;
     letter-spacing: 0.02em;
+    margin: 0;
 }
 .mode-cell p {
     font-size: 12px;

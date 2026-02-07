@@ -16,7 +16,7 @@ import { useEffect, useRef, useCallback } from "react";
 // Tweak these to change the look and feel of the beam animation.
 
 // Total number of light bands. More = denser/richer, fewer = sparser.
-const BAND_COUNT = 28;
+const BAND_COUNT = 16;
 
 // --- Band shape ---
 
@@ -48,10 +48,6 @@ const WAVE_FREQUENCY = 2.5;
 const BAND_OPACITY_MIN = 0.06;
 // Random opacity added on top of min.
 const BAND_OPACITY_RANGE = 0.12;
-// Min blur radius (px) for the background glow pass.
-const BAND_BLUR_MIN = 4;
-// Random blur added on top of min.
-const BAND_BLUR_RANGE = 16;
 
 // --- Envelope & pinch ---
 
@@ -70,7 +66,7 @@ const BREATHE_AMOUNT = 0.06;
 // --- Background glow ---
 
 // Number of concentric elliptical glow layers behind the bands.
-const GLOW_LAYERS = 6;
+const GLOW_LAYERS = 3;
 // Base horizontal radius (px) of the innermost glow ellipse.
 const GLOW_RX_BASE = 160;
 // Extra horizontal radius added per layer.
@@ -103,7 +99,7 @@ const FLARE_WIDE_HALF_HEIGHT = 10;
 // --- Rendering ---
 
 // Number of horizontal segments per band curve. More = smoother, costlier.
-const SEGMENTS = 80;
+const SEGMENTS = 40;
 // Stroke width multiplier for the blurred background pass (thicker = more bloom).
 const BG_WIDTH_MULTIPLIER = 1.6;
 // Stroke width multiplier for the sharp foreground pass.
@@ -116,7 +112,6 @@ interface Band {
   opacity: number;
   width: number;
   yOffset: number;
-  blur: number;
   useSin: boolean;
 }
 
@@ -132,7 +127,6 @@ function createBands(): Band[] {
       opacity: BAND_OPACITY_MIN + Math.random() * BAND_OPACITY_RANGE,
       width: BAND_WIDTH_MIN + Math.pow(Math.random(), 0.5) * BAND_WIDTH_RANGE,
       yOffset: (t - 0.5) * Y_OFFSET_SPREAD,
-      blur: BAND_BLUR_MIN + Math.random() * BAND_BLUR_RANGE,
       useSin: Math.random() < SIN_PROBABILITY,
     });
   }
@@ -146,6 +140,8 @@ export default function HeroBeam() {
   const timeRef = useRef(0);
   const lastFrameRef = useRef(0);
 
+  const dprRef = useRef(typeof window !== "undefined" ? (window.devicePixelRatio || 1) : 1);
+
   const draw = useCallback((timestamp: number) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -154,7 +150,15 @@ export default function HeroBeam() {
     if (!ctx) return;
 
     if (lastFrameRef.current === 0) lastFrameRef.current = timestamp;
-    const dt = Math.min((timestamp - lastFrameRef.current) / 1000, 0.05);
+
+    // Throttle to ~30fps — animation is ambient, doesn't need 60
+    const elapsed = timestamp - lastFrameRef.current;
+    if (elapsed < 32) {
+      animRef.current = requestAnimationFrame(draw);
+      return;
+    }
+
+    const dt = Math.min(elapsed / 1000, 0.05);
     lastFrameRef.current = timestamp;
     timeRef.current += dt;
 
@@ -163,7 +167,7 @@ export default function HeroBeam() {
     const h = canvas.height;
     const cx = w / 2;
     const cy = h / 2;
-    const dpr = window.devicePixelRatio || 1;
+    const dpr = dprRef.current;
 
     ctx.clearRect(0, 0, w, h);
 
@@ -216,22 +220,17 @@ export default function HeroBeam() {
 
     const bands = bandsRef.current;
 
-    // --- Pass 1: thick blurred background bands for volume ---
+    // --- Pass 1: thick background bands for volume (no shadowBlur) ---
     for (const b of bands) {
-      ctx.save();
-      ctx.shadowColor = "rgba(167, 139, 250, 0.4)";
-      ctx.shadowBlur = b.blur * dpr;
       ctx.beginPath();
 
       for (let s = 0; s <= SEGMENTS; s++) {
         const pct = s / SEGMENTS;
         const x = pct * w;
 
-        // Smooth distance from center using cosine — no kink at midpoint
-        const cd = (pct - 0.5) * 2; // -1 to 1
-        const cd2 = cd * cd; // 0 to 1, smooth parabola
+        const cd = (pct - 0.5) * 2;
+        const cd2 = cd * cd;
 
-        // Envelope: 1 at center, drops steeply — concentrates waves near middle
         const envelope = Math.pow(1 - cd2, ENVELOPE_POWER);
 
         let wave: number;
@@ -246,7 +245,6 @@ export default function HeroBeam() {
           wave = spatial * temporal * b.amplitude * envelope;
         }
 
-        // Pinch: bands converge to center line at edges
         const pinch = Math.pow(cd2, PINCH_POWER);
         const yBase = cy + b.yOffset * (1 - pinch);
         const y = yBase + wave * breathe;
@@ -257,21 +255,18 @@ export default function HeroBeam() {
 
       const lineGrad = ctx.createLinearGradient(0, cy, w, cy);
       const baseAlpha =
-        b.opacity * 0.7 * (1 + Math.sin(t * 0.5 + b.phase) * 0.2);
+        b.opacity * 0.5 * (1 + Math.sin(t * 0.5 + b.phase) * 0.2);
       lineGrad.addColorStop(0, "rgba(167, 139, 250, 0)");
-      lineGrad.addColorStop(0.08, `rgba(167, 139, 250, ${baseAlpha * 0.1})`);
-      lineGrad.addColorStop(0.25, `rgba(180, 160, 255, ${baseAlpha * 0.5})`);
-      lineGrad.addColorStop(0.45, `rgba(210, 195, 255, ${baseAlpha * 0.85})`);
-      lineGrad.addColorStop(0.5, `rgba(235, 225, 255, ${baseAlpha})`);
-      lineGrad.addColorStop(0.55, `rgba(210, 195, 255, ${baseAlpha * 0.85})`);
-      lineGrad.addColorStop(0.75, `rgba(180, 160, 255, ${baseAlpha * 0.5})`);
-      lineGrad.addColorStop(0.92, `rgba(167, 139, 250, ${baseAlpha * 0.1})`);
+      lineGrad.addColorStop(0.15, `rgba(167, 139, 250, ${baseAlpha * 0.3})`);
+      lineGrad.addColorStop(0.4, `rgba(180, 160, 255, ${baseAlpha * 0.7})`);
+      lineGrad.addColorStop(0.5, `rgba(210, 195, 255, ${baseAlpha})`);
+      lineGrad.addColorStop(0.6, `rgba(180, 160, 255, ${baseAlpha * 0.7})`);
+      lineGrad.addColorStop(0.85, `rgba(167, 139, 250, ${baseAlpha * 0.3})`);
       lineGrad.addColorStop(1, "rgba(167, 139, 250, 0)");
 
       ctx.strokeStyle = lineGrad;
-      ctx.lineWidth = b.width * dpr * BG_WIDTH_MULTIPLIER;
+      ctx.lineWidth = b.width * dpr * BG_WIDTH_MULTIPLIER * 1.3;
       ctx.stroke();
-      ctx.restore();
     }
 
     // --- Pass 2: sharper foreground bands for definition ---
@@ -389,10 +384,10 @@ export default function HeroBeam() {
     if (!canvas) return;
 
     const resize = () => {
-      const dpr = window.devicePixelRatio || 1;
+      dprRef.current = window.devicePixelRatio || 1;
       const rect = canvas.getBoundingClientRect();
-      canvas.width = rect.width * dpr;
-      canvas.height = rect.height * dpr;
+      canvas.width = rect.width * dprRef.current;
+      canvas.height = rect.height * dprRef.current;
     };
 
     resize();
