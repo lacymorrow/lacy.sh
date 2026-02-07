@@ -69,6 +69,7 @@ const tabs = [
           { text: " 'source ~/.lacy/lacy.plugin.zsh'", cls: "flag" },
           { text: " >>", cls: "cmd" },
           { text: " ~/.zshrc", cls: "flag" },
+          { text: "  # or .bashrc", cls: "cmt" },
         ],
         copyText: "echo 'source ~/.lacy/lacy.plugin.zsh' >> ~/.zshrc",
       },
@@ -91,6 +92,16 @@ const demoLines = [
     tagCls: "agent",
   },
   { bar: "g", input: "cd .. && npm test", tag: "shell", tagCls: "shell" },
+  {
+    bar: "r",
+    input: "make sure the tests pass",
+    tag: "reroute",
+    tagCls: "reroute",
+  },
+  {
+    output: "No rule to make target 'sure' → caught, rerouting to AI...",
+    reroute: true,
+  },
 ];
 
 const tools = [
@@ -109,19 +120,19 @@ const tools = [
   {
     name: "opencode",
     color: "var(--magenta)",
-    cmd: 'opencode run "query"',
+    cmd: 'opencode run -c "query"',
     note: "",
   },
   {
     name: "gemini",
     color: "var(--green)",
-    cmd: 'gemini -p "query"',
+    cmd: 'gemini --resume -p "query"',
     note: "Google",
   },
   {
     name: "codex",
     color: "var(--fg-3)",
-    cmd: 'codex exec "query"',
+    cmd: 'codex exec resume --last "query"',
     note: "OpenAI",
   },
   {
@@ -251,7 +262,9 @@ export default function Home() {
                       style={{ background: "transparent" }}
                     />
                     <span />
-                    <span className="dl-out">{line.output}</span>
+                    <span className={`dl-out${line.reroute ? " reroute" : ""}`}>
+                      {line.output}
+                    </span>
                   </div>
                 ) : (
                   <div className="dl" key={i}>
@@ -298,13 +311,27 @@ export default function Home() {
                 <div className="how-cell-head">
                   <span
                     className="dot"
+                    style={{ background: "var(--blue)" }}
+                  />
+                  Smart reroute
+                </div>
+                <p>
+                  Typed something ambiguous? It tries the shell first. If it
+                  fails, Lacy catches it and reroutes to your AI agent
+                  automatically.
+                </p>
+              </div>
+              <div className="how-cell">
+                <div className="how-cell-head">
+                  <span
+                    className="dot"
                     style={{ background: "var(--magenta)" }}
                   />
                   Live indicator
                 </div>
                 <p>
                   A colored bar at your prompt changes as you type. Green means
-                  shell. Magenta means AI. You always know.
+                  shell. Magenta means AI. You always know what will happen.
                 </p>
               </div>
               <div className="how-cell">
@@ -328,6 +355,17 @@ export default function Home() {
                 <p>
                   Each AI CLI handles its own auth. Lacy just routes. Nothing to
                   configure beyond picking a tool.
+                </p>
+              </div>
+              <div className="how-cell">
+                <div className="how-cell-head">
+                  <span className="dot" style={{ background: "var(--fg-3)" }} />
+                  Built-in CLI
+                </div>
+                <p>
+                  Run <code>lacy setup</code> to configure,{" "}
+                  <code>lacy doctor</code> to diagnose, and{" "}
+                  <code>lacy update</code> to stay current. No Node required.
                 </p>
               </div>
             </div>
