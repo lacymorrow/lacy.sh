@@ -1,0 +1,35 @@
+const INSTALL_SCRIPT_URL =
+  "https://raw.githubusercontent.com/lacymorrow/lacy/main/install.sh";
+
+const ALLOWED_CHANNELS = new Set(["beta", "rc", "canary", "nightly"]);
+
+export async function GET(
+  _request: Request,
+  { params }: { params: Promise<{ channel: string }> },
+) {
+  const { channel } = await params;
+
+  if (!ALLOWED_CHANNELS.has(channel)) {
+    return new Response(`Unknown channel: ${channel}`, { status: 404 });
+  }
+
+  const res = await fetch(INSTALL_SCRIPT_URL, {
+    next: { revalidate: 60 },
+  });
+
+  if (!res.ok) {
+    return new Response("Failed to fetch install script", { status: 502 });
+  }
+
+  const script = await res.text();
+
+  // Inject the channel as an env var at the top of the script
+  const patched = `#!/usr/bin/env bash\nexport LACY_CHANNEL="${channel}"\n${script}`;
+
+  return new Response(patched, {
+    headers: {
+      "Content-Type": "text/plain; charset=utf-8",
+      "Cache-Control": "public, max-age=60, s-maxage=60",
+    },
+  });
+}
