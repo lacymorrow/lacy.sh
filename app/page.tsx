@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import HeroBeam from "./hero-beam";
 
 const tabs = [
@@ -147,6 +147,16 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState("curl");
   const [copyLabel, setCopyLabel] = useState("copy");
   const [bottomCopied, setBottomCopied] = useState(false);
+  const [stars, setStars] = useState<number | null>(null);
+
+  useEffect(() => {
+    fetch("https://api.github.com/repos/lacymorrow/lacy")
+      .then((r) => r.json())
+      .then((d) => {
+        if (d.stargazers_count) setStars(d.stargazers_count);
+      })
+      .catch(() => {});
+  }, []);
 
   const copyInstall = useCallback(() => {
     const tab = tabs.find((t) => t.id === activeTab);
@@ -177,14 +187,19 @@ export default function Home() {
               lacy
             </a>
             <div className="nav-right">
+              <a href="#demo">Demo</a>
               <a href="#how">How it works</a>
               <a href="#tools">Tools</a>
               <a
                 href="https://github.com/lacymorrow/lacy"
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
+                className="nav-github"
               >
                 GitHub
+                {stars !== null && (
+                  <span className="nav-stars">{stars >= 1000 ? `${(stars / 1000).toFixed(1)}k` : stars}</span>
+                )}
               </a>
             </div>
           </nav>
@@ -205,7 +220,8 @@ export default function Home() {
               Type commands or natural language.{" "}
               <strong>Commands run in your shell.</strong>{" "}
               <strong>Questions go to AI.</strong> No mode switching. No
-              prefixes. You type, it figures it out.
+              prefixes. You type, it figures it out. Works with ZSH and Bash on
+              macOS and Linux. Uninstall in one command.
             </p>
 
             <div className="install reveal reveal-d3">
@@ -289,9 +305,11 @@ export default function Home() {
               Questions route.
             </h2>
             <p className="how-desc">
-              Lacy intercepts your input before the shell sees it. If the first
-              word is a valid command, it executes normally. If it looks like
-              natural language, it goes to your AI tool.
+              The shell plugin intercepts your input before the shell sees it.
+              If the first word is a valid command, it executes normally. If it
+              looks like natural language, it goes to your{" "}
+              <a href="#tools">AI tool</a>. Three{" "}
+              <a href="#modes">modes</a> give you full control over routing.
             </p>
             <div className="how-grid">
               <div className="how-cell">
@@ -376,6 +394,10 @@ export default function Home() {
           {/* tools */}
           <section className="tools" id="tools">
             <div className="tools-label">Supported tools</div>
+            <p className="tools-desc">
+              Bring your own AI coding agent. Each tool handles its own
+              authentication — no API keys needed.
+            </p>
             <div className="tools-list">
               {tools.map((tool) => (
                 <div className="tool-row" key={tool.name}>
@@ -448,7 +470,7 @@ export default function Home() {
               className="cta-section-cmd"
               role="button"
               tabIndex={0}
-              aria-label="Copy install command"
+              aria-label={bottomCopied ? "Copied to clipboard" : "curl -fsSL https://lacy.sh/install | bash"}
               onClick={copyBottom}
               onKeyDown={(e) => {
                 if (e.key === "Enter" || e.key === " ") {
@@ -469,8 +491,18 @@ export default function Home() {
       <footer>
         <div className="wrap">
           <div className="foot">
-            <span className="foot-left">lacy.sh</span>
+            <span className="foot-left">
+              Built by{" "}
+              <a
+                href="https://lacymorrow.com"
+                target="_blank"
+                rel="noopener"
+              >
+                Lacy Morrow
+              </a>
+            </span>
             <div className="foot-right">
+              <a href="#how">docs</a>
               <a
                 href="https://github.com/lacymorrow/lacy"
                 target="_blank"
@@ -491,6 +523,13 @@ export default function Home() {
                 rel="noopener"
               >
                 mit
+              </a>
+              <a
+                href="https://github.com/lacymorrow/lacy/blob/main/PRIVACY.md"
+                target="_blank"
+                rel="noopener"
+              >
+                privacy
               </a>
             </div>
           </div>

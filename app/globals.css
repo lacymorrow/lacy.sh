@@ -121,6 +121,19 @@ header {
 .nav-right a:hover {
     color: var(--fg-2);
 }
+.nav-github {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.nav-stars {
+    font-size: 10px;
+    color: var(--fg-4);
+    border: 1px solid var(--line);
+    padding: 1px 5px;
+    border-radius: 3px;
+    letter-spacing: 0.02em;
+}
 
 /* -- bottom beam -- */
 .bottom-beam-wrap {
@@ -431,6 +444,12 @@ header {
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--fg-3);
+    margin-bottom: 12px;
+}
+.tools-desc {
+    font-size: 13px;
+    color: var(--fg-2);
+    line-height: 1.55;
     margin-bottom: 24px;
 }
 .tools-list {
@@ -587,6 +606,14 @@ footer {
     font-size: 11px;
     color: var(--fg-4);
     letter-spacing: 0.02em;
+}
+.foot-left a {
+    color: var(--fg-3);
+    text-decoration: none;
+    transition: color 0.15s;
+}
+.foot-left a:hover {
+    color: var(--fg-2);
 }
 .foot-right {
     display: flex;

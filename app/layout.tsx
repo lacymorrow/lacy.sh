@@ -17,22 +17,23 @@ const dmMono = DM_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://lacy.sh"),
-  title: "lacy — talk to your terminal",
+  title: "Lacy Shell — talk to your terminal with AI",
   description:
-    "Type commands or natural language. Commands run in your shell. Questions go to AI. No context switching.",
+    "Type commands or natural language directly in your terminal. Commands run in your shell, questions route to AI automatically. Zero config, works with Claude, Gemini, and more.",
+  authors: [{ name: "Lacy Morrow", url: "https://lacymorrow.com" }],
   openGraph: {
-    title: "lacy — talk to your terminal",
+    title: "Lacy Shell — talk to your terminal with AI",
     description:
-      "Type commands or natural language. Commands run in your shell. Questions go to AI.",
+      "Type commands or natural language directly in your terminal. Commands run in your shell, questions route to AI automatically.",
     type: "website",
     url: "https://lacy.sh",
     images: [{ url: "https://lacy.sh/og.jpg", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "lacy — talk to your terminal",
+    title: "Lacy Shell — talk to your terminal with AI",
     description:
-      "Type commands or natural language. Commands run in your shell. Questions go to AI.",
+      "Type commands or natural language directly in your terminal. Commands run in your shell, questions route to AI automatically.",
     images: ["https://lacy.sh/og.jpg"],
   },
   icons: {
@@ -57,12 +58,18 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  name: "lacy",
+  name: "Lacy Shell",
   url: "https://lacy.sh",
   description:
-    "Type commands or natural language. Commands run in your shell. Questions go to AI. No context switching.",
+    "Type commands or natural language directly in your terminal. Commands run in your shell, questions route to AI automatically. Zero config, works with Claude, Gemini, and more.",
   applicationCategory: "DeveloperApplication",
   operatingSystem: "macOS, Linux",
+  author: {
+    "@type": "Person",
+    name: "Lacy Morrow",
+    url: "https://lacymorrow.com",
+  },
+  datePublished: "2025-01-01",
   offers: {
     "@type": "Offer",
     price: "0",
@@ -78,6 +85,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <meta charSet="utf-8" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
