@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://lacy.sh"),
   title: "Lacy Shell — talk to your terminal with AI",
   description:
-    "Type commands or natural language directly in your terminal. Commands run in your shell, questions route to AI automatically. Zero config, works with Claude, Gemini, and more.",
+    "Type commands or natural language directly in your terminal. Commands run in your shell, questions route to AI automatically. Minimal config, works with Claude, Gemini, and more.",
   authors: [{ name: "Lacy Morrow", url: "https://lacymorrow.com" }],
   openGraph: {
     title: "Lacy Shell — talk to your terminal with AI",
@@ -61,7 +61,7 @@ const jsonLd = {
   name: "Lacy Shell",
   url: "https://lacy.sh",
   description:
-    "Type commands or natural language directly in your terminal. Commands run in your shell, questions route to AI automatically. Zero config, works with Claude, Gemini, and more.",
+    "Type commands or natural language directly in your terminal. Commands run in your shell, questions route to AI automatically. Minimal config, works with Claude, Gemini, and more.",
   applicationCategory: "DeveloperApplication",
   operatingSystem: "macOS, Linux",
   author: {
