@@ -605,7 +605,7 @@ Install:
   # or: npx lacy
   # or: brew install lacymorrow/tap/lacy
 
-Code: https://github.com/lacymorrow/lacy-shell (MIT)
+Code: https://github.com/lacymorrow/lacy (MIT)
 
 Technical details for those interested:
 - Pure ZSH, no external dependencies for detection
@@ -701,7 +701,7 @@ For the ZSH nerds:
 
 The detection heuristics are the interesting part. PRs welcome.
 
-github.com/lacymorrow/lacy-shell
+github.com/lacymorrow/lacy
 ```
 
 ---
@@ -748,7 +748,7 @@ Works with any AI CLI tool (Claude, Codex, Gemini, OpenCode, etc).
 
 Install: `curl -fsSL https://lacy.sh/install | sh`
 
-GitHub: https://github.com/lacymorrow/lacy-shell
+GitHub: https://github.com/lacymorrow/lacy
 
 Would love feedback on edge cases — what commands do you think would trip up the detection?
 ```
@@ -771,7 +771,7 @@ The detection heuristics are imperfect but work ~95% of the time. Happy to discu
 
 [GIF]
 
-Code: https://github.com/lacymorrow/lacy-shell
+Code: https://github.com/lacymorrow/lacy
 
 Interested in feedback from ZSH power users on the detection logic.
 ```
@@ -963,7 +963,7 @@ npx lacy
 brew install lacymorrow/tap/lacy
 ```
 
-The code is MIT licensed: [github.com/lacymorrow/lacy-shell](https://github.com/lacymorrow/lacy-shell)
+The code is MIT licensed: [github.com/lacymorrow/lacy](https://github.com/lacymorrow/lacy)
 
 ## What's next
 
@@ -1059,7 +1059,7 @@ It's pure ZSH, no external dependencies for the detection logic, and works with 
 
 Would love your feedback — especially on edge cases where the detection gets it wrong. That's the most interesting problem to solve.
 
-🔗 GitHub: github.com/lacymorrow/lacy-shell
+🔗 GitHub: github.com/lacymorrow/lacy
 ```
 
 ### Key features (for PH gallery)
@@ -1103,5 +1103,5 @@ Would love your feedback — especially on edge cases where the detection gets i
 ## References
 
 - [DESIGN.md](./DESIGN.md) — Visual system documentation
-- [lacy-shell repo](https://github.com/lacymorrow/lacy-shell) — Source code
-- [lacy-shell CHANGELOG](https://github.com/lacymorrow/lacy-shell/blob/main/CHANGELOG.md) — Release history
+- [lacy repo](https://github.com/lacymorrow/lacy) — Source code
+- [lacy CHANGELOG](https://github.com/lacymorrow/lacy/blob/main/CHANGELOG.md) — Release history
