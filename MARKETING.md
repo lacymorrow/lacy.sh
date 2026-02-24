@@ -1103,5 +1103,5 @@ Would love your feedback — especially on edge cases where the detection gets i
 ## References
 
 - [DESIGN.md](./DESIGN.md) — Visual system documentation
-- [lacy repo](https://github.com/lacymorrow/lacy) — Source code
-- [lacy CHANGELOG](https://github.com/lacymorrow/lacy/blob/main/CHANGELOG.md) — Release history
+- [Lacy Shell](https://github.com/lacymorrow/lacy) — Source code
+- [Lacy Shell CHANGELOG](https://github.com/lacymorrow/lacy/blob/main/CHANGELOG.md) — Release history
