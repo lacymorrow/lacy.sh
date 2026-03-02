@@ -219,7 +219,7 @@ export default function Home() {
             <p className="hero-desc reveal reveal-d2">
               Type commands or natural language.{" "}
               <strong>Commands run in your shell.</strong>{" "}
-              <strong>Questions go to AI.</strong> No mode switching. No
+              <strong>Questions go to AI.</strong> No context switching. No
               prefixes. You type, it figures it out. Works with ZSH and Bash on
               macOS and Linux. Uninstall in one command.
             </p>
