@@ -107,6 +107,7 @@ const demoLines = [
 const tools = [
   {
     name: "lash",
+    url: "https://lash.lacy.sh",
     color: "var(--violet)",
     cmd: 'lash run -c "query"',
     note: "recommended",
@@ -419,7 +420,18 @@ export default function Home() {
                 <div className="tool-row" key={tool.name}>
                   <div className="tool-name">
                     <span className="dot" style={{ background: tool.color }} />
-                    {tool.name}
+                    {tool.url ? (
+                      <a
+                        href={tool.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:underline"
+                      >
+                        {tool.name}
+                      </a>
+                    ) : (
+                      tool.name
+                    )}
                   </div>
                   <div className="tool-cmd">{tool.cmd}</div>
                   <div className="tool-note">{tool.note}</div>

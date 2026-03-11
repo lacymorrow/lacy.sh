@@ -45,5 +45,5 @@ Key constraints from the design system:
 ## Related Repos
 
 - `lacy-shell/` — The actual ZSH plugin this site markets
-- `lash/` — AI coding agent CLI (recommended tool in the tools list)
+- [lash/](https://lash.lacy.sh) — AI coding agent CLI (recommended tool in the tools list)
 - `homebrew-tap/` — Homebrew formula for `brew install lacymorrow/tap/lacy`

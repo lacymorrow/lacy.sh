@@ -18,7 +18,7 @@ Single-page Next.js app using the App Router. All content is in `app/page.tsx`. 
 ## Related
 
 - [Lacy Shell](https://github.com/lacymorrow/lacy) — The ZSH/Bash plugin
-- [Lash](https://github.com/lacymorrow/lash) — AI coding agent CLI (recommended backend)
+- [Lash](https://lash.lacy.sh) — AI coding agent CLI (recommended backend)
 
 ## License
 
