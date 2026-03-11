@@ -148,12 +148,19 @@ export default function Home() {
   const [copyLabel, setCopyLabel] = useState("copy");
   const [bottomCopied, setBottomCopied] = useState(false);
   const [stars, setStars] = useState<number | null>(null);
+  const [version, setVersion] = useState<string | null>(null);
 
   useEffect(() => {
     fetch("https://api.github.com/repos/lacymorrow/lacy")
       .then((r) => r.json())
       .then((d) => {
         if (d.stargazers_count) setStars(d.stargazers_count);
+      })
+      .catch(() => {});
+    fetch("https://api.github.com/repos/lacymorrow/lacy/releases/latest")
+      .then((r) => r.json())
+      .then((d: { tag_name?: string }) => {
+        if (d.tag_name) setVersion(d.tag_name.replace(/^v/, ""));
       })
       .catch(() => {});
   }, []);
@@ -237,6 +244,15 @@ export default function Home() {
                     {tab.label}
                   </button>
                 ))}
+                {version && (
+                  <span
+                    style={{ marginLeft: "auto", marginRight: "12px", padding: "2px 10px" }}
+                    className="inline-flex items-center gap-1 rounded-full border border-white/10 bg-white/5 text-[10px] font-medium text-zinc-400 transition-colors hover:bg-white/[0.08] hover:text-zinc-300"
+                  >
+                    <span className="opacity-60">v</span>
+                    <span>{version}</span>
+                  </span>
+                )}
               </div>
               <div className="install-body">
                 <button
