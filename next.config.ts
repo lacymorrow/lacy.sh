@@ -1,5 +1,7 @@
 import type { NextConfig } from "next";
 
+const UMAMI_ORIGIN = process.env.UMAMI_ORIGIN ?? "https://umami-woad-two.vercel.app";
+
 const nextConfig: NextConfig = {
   trailingSlash: false,
   async headers() {
@@ -9,7 +11,7 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: "Content-Security-Policy",
-            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://umami-woad-two.vercel.app; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https:; frame-ancestors 'none';",
+            value: `default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' ${UMAMI_ORIGIN}; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https:; frame-ancestors 'none';`,
           },
           {
             key: "X-Frame-Options",

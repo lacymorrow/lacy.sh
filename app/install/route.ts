@@ -1,8 +1,8 @@
 const INSTALL_SCRIPT_URL =
   "https://raw.githubusercontent.com/lacymorrow/lacy/main/install.sh";
 
-const UMAMI_URL = "https://umami-woad-two.vercel.app/api/send";
-const UMAMI_WEBSITE_ID = "577521d7-3db7-4a77-a45c-3c97f21b5322";
+const UMAMI_URL = process.env.UMAMI_URL ?? "https://umami-woad-two.vercel.app/api/send";
+const UMAMI_WEBSITE_ID = process.env.UMAMI_WEBSITE_ID ?? "577521d7-3db7-4a77-a45c-3c97f21b5322";
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -22,7 +22,7 @@ export async function GET(request: Request) {
       },
       type: "event",
     }),
-  }).catch(() => {});
+  }).catch((error) => console.error("Umami tracking failed:", error));
 
   const res = await fetch(INSTALL_SCRIPT_URL, {
     next: { revalidate: 300 },
