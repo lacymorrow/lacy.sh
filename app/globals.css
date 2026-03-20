@@ -290,6 +290,18 @@ header {
     margin: 0;
 }
 
+/* -- positioning -- */
+.positioning {
+    padding: 0 0 0 0;
+    margin-top: -40px;
+}
+.positioning-text {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--fg-2);
+    max-width: 520px;
+}
+
 /* -- demo -- */
 .demo {
     padding: 80px 0;
@@ -666,6 +678,220 @@ footer {
     }
     .nav-right a:not(:last-child) {
         display: none;
+    }
+}
+
+/* -- /vs/ comparison pages -- */
+.vs-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    max-width: 728px;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--line-dim);
+}
+.vs-nav-brand {
+    font-family: var(--mono);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--fg);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.vs-nav-bar {
+    width: 3px;
+    height: 14px;
+    border-radius: 1px;
+    background: var(--violet);
+}
+.vs-nav-link {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--fg-3);
+    text-decoration: none;
+    transition: color 0.15s;
+}
+.vs-nav-link:hover {
+    color: var(--fg-2);
+}
+.vs-main {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+.vs-article {
+    padding: 64px 0 48px;
+}
+.vs-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--fg-3);
+    margin-bottom: 16px;
+}
+.vs-article h1 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(28px, 5vw, 40px);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--fg);
+    margin-bottom: 12px;
+}
+.vs-article h1 em {
+    color: var(--violet);
+}
+.vs-subtitle {
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--fg-2);
+    line-height: 1.6;
+    margin-bottom: 48px;
+}
+.vs-article section {
+    margin-bottom: 48px;
+}
+.vs-article h2 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 24px;
+    color: var(--fg);
+    margin-bottom: 16px;
+}
+.vs-article p {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--fg-2);
+    line-height: 1.7;
+    margin-bottom: 12px;
+}
+.vs-article ul {
+    list-style: none;
+    padding: 0;
+}
+.vs-article li {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--fg-2);
+    line-height: 1.7;
+    padding-left: 16px;
+    position: relative;
+    margin-bottom: 4px;
+}
+.vs-article li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--fg-4);
+}
+.vs-article code {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--fg);
+    background: var(--raised);
+    padding: 1px 5px;
+}
+.vs-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid var(--line);
+    margin-bottom: 12px;
+}
+.vs-table th,
+.vs-table td {
+    font-family: var(--mono);
+    font-size: 12px;
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--line-dim);
+}
+.vs-table th {
+    color: var(--fg-3);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 10px;
+    background: var(--surface);
+}
+.vs-table td:first-child {
+    color: var(--fg-3);
+    font-size: 11px;
+    white-space: nowrap;
+}
+.vs-table td {
+    color: var(--fg-2);
+}
+.vs-table tr:last-child td {
+    border-bottom: none;
+}
+.vs-footer {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 24px 64px;
+}
+.vs-footer hr {
+    border: none;
+    border-top: 1px solid var(--line-dim);
+    margin-bottom: 48px;
+}
+.vs-cta {
+    text-align: center;
+}
+.vs-cta h2 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-style: italic;
+    font-size: 28px;
+    color: var(--fg-2);
+    margin-bottom: 24px;
+}
+.vs-cta h2 em {
+    color: var(--violet);
+}
+.vs-install {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--fg);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    padding: 10px 24px;
+    margin-bottom: 12px;
+}
+.vs-alt {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--fg-4);
+}
+.vs-alt code {
+    font-size: 11px;
+    background: none;
+    padding: 0;
+    color: var(--fg-3);
+}
+.vs-links {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--fg-4);
+    margin-top: 24px;
+}
+.vs-links a {
+    color: var(--fg-3);
+    text-decoration: none;
+    transition: color 0.15s;
+}
+.vs-links a:hover {
+    color: var(--fg-2);
+}
+
+@media (max-width: 640px) {
+    .vs-table th:first-child,
+    .vs-table td:first-child {
+        min-width: 70px;
     }
 }
 
