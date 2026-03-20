@@ -148,16 +148,9 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState("curl");
   const [copyLabel, setCopyLabel] = useState("copy");
   const [bottomCopied, setBottomCopied] = useState(false);
-  const [stars, setStars] = useState<number | null>(null);
   const [version, setVersion] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch("https://api.github.com/repos/lacymorrow/lacy")
-      .then((r) => r.json())
-      .then((d) => {
-        if (d.stargazers_count) setStars(d.stargazers_count);
-      })
-      .catch(() => {});
     fetch("https://api.github.com/repos/lacymorrow/lacy/releases/latest")
       .then((r) => r.json())
       .then((d: { tag_name?: string }) => {
@@ -203,11 +196,9 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="nav-github"
+                data-umami-event="github-click"
               >
                 GitHub
-                {stars !== null && (
-                  <span className="nav-stars">{stars >= 1000 ? `${(stars / 1000).toFixed(1)}k` : stars}</span>
-                )}
               </a>
             </div>
           </nav>
@@ -218,18 +209,15 @@ export default function Home() {
         <div className="wrap">
           {/* hero */}
           <section className="hero">
-            <div className="hero-label reveal">your terminal, upgraded</div>
+            <div className="hero-label reveal">shell plugin for zsh &amp; bash</div>
             <h1 className="reveal reveal-d1">
               Talk to
               <br />
               your <em>shell</em>
             </h1>
             <p className="hero-desc reveal reveal-d2">
-              Type commands or natural language.{" "}
-              <strong>Commands run in your shell.</strong>{" "}
-              <strong>Questions go to AI.</strong> No context switching. No
-              prefixes. You type, it figures it out. Works with ZSH and Bash on
-              macOS and Linux. Uninstall in one command.
+              Commands execute. Questions go to AI. No prefix, no mode
+              switching. You just type.
             </p>
 
             <div className="install reveal reveal-d3">
@@ -241,6 +229,8 @@ export default function Home() {
                     role="tab"
                     aria-selected={activeTab === tab.id}
                     onClick={() => setActiveTab(tab.id)}
+                    data-umami-event="install-method-select"
+                    data-umami-event-method={tab.id}
                   >
                     {tab.label}
                   </button>
@@ -260,6 +250,8 @@ export default function Home() {
                   className="copy-btn"
                   aria-label="Copy to clipboard"
                   onClick={copyInstall}
+                  data-umami-event="install-copy"
+                  data-umami-event-method={activeTab}
                 >
                   {copyLabel}
                 </button>
@@ -283,9 +275,19 @@ export default function Home() {
             </div>
           </section>
 
+          {/* positioning */}
+          <section className="positioning reveal">
+            <p className="positioning-text">
+              Not another AI CLI. Lacy is the layer between your shell and
+              every AI tool you already use.
+            </p>
+          </section>
+
           {/* demo */}
           <section className="demo" id="demo">
-            <div className="demo-label">What it looks like</div>
+            <div className="demo-label">
+              Green bar = shell. Purple bar = AI.
+            </div>
             <div className="demo-lines">
               {demoLines.map((line, i) =>
                 line.output ? (
@@ -313,107 +315,12 @@ export default function Home() {
 
           <hr className="rule" />
 
-          {/* how */}
-          <section className="how" id="how">
-            <div className="how-label">How it works</div>
-            <h2>
-              Commands run.
-              <br />
-              Questions route.
-            </h2>
-            <p className="how-desc">
-              The shell plugin intercepts your input before the shell sees it.
-              If the first word is a valid command, it executes normally. If it
-              looks like natural language, it goes to your{" "}
-              <a href="#tools">AI tool</a>. Three{" "}
-              <a href="#modes">modes</a> give you full control over routing.
-            </p>
-            <div className="how-grid">
-              <div className="how-cell">
-                <div className="how-cell-head">
-                  <span
-                    className="dot"
-                    style={{ background: "var(--green)" }}
-                  />
-                  Auto-detect
-                </div>
-                <p>
-                  First word is a valid command? Shell. Multi-word and not a
-                  command? AI. Single unknown word? Shell (let it error).
-                </p>
-              </div>
-              <div className="how-cell">
-                <div className="how-cell-head">
-                  <span
-                    className="dot"
-                    style={{ background: "var(--blue)" }}
-                  />
-                  Smart reroute
-                </div>
-                <p>
-                  Typed something ambiguous? It tries the shell first. If it
-                  fails, Lacy catches it and reroutes to your AI agent
-                  automatically.
-                </p>
-              </div>
-              <div className="how-cell">
-                <div className="how-cell-head">
-                  <span
-                    className="dot"
-                    style={{ background: "var(--magenta)" }}
-                  />
-                  Live indicator
-                </div>
-                <p>
-                  A colored bar at your prompt changes as you type. Green means
-                  shell. Magenta means AI. You always know what will happen.
-                </p>
-              </div>
-              <div className="how-cell">
-                <div className="how-cell-head">
-                  <span
-                    className="dot"
-                    style={{ background: "var(--violet)" }}
-                  />
-                  Preheated
-                </div>
-                <p>
-                  Background servers and session reuse eliminate cold-start.
-                  Your AI tool is ready before you finish typing.
-                </p>
-              </div>
-              <div className="how-cell">
-                <div className="how-cell-head">
-                  <span className="dot" style={{ background: "var(--blue)" }} />
-                  No API keys
-                </div>
-                <p>
-                  Each AI CLI handles its own auth. Lacy just routes. Nothing to
-                  configure beyond picking a tool.
-                </p>
-              </div>
-              <div className="how-cell">
-                <div className="how-cell-head">
-                  <span className="dot" style={{ background: "var(--fg-3)" }} />
-                  Built-in CLI
-                </div>
-                <p>
-                  Run <code>lacy setup</code> to configure,{" "}
-                  <code>lacy doctor</code> to diagnose, and{" "}
-                  <code>lacy update</code> to stay current. No Node required.
-                </p>
-              </div>
-            </div>
-          </section>
-
-          <hr className="rule" />
-
-          {/* tools */}
+          {/* tools — moved up */}
           <section className="tools" id="tools">
-            <div className="tools-label">Supported tools</div>
+            <div className="tools-label">works with your tools</div>
             <p className="tools-desc">
-              Bring your own AI coding agent. Each tool handles its own
-              authentication — no API keys needed.
+              Already using an AI CLI? Lacy routes to it. No extra auth, no
+              API keys. Pick your agent:
             </p>
             <div className="tools-list">
               {tools.map((tool) => (
@@ -442,42 +349,63 @@ export default function Home() {
 
           <hr className="rule" />
 
-          {/* modes */}
-          <section className="modes" id="modes">
-            <div className="modes-label">Modes</div>
-            <div className="modes-row">
-              <div className="mode-cell">
-                <div className="mode-cell-head">
-                  <div
-                    className="mode-cell-bar"
+          {/* how */}
+          <section className="how" id="how">
+            <div className="how-label">how it works</div>
+            <h2>
+              You type.
+              <br />
+              Lacy <em>decides.</em>
+            </h2>
+            <p className="how-desc">
+              Lacy adds a tiny colored bar to your prompt. That{"'"}s it. Your
+              shell stays exactly the same. Commands run locally, questions go
+              to your agent. Works on your laptop, on a VPS over SSH, anywhere
+              you have a shell. Toggle between auto, shell-only, and agent-only
+              with Ctrl+Space.
+            </p>
+            <div className="how-grid">
+              <div className="how-cell">
+                <div className="how-cell-head">
+                  <span
+                    className="dot"
                     style={{ background: "var(--green)" }}
                   />
-                  <h3>Shell</h3>
+                  Zero footprint
                 </div>
-                <p>Everything goes to your shell. Normal terminal.</p>
-                <span className="key">Ctrl+Space</span>
+                <p>
+                  Nothing changes about your existing shell. Same
+                  config, same aliases, same workflow. Lacy just watches
+                  and routes.
+                </p>
               </div>
-              <div className="mode-cell">
-                <div className="mode-cell-head">
-                  <div
-                    className="mode-cell-bar"
+              <div className="how-cell">
+                <div className="how-cell-head">
+                  <span
+                    className="dot"
                     style={{ background: "var(--magenta)" }}
                   />
-                  <h3>Agent</h3>
+                  Runs anywhere
                 </div>
-                <p>Everything goes to AI. Every line is a prompt.</p>
-                <span className="key">Ctrl+Space</span>
+                <p>
+                  Local terminal, remote server, SSH session. If you have
+                  ZSH or Bash, Lacy works. No GUI, no daemon, no background
+                  process.
+                </p>
               </div>
-              <div className="mode-cell">
-                <div className="mode-cell-head">
-                  <div
-                    className="mode-cell-bar"
-                    style={{ background: "var(--blue)" }}
+              <div className="how-cell">
+                <div className="how-cell-head">
+                  <span
+                    className="dot"
+                    style={{ background: "var(--violet)" }}
                   />
-                  <h3>Auto</h3>
+                  Stays local
                 </div>
-                <p>Smart routing. Commands to shell, questions to AI.</p>
-                <span className="key">default</span>
+                <p>
+                  Lacy runs on your machine. Nothing leaves unless you
+                  send it to your agent. MIT licensed, no telemetry, open
+                  source.
+                </p>
               </div>
             </div>
           </section>
@@ -488,11 +416,9 @@ export default function Home() {
           <HeroBeam />
           <section className="cta-section wrap">
             <h2>
-              Open terminal.
+              Stop context-switching.
               <br />
-              Type naturally.
-              <br />
-              Ship code.
+              Start shipping.
             </h2>
             <div
               className="cta-section-cmd"
@@ -506,6 +432,7 @@ export default function Home() {
                   copyBottom();
                 }
               }}
+              data-umami-event="cta-install-copy"
             >
               <span className="p">$ </span>
               {bottomCopied
@@ -559,6 +486,8 @@ export default function Home() {
               >
                 privacy
               </a>
+              <a href="/vs/shell-gpt">vs ShellGPT</a>
+              <a href="/vs/warp">vs Warp</a>
             </div>
           </div>
         </div>
