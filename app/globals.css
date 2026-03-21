@@ -98,6 +98,10 @@ header {
     align-items: center;
     gap: 8px;
     text-decoration: none;
+    transition: color 0.2s;
+}
+.nav-name:hover {
+    color: var(--fg);
 }
 .nav-bar {
     width: 3px;
@@ -196,6 +200,10 @@ header {
     border: 1px solid var(--line);
     background: var(--surface);
     margin-bottom: 120px;
+    transition: border-color 0.3s;
+}
+.install:hover {
+    border-color: var(--fg-4);
 }
 .install-head {
     display: flex;
@@ -413,6 +421,11 @@ header {
 .how-cell {
     padding: 24px;
     border-bottom: 1px solid var(--line);
+    transition: background 0.25s, transform 0.25s;
+}
+.how-cell:hover {
+    background: var(--raised);
+    transform: translateY(-2px);
 }
 .how-cell:nth-child(odd) {
     border-right: 1px solid var(--line);
@@ -477,6 +490,14 @@ header {
     padding: 12px 0;
     border-bottom: 1px solid var(--line-dim);
     font-size: 13px;
+    transition: background 0.2s;
+    margin: 0 -8px;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 4px;
+}
+.tool-row:hover {
+    background: var(--raised);
 }
 .tool-row:last-child {
     border-bottom: none;
@@ -524,6 +545,11 @@ header {
 .mode-cell {
     background: var(--surface);
     padding: 28px 24px;
+    transition: background 0.25s, transform 0.25s;
+}
+.mode-cell:hover {
+    background: var(--raised);
+    transform: translateY(-2px);
 }
 .mode-cell-head {
     display: flex;
@@ -639,9 +665,23 @@ footer {
     letter-spacing: 0.02em;
     transition: color 0.15s;
     cursor: pointer;
+    position: relative;
+}
+.foot-right a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--fg-3);
+    transition: width 0.25s ease;
 }
 .foot-right a:hover {
     color: var(--fg-2);
+}
+.foot-right a:hover::after {
+    width: 100%;
 }
 
 /* -- responsive -- */
@@ -925,4 +965,15 @@ footer {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+/* -- scroll-triggered entrance -- */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
 }

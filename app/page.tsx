@@ -157,6 +157,21 @@ export default function Home() {
         if (d.tag_name) setVersion(d.tag_name.replace(/^v/, ""));
       })
       .catch(() => {});
+
+    // Scroll-triggered entrance animations
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+    document.querySelectorAll(".scroll-reveal").forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
   }, []);
 
   const copyInstall = useCallback(() => {
@@ -284,7 +299,7 @@ export default function Home() {
           </section>
 
           {/* demo */}
-          <section className="demo" id="demo">
+          <section className="demo scroll-reveal" id="demo">
             <div className="demo-label">
               Green bar = shell. Purple bar = AI.
             </div>
@@ -316,7 +331,7 @@ export default function Home() {
           <hr className="rule" />
 
           {/* tools — moved up */}
-          <section className="tools" id="tools">
+          <section className="tools scroll-reveal" id="tools">
             <div className="tools-label">works with your tools</div>
             <p className="tools-desc">
               Already using an AI CLI? Lacy routes to it. No extra auth, no
@@ -350,7 +365,7 @@ export default function Home() {
           <hr className="rule" />
 
           {/* how */}
-          <section className="how" id="how">
+          <section className="how scroll-reveal" id="how">
             <div className="how-label">how it works</div>
             <h2>
               You type.
@@ -414,7 +429,7 @@ export default function Home() {
         {/* bottom — full-bleed beam behind */}
         <div className="bottom-beam-wrap">
           <HeroBeam />
-          <section className="cta-section wrap">
+          <section className="cta-section wrap scroll-reveal">
             <h2>
               Stop context-switching.
               <br />
