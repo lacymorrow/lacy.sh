@@ -1,7 +1,7 @@
 const INSTALL_SCRIPT_URL =
   "https://raw.githubusercontent.com/lacymorrow/lacy/main/install.sh";
 
-const UMAMI_URL = process.env.UMAMI_URL ?? "https://umami-woad-two.vercel.app/api/send";
+const UMAMI_URL = process.env.UMAMI_URL ?? "https://analytics.lacy.sh/api/send";
 const UMAMI_WEBSITE_ID = process.env.UMAMI_WEBSITE_ID ?? "577521d7-3db7-4a77-a45c-3c97f21b5322";
 
 export async function GET(request: Request) {
