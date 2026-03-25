@@ -19,15 +19,15 @@ curl -fsSL https://lacy.sh/install | bash
 ### Other methods
 
 Homebrew:
-  brew tap lacymorrow/tap
-  brew install lacy
+  brew install lacymorrow/tap/lacy
 
 npx (interactive):
   npx lacy
 
 Manual:
   git clone https://github.com/lacymorrow/lacy.git ~/.lacy
-  echo 'source ~/.lacy/lacy.plugin.zsh' >> ~/.zshrc
+  echo 'source ~/.lacy/lacy.plugin.zsh' >> ~/.zshrc   # ZSH
+  echo 'source ~/.lacy/lacy.plugin.zsh' >> ~/.bashrc   # Bash
 
 ### Uninstall
 

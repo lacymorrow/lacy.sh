@@ -9,9 +9,9 @@ Lacy is a ZSH/Bash plugin that adds AI to your existing terminal. Type commands 
 curl -fsSL https://lacy.sh/install | bash
 
 ### Other methods
-- Homebrew: brew tap lacymorrow/tap && brew install lacy
+- Homebrew: brew install lacymorrow/tap/lacy
 - npx: npx lacy
-- Manual: git clone https://github.com/lacymorrow/lacy.git ~/.lacy && echo 'source ~/.lacy/lacy.plugin.zsh' >> ~/.zshrc
+- Manual: git clone https://github.com/lacymorrow/lacy.git ~/.lacy && echo 'source ~/.lacy/lacy.plugin.zsh' >> ~/.zshrc (or ~/.bashrc for Bash)
 
 ## How It Works
 - Green indicator = shell command
