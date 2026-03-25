@@ -48,8 +48,16 @@ export const metadata: Metadata = {
     ],
     apple: "/apple-touch-icon.png",
   },
+  robots: {
+    index: true,
+    follow: true,
+    "max-snippet": -1,
+    "max-image-preview": "large" as const,
+  },
   other: {
     "theme-color": "#09090b",
+    "ai:description":
+      "Lacy Shell is a ZSH/Bash plugin that adds AI to your terminal. Type naturally, commands run in shell, questions go to AI.",
   },
   alternates: {
     canonical: "/",
@@ -60,22 +68,25 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   name: "Lacy Shell",
-  url: "https://lacy.sh",
+  alternateName: "lacy",
   description:
-    "Type commands or natural language directly in your terminal. Commands run in your shell, questions route to AI automatically. Minimal config, works with Claude, Gemini, and more.",
+    "Talk to your shell. Commands run in your shell, questions route to AI automatically. ZSH and Bash plugin.",
+  url: "https://lacy.sh",
   applicationCategory: "DeveloperApplication",
-  operatingSystem: "macOS, Linux",
-  author: {
-    "@type": "Person",
-    name: "Lacy Morrow",
-    url: "https://lacymorrow.com",
-  },
-  datePublished: "2025-01-01",
+  operatingSystem: "macOS, Linux, WSL",
   offers: {
     "@type": "Offer",
     price: "0",
     priceCurrency: "USD",
   },
+  author: {
+    "@type": "Person",
+    name: "Lacy Morrow",
+    url: "https://lacymorrow.com",
+  },
+  codeRepository: "https://github.com/lacymorrow/lacy",
+  programmingLanguage: ["Shell", "TypeScript", "JavaScript"],
+  runtimePlatform: "ZSH, Bash 4+",
 };
 
 export default function RootLayout({

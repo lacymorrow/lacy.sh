@@ -1,0 +1,35 @@
+# Lacy Shell
+
+> Talk to your shell. Commands run. Questions go to AI. No prefixes. No context switching.
+
+## What is Lacy?
+Lacy is a ZSH/Bash plugin that adds AI to your existing terminal. Type commands normally and they run in your shell. Type natural language and it routes to your AI agent (Claude Code, Gemini, Codex, etc). Real-time color indicators show what will happen before you press enter.
+
+## Install
+curl -fsSL https://lacy.sh/install | bash
+
+### Other methods
+- Homebrew: brew tap lacymorrow/tap && brew install lacy
+- npx: npx lacy
+- Manual: git clone https://github.com/lacymorrow/lacy.git ~/.lacy && echo 'source ~/.lacy/lacy.plugin.zsh' >> ~/.zshrc
+
+## How It Works
+- Green indicator = shell command
+- Magenta indicator = AI query
+- Commands execute in your shell
+- Natural language goes to your AI agent
+- Smart rerouting: if a command contains natural language and fails, it auto-sends to AI
+
+## Modes
+- Auto: smart routing (default)
+- Shell: everything to shell (mode shell or Ctrl+Space)
+- Agent: everything to AI (mode agent or Ctrl+Space)
+
+## Supported AI Tools
+Works with Claude Code, Gemini CLI, Codex, OpenCode, Lash, Pi. Auto-detects what's installed.
+
+## Links
+- Website: https://lacy.sh
+- GitHub: https://github.com/lacymorrow/lacy
+- npm: https://www.npmjs.com/package/lacy
+- Twitter: https://twitter.com/lacybuilds
