@@ -157,8 +157,9 @@ export default function Home() {
         if (d.tag_name) setVersion(d.tag_name.replace(/^v/, ""));
       })
       .catch(() => {});
+  }, []);
 
-    // Scroll-triggered entrance animations
+  useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
