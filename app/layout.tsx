@@ -28,14 +28,12 @@ export const metadata: Metadata = {
       "Type commands or natural language directly in your terminal. Commands run in your shell, questions route to AI automatically.",
     type: "website",
     url: "https://lacy.sh",
-    images: [{ url: "https://lacy.sh/og.jpg", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Lacy Shell — talk to your terminal with AI",
     description:
       "Type commands or natural language directly in your terminal. Commands run in your shell, questions route to AI automatically.",
-    images: ["https://lacy.sh/og.jpg"],
   },
   icons: {
     icon: [
