@@ -6,16 +6,21 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default async function Image() {
+  const fetchFont = (url: string) =>
+    fetch(url).then((r) =>
+      r.ok ? r.arrayBuffer() : Promise.reject("Failed to fetch font: " + url)
+    );
+
   const [instrumentSerifItalic, instrumentSerif, dmMono] = await Promise.all([
-    fetch(
+    fetchFont(
       "https://fonts.gstatic.com/s/instrumentserif/v5/jizHRFtNs2ka5fXjeivQ4LroWlx-6zATiw.ttf"
-    ).then((r) => r.arrayBuffer()),
-    fetch(
+    ),
+    fetchFont(
       "https://fonts.gstatic.com/s/instrumentserif/v5/jizBRFtNs2ka5fXjeivQ4LroWlx-2zI.ttf"
-    ).then((r) => r.arrayBuffer()),
-    fetch(
+    ),
+    fetchFont(
       "https://fonts.gstatic.com/s/dmmono/v16/aFTU7PB1QTsUX8KYhh0.ttf"
-    ).then((r) => r.arrayBuffer()),
+    ),
   ]);
 
   return new ImageResponse(
@@ -113,7 +118,6 @@ export default async function Image() {
               fontSize: 18,
               fontFamily: "DM Mono",
               color: "#fafafa",
-              fontWeight: 500,
               lineHeight: 1.7,
             }}
           >
