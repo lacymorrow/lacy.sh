@@ -3,13 +3,21 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Lacy Shell vs Warp — Plugin vs Terminal Replacement",
   description:
-    "Compare Lacy Shell and Warp Terminal. Lacy is a ZSH/Bash plugin that adds AI routing to your existing terminal. Warp replaces your terminal entirely. See the differences.",
+    "Compare Lacy Shell and Warp. Lacy is a shell plugin that adds AI routing to your terminal. Warp replaces it entirely. See the key differences.",
   alternates: { canonical: "/vs/warp" },
   openGraph: {
     title: "Lacy Shell vs Warp — Plugin vs Terminal Replacement",
     description:
       "Compare Lacy Shell and Warp Terminal. Plugin approach vs full terminal replacement.",
     url: "https://lacy.sh/vs/warp",
+    images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "Lacy Shell — talk to your terminal with AI" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Lacy Shell vs Warp — Plugin vs Terminal Replacement",
+    description:
+      "Compare Lacy Shell and Warp. Plugin approach vs full terminal replacement.",
+    images: ["/og.jpg"],
   },
 };
 
@@ -29,7 +37,7 @@ export default function VsWarp() {
         <p>
           Warp is a full terminal replacement — a new app you switch to. Lacy is
           a shell plugin — it adds AI routing to whatever terminal you already
-          use (iTerm2, Alacritty, Kitty, the default Terminal.app, or yes, even
+          use (iTerm2, Alacritty, the default Terminal.app, or yes, even
           Warp).
         </p>
       </section>
@@ -125,6 +133,22 @@ export default function VsWarp() {
           Yes. Lacy is a shell plugin — it works inside any terminal, including
           Warp. If you use Warp but prefer automatic NL detection over the #
           prefix, add Lacy to your ZSH config and get the best of both.
+        </p>
+      </section>
+
+      <section>
+        <h2>The bottom line</h2>
+        <p>
+          Warp is a powerful, modern terminal with features that go well beyond
+          AI — blocks, notebooks, team sharing. It reimagines what a terminal
+          can be.
+        </p>
+        <p>
+          Lacy is the opposite philosophy: change nothing about your setup, just
+          add invisible AI routing. If you love your current terminal and want AI
+          integrated without switching apps, installing a desktop client, or
+          creating an account, Lacy is a one-line install that stays out of
+          your way. Both are good tools for different priorities.
         </p>
       </section>
     </article>
