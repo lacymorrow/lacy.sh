@@ -489,6 +489,7 @@ export default function Home() {
             </span>
             <div className="foot-right">
               <a href="#how">docs</a>
+              <a href="/blog">blog</a>
               <a
                 href="https://github.com/lacymorrow/lacy"
                 target="_blank"
@@ -510,15 +511,17 @@ export default function Home() {
               >
                 mit
               </a>
-              <a
-                href="https://github.com/lacymorrow/lacy/blob/main/PRIVACY.md"
-                target="_blank"
-                rel="noopener"
-              >
-                privacy
-              </a>
+              <a href="/privacy">privacy</a>
               <a href="/vs/shell-gpt">vs ShellGPT</a>
               <a href="/vs/warp">vs Warp</a>
+              <a href="/vs/github-copilot-cli">vs Copilot CLI</a>
+              <a href="/vs/amazon-q">vs Amazon Q</a>
+              <a href="/vs/aider">vs Aider</a>
+              <a href="/vs/cursor">vs Cursor</a>
+              <a href="/vs/ai-shell">vs AI Shell</a>
+              <a href="/tools/claude">with Claude</a>
+              <a href="/tools/gemini">with Gemini</a>
+              <a href="/tools/opencode">with OpenCode</a>
             </div>
           </div>
         </div>
