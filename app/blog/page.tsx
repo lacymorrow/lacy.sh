@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Blog",
+  title: { absolute: "Blog | Lacy Shell" },
   description:
     "Technical posts about building Lacy Shell: natural language detection in the terminal, shell plugin development, and AI-powered developer tools.",
   alternates: { canonical: "/blog" },

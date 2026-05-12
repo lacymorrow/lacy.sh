@@ -26,7 +26,7 @@ export default function BlogLayout({
           <Link href="/blog" className="vs-nav-link">
             Blog
           </Link>
-          <a href="https://github.com/lacymorrow/lacy" className="vs-nav-link">
+          <a href="https://github.com/lacymorrow/lacy" className="vs-nav-link" target="_blank" rel="noopener noreferrer">
             GitHub
           </a>
         </div>
@@ -48,11 +48,11 @@ export default function BlogLayout({
           <p className="vs-links">
             <Link href="/">Home</Link> &middot;{" "}
             <Link href="/blog">Blog</Link> &middot;{" "}
-            <a href="https://github.com/lacymorrow/lacy">Source</a> &middot;{" "}
-            <a href="https://github.com/lacymorrow/lacy/issues">Issues</a> &middot;{" "}
+            <a href="https://github.com/lacymorrow/lacy" target="_blank" rel="noopener noreferrer">Source</a> &middot;{" "}
+            <a href="https://github.com/lacymorrow/lacy/issues" target="_blank" rel="noopener noreferrer">Issues</a> &middot;{" "}
             <Link href="/privacy">Privacy</Link>
           </p>
-          <p className="vs-links" style={{ marginTop: 12 }}>
+          <p className="vs-links blog-links-mt">
             More posts:{" "}
             <Link href="/blog/why-i-didnt-use-ai-to-classify-ai-input">
               AI Classification
