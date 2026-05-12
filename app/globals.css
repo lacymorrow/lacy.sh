@@ -927,6 +927,48 @@ footer {
 .vs-links a:hover {
     color: var(--fg-2);
 }
+.vs-index-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.vs-index-list li {
+    border-bottom: 1px solid var(--line-dim);
+    padding: 0;
+    margin: 0;
+}
+.vs-index-list li::before {
+    display: none;
+}
+.vs-index-list li:first-child {
+    border-top: 1px solid var(--line-dim);
+}
+.vs-index-list a {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 14px 0;
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.15s;
+}
+.vs-index-list a:hover {
+    color: var(--fg);
+}
+.vs-index-list strong {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--fg-2);
+}
+.vs-index-list a:hover strong {
+    color: var(--fg);
+}
+.vs-index-list span {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--fg-4);
+}
 
 @media (max-width: 640px) {
     .vs-table th:first-child,
