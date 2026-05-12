@@ -656,7 +656,8 @@ footer {
 }
 .foot-right {
     display: flex;
-    gap: 20px;
+    column-gap: 20px;
+    row-gap: 12px;
     flex-wrap: wrap;
 }
 .foot-right a {
@@ -726,7 +727,7 @@ footer {
         gap: 12px;
     }
     .foot-right {
-        gap: 12px;
+        gap: 16px 12px;
     }
 }
 
