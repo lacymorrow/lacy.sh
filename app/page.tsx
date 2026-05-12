@@ -270,10 +270,19 @@ export default function Home() {
                 ))}
                 {version && (
                   <span
-                    style={{ marginLeft: "auto", marginRight: "12px", padding: "2px 10px" }}
-                    className="inline-flex items-center gap-1 rounded-full border border-white/10 bg-white/5 text-[10px] font-medium text-zinc-400 transition-colors hover:bg-white/[0.08] hover:text-zinc-300"
+                    style={{
+                      marginLeft: "auto",
+                      marginRight: "12px",
+                      padding: "2px 10px",
+                      fontSize: "10px",
+                      color: "var(--fg-4)",
+                      border: "1px solid var(--line)",
+                      borderRadius: "3px",
+                      letterSpacing: "0.02em",
+                      flexShrink: 0,
+                    }}
                   >
-                    <span className="opacity-60">v</span>
+                    <span style={{ opacity: 0.6 }}>v</span>
                     <span>{version}</span>
                   </span>
                 )}

@@ -34,6 +34,7 @@ body {
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 body {
     font-family: var(--mono);
@@ -209,6 +210,8 @@ header {
     display: flex;
     align-items: center;
     border-bottom: 1px solid var(--line);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
 }
 .install-tab {
     padding: 10px 20px;
@@ -223,6 +226,8 @@ header {
         color 0.15s,
         background 0.15s;
     letter-spacing: 0.02em;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 .install-tab:last-child {
     border-right: none;
@@ -238,6 +243,7 @@ header {
     padding: 20px 24px;
     position: relative;
     min-height: 60px;
+    overflow: hidden;
 }
 .install-panel {
     display: none;
@@ -353,6 +359,10 @@ header {
 }
 .dl-input {
     color: var(--fg);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
 }
 .dl-tag {
     font-size: 10px;
@@ -385,6 +395,9 @@ header {
     color: var(--fg-3);
     font-size: 12px;
     padding-bottom: 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 /* -- how -- */
@@ -516,6 +529,10 @@ header {
 }
 .tool-cmd {
     color: var(--fg-3);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
 }
 .tool-note {
     color: var(--fg-4);
@@ -595,6 +612,7 @@ header {
     border: 1px solid var(--line);
     border-radius: 12px;
     margin: 80px auto;
+    max-width: calc(100% - 48px);
 }
 
 /* -- cta section -- */
@@ -688,8 +706,20 @@ footer {
 
 /* -- responsive -- */
 @media (max-width: 640px) {
+    .wrap {
+        padding: 0 16px;
+    }
     .hero {
         padding-top: 110px;
+    }
+    .hero h1 {
+        font-size: clamp(40px, 10vw, 52px);
+    }
+    .install-body {
+        padding: 16px;
+    }
+    .install-tab {
+        padding: 10px 14px;
     }
     .how-grid {
         grid-template-columns: 1fr;
@@ -728,6 +758,19 @@ footer {
     }
     .foot-right {
         gap: 16px 12px;
+    }
+    .cta-section {
+        padding: 80px 16px 60px;
+    }
+    .cta-section-cmd {
+        font-size: 11px;
+        padding: 10px 16px;
+        word-break: break-all;
+    }
+    .bottom-beam-wrap section {
+        margin: 40px auto;
+        max-width: calc(100% - 32px);
+        border-radius: 8px;
     }
 }
 
