@@ -4,9 +4,6 @@ const UMAMI_ORIGIN = process.env.UMAMI_ORIGIN ?? "https://analytics.lacy.sh";
 
 const nextConfig: NextConfig = {
   trailingSlash: false,
-  async redirects() {
-    return [];
-  },
   async headers() {
     return [
       {
