@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import Link from "next/link";
 
 export default function VsLayout({
   children,
@@ -8,10 +8,10 @@ export default function VsLayout({
   return (
     <>
       <nav className="vs-nav">
-        <a href="/" className="vs-nav-brand">
+        <Link href="/" className="vs-nav-brand">
           <span className="vs-nav-bar" />
           lacy
-        </a>
+        </Link>
         <a href="https://github.com/lacymorrow/lacy" className="vs-nav-link">
           GitHub
         </a>
@@ -31,7 +31,7 @@ export default function VsLayout({
             <code>npx lacy</code>
           </p>
           <p className="vs-links">
-            <a href="/">Home</a> &middot;{" "}
+            <Link href="/">Home</Link> &middot;{" "}
             <a href="https://github.com/lacymorrow/lacy">Source</a> &middot;{" "}
             <a href="https://github.com/lacymorrow/lacy/issues">Issues</a>
           </p>

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -18,12 +19,12 @@ export default function PrivacyPolicy() {
   return (
     <>
       <nav className="vs-nav">
-        <a href="/" className="vs-nav-brand">
+        <Link href="/" className="vs-nav-brand">
           <span className="vs-nav-bar" />
           lacy
-        </a>
+        </Link>
         <a href="https://github.com/lacymorrow/lacy" className="vs-nav-link">
-          Source
+          GitHub
         </a>
       </nav>
       <main className="vs-main">
@@ -163,10 +164,10 @@ export default function PrivacyPolicy() {
         <hr />
         <div className="vs-cta">
           <p className="vs-links">
-            <a href="/">Home</a> &middot;{" "}
+            <Link href="/">Home</Link> &middot;{" "}
             <a href="https://github.com/lacymorrow/lacy">Source</a> &middot;{" "}
             <a href="https://github.com/lacymorrow/lacy/issues">Issues</a> &middot;{" "}
-            <a href="/privacy">Privacy</a>
+            <Link href="/privacy">Privacy</Link>
           </p>
         </div>
       </footer>

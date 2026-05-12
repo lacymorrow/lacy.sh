@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -17,14 +18,14 @@ export default function BlogLayout({
   return (
     <>
       <nav className="vs-nav">
-        <a href="/" className="vs-nav-brand">
+        <Link href="/" className="vs-nav-brand">
           <span className="vs-nav-bar" />
           lacy
-        </a>
+        </Link>
         <div className="blog-nav-right">
-          <a href="/blog" className="vs-nav-link">
+          <Link href="/blog" className="vs-nav-link">
             Blog
-          </a>
+          </Link>
           <a href="https://github.com/lacymorrow/lacy" className="vs-nav-link">
             GitHub
           </a>
@@ -45,25 +46,25 @@ export default function BlogLayout({
             <code>npx lacy</code>
           </p>
           <p className="vs-links">
-            <a href="/">Home</a> &middot;{" "}
-            <a href="/blog">Blog</a> &middot;{" "}
+            <Link href="/">Home</Link> &middot;{" "}
+            <Link href="/blog">Blog</Link> &middot;{" "}
             <a href="https://github.com/lacymorrow/lacy">Source</a> &middot;{" "}
             <a href="https://github.com/lacymorrow/lacy/issues">Issues</a> &middot;{" "}
-            <a href="/privacy">Privacy</a>
+            <Link href="/privacy">Privacy</Link>
           </p>
           <p className="vs-links" style={{ marginTop: 12 }}>
             More posts:{" "}
-            <a href="/blog/why-i-didnt-use-ai-to-classify-ai-input">
+            <Link href="/blog/why-i-didnt-use-ai-to-classify-ai-input">
               AI Classification
-            </a>{" "}
+            </Link>{" "}
             &middot;{" "}
-            <a href="/blog/shell-reserved-words-are-trickier-than-they-look">
+            <Link href="/blog/shell-reserved-words-are-trickier-than-they-look">
               Reserved Words
-            </a>{" "}
+            </Link>{" "}
             &middot;{" "}
-            <a href="/blog/the-post-execution-reroute-pattern">
+            <Link href="/blog/the-post-execution-reroute-pattern">
               Post-Execution Reroute
-            </a>
+            </Link>
           </p>
         </div>
       </footer>

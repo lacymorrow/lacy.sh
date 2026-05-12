@@ -1,7 +1,8 @@
+import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Blog | Lacy Shell",
+  title: "Blog",
   description:
     "Technical posts about building Lacy Shell: natural language detection in the terminal, shell plugin development, and AI-powered developer tools.",
   alternates: { canonical: "/blog" },
@@ -66,11 +67,11 @@ export default function BlogIndex() {
 
       <div className="blog-list">
         {posts.map((post) => (
-          <a key={post.slug} href={`/blog/${post.slug}`} className="blog-card">
+          <Link key={post.slug} href={`/blog/${post.slug}`} className="blog-card">
             <p className="blog-card-date">{post.date}</p>
             <h2 className="blog-card-title">{post.title}</h2>
             <p className="blog-card-desc">{post.description}</p>
-          </a>
+          </Link>
         ))}
       </div>
     </article>

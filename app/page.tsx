@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback, useEffect } from "react";
+import Link from "next/link";
 import HeroBeam from "./hero-beam";
 
 const tabs = [
@@ -489,7 +490,7 @@ export default function Home() {
             </span>
             <div className="foot-right">
               <a href="#how">docs</a>
-              <a href="/blog">blog</a>
+              <Link href="/blog">blog</Link>
               <a
                 href="https://github.com/lacymorrow/lacy"
                 target="_blank"
@@ -511,17 +512,17 @@ export default function Home() {
               >
                 mit
               </a>
-              <a href="/privacy">privacy</a>
-              <a href="/vs/shell-gpt">vs ShellGPT</a>
-              <a href="/vs/warp">vs Warp</a>
-              <a href="/vs/github-copilot-cli">vs Copilot CLI</a>
-              <a href="/vs/amazon-q">vs Amazon Q</a>
-              <a href="/vs/aider">vs Aider</a>
-              <a href="/vs/cursor">vs Cursor</a>
-              <a href="/vs/ai-shell">vs AI Shell</a>
-              <a href="/tools/claude">with Claude</a>
-              <a href="/tools/gemini">with Gemini</a>
-              <a href="/tools/opencode">with OpenCode</a>
+              <Link href="/privacy">privacy</Link>
+              <Link href="/vs/shell-gpt">vs ShellGPT</Link>
+              <Link href="/vs/warp">vs Warp</Link>
+              <Link href="/vs/github-copilot-cli">vs Copilot CLI</Link>
+              <Link href="/vs/amazon-q">vs Amazon Q</Link>
+              <Link href="/vs/aider">vs Aider</Link>
+              <Link href="/vs/cursor">vs Cursor</Link>
+              <Link href="/vs/ai-shell">vs AI Shell</Link>
+              <Link href="/tools/claude">with Claude</Link>
+              <Link href="/tools/gemini">with Gemini</Link>
+              <Link href="/tools/opencode">with OpenCode</Link>
             </div>
           </div>
         </div>
