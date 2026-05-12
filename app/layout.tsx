@@ -18,22 +18,33 @@ const dmMono = DM_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://lacy.sh"),
-  title: "Lacy Shell — talk to your terminal with AI",
+  title: "Lacy Shell — AI Shell & Natural Language Terminal for ZSH/Bash",
   description:
-    "Type commands or natural language directly in your terminal. Commands run in your shell, questions route to AI automatically. Minimal config, works with Claude, Gemini, and more.",
+    "AI shell plugin for ZSH and Bash. Type commands or natural language — commands run in your shell, questions route to Claude, Gemini, or any AI CLI automatically. Zero config, no prefix needed.",
+  keywords: [
+    "ai shell",
+    "ai terminal",
+    "natural language shell",
+    "claude terminal",
+    "zsh ai plugin",
+    "bash ai plugin",
+    "natural language terminal",
+    "ai cli tool",
+    "terminal ai assistant",
+  ],
   authors: [{ name: "Lacy Morrow", url: "https://lacymorrow.com" }],
   openGraph: {
-    title: "Lacy Shell — talk to your terminal with AI",
+    title: "Lacy Shell — AI Shell & Natural Language Terminal",
     description:
-      "Type commands or natural language directly in your terminal. Commands run in your shell, questions route to AI automatically.",
+      "Type commands or natural language in your terminal. Commands run in your shell, questions route to Claude, Gemini, or any AI CLI automatically.",
     type: "website",
     url: "https://lacy.sh",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Lacy Shell — talk to your terminal with AI",
+    title: "Lacy Shell — AI Shell & Natural Language Terminal",
     description:
-      "Type commands or natural language directly in your terminal. Commands run in your shell, questions route to AI automatically.",
+      "Type commands or natural language in your terminal. Commands run in your shell, questions route to Claude, Gemini, or any AI CLI automatically.",
   },
   icons: {
     icon: [
