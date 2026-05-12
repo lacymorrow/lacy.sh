@@ -223,6 +223,7 @@ export default function Home() {
               <a href="#demo">Demo</a>
               <a href="#how">How it works</a>
               <a href="#tools">Tools</a>
+              <Link href="/docs">Docs</Link>
               <a
                 href="https://github.com/lacymorrow/lacy"
                 target="_blank"
