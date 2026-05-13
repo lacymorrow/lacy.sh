@@ -498,41 +498,47 @@ export default function Home() {
                 Lacy Morrow
               </a>
             </span>
-            <div className="foot-right">
-              <a href="#how">docs</a>
-              <Link href="/blog">blog</Link>
-              <a
-                href="https://github.com/lacymorrow/lacy"
-                target="_blank"
-                rel="noopener"
-              >
-                source
-              </a>
-              <a
-                href="https://github.com/lacymorrow/lacy/issues"
-                target="_blank"
-                rel="noopener"
-              >
-                issues
-              </a>
-              <a
-                href="https://github.com/lacymorrow/lacy/blob/main/LICENSE"
-                target="_blank"
-                rel="noopener"
-              >
-                mit
-              </a>
-              <Link href="/privacy">privacy</Link>
-              <Link href="/vs/shell-gpt">vs ShellGPT</Link>
-              <Link href="/vs/warp">vs Warp</Link>
-              <Link href="/vs/github-copilot-cli">vs Copilot CLI</Link>
-              <Link href="/vs/amazon-q">vs Amazon Q</Link>
-              <Link href="/vs/aider">vs Aider</Link>
-              <Link href="/vs/cursor">vs Cursor</Link>
-              <Link href="/vs/ai-shell">vs AI Shell</Link>
-              <Link href="/tools/claude">with Claude</Link>
-              <Link href="/tools/gemini">with Gemini</Link>
-              <Link href="/tools/opencode">with OpenCode</Link>
+            <div className="foot-rows">
+              <div className="foot-right">
+                <Link href="/docs">docs</Link>
+                <Link href="/blog">blog</Link>
+                <a
+                  href="https://github.com/lacymorrow/lacy"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  source
+                </a>
+                <a
+                  href="https://github.com/lacymorrow/lacy/issues"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  issues
+                </a>
+                <a
+                  href="https://github.com/lacymorrow/lacy/blob/main/LICENSE"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  mit
+                </a>
+                <Link href="/privacy">privacy</Link>
+              </div>
+              <div className="foot-right">
+                <Link href="/vs/shell-gpt">vs ShellGPT</Link>
+                <Link href="/vs/warp">vs Warp</Link>
+                <Link href="/vs/github-copilot-cli">vs Copilot CLI</Link>
+                <Link href="/vs/amazon-q">vs Amazon Q</Link>
+                <Link href="/vs/aider">vs Aider</Link>
+                <Link href="/vs/cursor">vs Cursor</Link>
+                <Link href="/vs/ai-shell">vs AI Shell</Link>
+              </div>
+              <div className="foot-right">
+                <Link href="/tools/claude">with Claude</Link>
+                <Link href="/tools/gemini">with Gemini</Link>
+                <Link href="/tools/opencode">with OpenCode</Link>
+              </div>
             </div>
           </div>
         </div>
