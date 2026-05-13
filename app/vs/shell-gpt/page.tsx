@@ -6,10 +6,18 @@ export const metadata: Metadata = {
     "Compare Lacy Shell and ShellGPT (sgpt). Lacy auto-detects natural language. ShellGPT requires an explicit sgpt command. See the differences.",
   alternates: { canonical: "/vs/shell-gpt" },
   openGraph: {
-    title: "Lacy Shell vs ShellGPT — Transparent vs Explicit AI",
+    title: "Lacy Shell vs ShellGPT — Transparent Routing vs Explicit Commands",
     description:
       "Compare Lacy Shell and ShellGPT. Automatic NL detection vs explicit command prefix.",
     url: "https://lacy.sh/vs/shell-gpt",
+    images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "Lacy Shell — talk to your terminal with AI" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Lacy Shell vs ShellGPT — Transparent Routing vs Explicit Commands",
+    description:
+      "Compare Lacy Shell and ShellGPT. Automatic NL detection vs explicit command prefix.",
+    images: ["/og.jpg"],
   },
 };
 

@@ -83,19 +83,20 @@ const jsonLd = {
   url: "https://lacy.sh",
   applicationCategory: "DeveloperApplication",
   operatingSystem: "macOS, Linux, WSL",
+  downloadUrl: "https://github.com/lacymorrow/lacy",
+  installUrl: "https://lacy.sh/install",
+  softwareVersion: "1.0",
   offers: {
     "@type": "Offer",
     price: "0",
     priceCurrency: "USD",
+    availability: "https://schema.org/OnlineOnly",
   },
   author: {
     "@type": "Person",
     name: "Lacy Morrow",
     url: "https://lacymorrow.com",
   },
-  codeRepository: "https://github.com/lacymorrow/lacy",
-  programmingLanguage: ["Shell", "TypeScript", "JavaScript"],
-  runtimePlatform: "ZSH, Bash 4+",
 };
 
 export default function RootLayout({
