@@ -1580,6 +1580,12 @@ footer {
     overflow: hidden;
 }
 
+.doc-code-header .copy-btn {
+    position: relative;
+    top: auto;
+    right: auto;
+}
+
 .doc-code-header {
     display: flex;
     justify-content: space-between;
