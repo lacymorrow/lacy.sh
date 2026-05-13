@@ -1580,8 +1580,10 @@ footer {
     overflow: hidden;
 }
 
-.doc-code .copy-btn {
-    position: static;
+.doc-code-header .copy-btn {
+    position: relative;
+    top: auto;
+    right: auto;
 }
 
 .doc-code-header {
