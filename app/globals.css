@@ -774,6 +774,63 @@ footer {
     }
 }
 
+/* -- extra-small (320px devices) -- */
+@media (max-width: 380px) {
+    .wrap {
+        padding: 0 12px;
+    }
+    .hero h1 {
+        font-size: clamp(32px, 10vw, 40px);
+    }
+    .hero-desc {
+        font-size: 13px;
+    }
+    .install-tab {
+        padding: 8px 10px;
+        font-size: 11px;
+    }
+    .install-body {
+        padding: 12px;
+    }
+    .install-panel code {
+        font-size: 12px;
+    }
+    .tool-row {
+        grid-template-columns: 64px 1fr;
+        font-size: 12px;
+        gap: 8px;
+    }
+    .how-cell {
+        padding: 16px;
+    }
+    .cta-section-cmd {
+        font-size: 10px;
+        padding: 8px 12px;
+    }
+    .bottom-beam-wrap section {
+        max-width: calc(100% - 24px);
+    }
+    .demo-label,
+    .how-label,
+    .tools-label,
+    .modes-label {
+        font-size: 10px;
+    }
+    .doc-page-wrap {
+        padding: 0 12px;
+        padding-top: 68px;
+    }
+    .vs-main {
+        padding: 0 12px;
+    }
+    .vs-nav {
+        padding: 16px 12px;
+    }
+    .vs-footer {
+        padding: 0 12px 48px;
+    }
+}
+
 /* -- /vs/ comparison pages -- */
 .vs-nav {
     display: flex;
@@ -1089,6 +1146,28 @@ footer {
     .vs-table th:first-child,
     .vs-table td:first-child {
         min-width: 70px;
+    }
+    .vs-table th,
+    .vs-table td {
+        padding: 8px 10px;
+    }
+}
+
+@media (max-width: 380px) {
+    .vs-table th:first-child,
+    .vs-table td:first-child {
+        min-width: 50px;
+    }
+    .vs-table th,
+    .vs-table td {
+        padding: 6px 8px;
+        font-size: 11px;
+    }
+    .vs-article h1 {
+        font-size: clamp(22px, 6vw, 28px);
+    }
+    .vs-cta h2 {
+        font-size: 22px;
     }
 }
 
