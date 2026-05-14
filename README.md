@@ -2,7 +2,7 @@
 
 Marketing site for [Lacy Shell](https://github.com/lacymorrow/lacy) — a ZSH/Bash plugin that detects natural language vs shell commands and routes input to your AI agent automatically.
 
-![Lacy Shell — Talk to your shell](public/images/hero.png)
+[![Lacy Shell — Talk to your shell](public/images/hero.png)](https://lacy.sh)
 
 ## What it does
 
@@ -14,9 +14,9 @@ Type `ls -la` and your shell runs it. Type `what files are here` and your AI ans
 
 ## How it works
 
-![How it works](public/images/how-it-works.png)
+![Diagram illustrating the Lacy Shell routing logic between shell commands and the AI agent](public/images/how-it-works.png)
 
-Lacy adds a tiny colored bar to your prompt. Green means shell. Magenta means agent. Toggle between auto, shell-only, and agent-only with Ctrl+Space.
+Lacy adds a tiny colored bar to your prompt. Green means shell. Magenta means agent. Toggle between auto, shell-only, and agent-only with `Ctrl+Space`.
 
 ## Mobile
 
