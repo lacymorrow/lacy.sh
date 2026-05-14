@@ -1,5 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://lacy.sh/sitemap.xml
-
-# See also: /llms.txt and /llms-full.txt for AI/LLM-readable documentation
