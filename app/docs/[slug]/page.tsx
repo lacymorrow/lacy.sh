@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: `${mod.meta.title} — Lacy Shell Docs`,
       description: mod.meta.description,
-      url: `https://lacy.sh/docs/${slug}`,
+      url: `/docs/${slug}`,
       images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "Lacy Shell — talk to your terminal with AI" }],
     },
     twitter: {

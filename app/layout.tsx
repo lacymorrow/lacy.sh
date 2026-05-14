@@ -84,7 +84,6 @@ const jsonLd = {
   applicationCategory: "DeveloperApplication",
   operatingSystem: "macOS, Linux, WSL",
   downloadUrl: "https://github.com/lacymorrow/lacy",
-  installUrl: "https://lacy.sh/install",
   softwareVersion: "1.0",
   offers: {
     "@type": "Offer",
