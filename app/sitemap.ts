@@ -24,6 +24,8 @@ const VS_LAST_MODIFIED: Record<string, string> = {
   cursor: "2026-05-11",
 };
 
+const newestBlogDate = Object.values(BLOG_PUBLISH_DATES).sort().at(-1) || DOCS_LAST_MODIFIED;
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const docPages: MetadataRoute.Sitemap = ALL_SLUGS.map((slug) => ({
     url: `${BASE}/docs/${slug}`,
@@ -50,12 +52,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  const newestBlogDate = Object.values(BLOG_PUBLISH_DATES).sort().at(-1)!;
-
   return [
     {
       url: BASE,
-      lastModified: "2026-05-12",
+      lastModified: newestBlogDate,
       changeFrequency: "weekly",
       priority: 1.0,
     },
