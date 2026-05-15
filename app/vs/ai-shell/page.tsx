@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { RelatedComparisons } from "../RelatedComparisons";
 
 export const metadata: Metadata = {
   title: "Lacy vs AI Shell — Auto-Route vs Command Generator",
@@ -151,6 +152,7 @@ export default function VsAiShell() {
           it run in the shell. They don&rsquo;t interfere with each other.
         </p>
       </section>
+      <RelatedComparisons current="ai-shell" />
     </article>
   );
 }

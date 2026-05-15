@@ -1089,6 +1089,21 @@ footer {
     color: var(--fg-4);
 }
 
+.vs-related {
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--line-dim);
+}
+.vs-related-subhead {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--fg-3);
+    margin: 24px 0 0;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
 .blog-nav-right {
     display: flex;
     align-items: center;

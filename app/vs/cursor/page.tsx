@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { RelatedComparisons } from "../RelatedComparisons";
 
 export const metadata: Metadata = {
   title: "Lacy Shell vs Cursor — Terminal Plugin vs AI Code Editor",
@@ -176,6 +177,7 @@ export default function VsCursor() {
           places.
         </p>
       </section>
+      <RelatedComparisons current="cursor" />
     </article>
   );
 }
