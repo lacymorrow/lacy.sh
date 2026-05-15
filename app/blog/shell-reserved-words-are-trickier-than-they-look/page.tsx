@@ -15,10 +15,10 @@ export const metadata: Metadata = {
     url: "https://lacy.sh/blog/shell-reserved-words-are-trickier-than-they-look",
     images: [
       {
-        url: "/og.jpg",
+        url: "/api/og?section=blog&title=Shell+reserved+words+are+trickier+than+they+look",
         width: 1200,
         height: 630,
-        alt: "Lacy Shell Blog",
+        alt: "Shell reserved words are trickier than they look — Lacy Shell Blog",
       },
     ],
   },
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
       "Shell reserved words are trickier than they look | Lacy Shell Blog",
     description:
       "do, then, and in pass command -v but aren't real commands. How Lacy handles this edge case.",
-    images: ["/og.jpg"],
+    images: ["/api/og?section=blog&title=Shell+reserved+words+are+trickier+than+they+look"],
   },
 };
 
