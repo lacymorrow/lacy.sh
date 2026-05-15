@@ -1,4 +1,34 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { FaqSchema } from "../faq-schema";
+
+const faqs = [
+  {
+    question: "What is the difference between Lacy Shell and Warp?",
+    answer:
+      "Lacy Shell is a ZSH/Bash plugin that adds AI routing to your existing terminal — it detects natural language and sends it to an AI agent automatically. Warp is a full terminal replacement app. You install Lacy into your current terminal; Warp requires switching to a new terminal emulator.",
+  },
+  {
+    question: "Can I use Lacy Shell and Warp together?",
+    answer:
+      "Yes. Lacy is a shell plugin that works inside any terminal, including Warp. If you use Warp but prefer automatic natural language detection over the # prefix, you can add Lacy to your ZSH config and get both.",
+  },
+  {
+    question: "Is Lacy Shell free?",
+    answer:
+      "Yes. Lacy Shell is free and MIT licensed. There is no subscription, no account required, and no paid tier.",
+  },
+  {
+    question: "Does Lacy Shell work on macOS and Linux?",
+    answer:
+      "Yes. Lacy Shell supports macOS, Linux, and WSL. It works with ZSH and Bash 4+.",
+  },
+  {
+    question: "Does Lacy Shell require an account?",
+    answer:
+      "No. Lacy Shell requires no account or login. Install it with a single command and it works immediately.",
+  },
+];
 
 export const metadata: Metadata = {
   title: "Lacy Shell vs Warp — Plugin vs Terminal Replacement",
@@ -23,6 +53,7 @@ export const metadata: Metadata = {
 
 export default function VsWarp() {
   return (
+    <>
     <article className="vs-article">
       <p className="vs-label">comparison</p>
       <h1>
@@ -135,6 +166,28 @@ export default function VsWarp() {
           prefix, add Lacy to your ZSH config and get the best of both.
         </p>
       </section>
+
+      <section>
+        <h2>Further reading</h2>
+        <ul>
+          <li>
+            <Link href="/blog/why-i-didnt-use-ai-to-classify-ai-input">
+              Why I didn&rsquo;t use AI to classify AI input
+            </Link>{" "}
+            — how Lacy decides whether your input is a shell command or natural
+            language, without ML.
+          </li>
+          <li>
+            <Link href="/blog/the-post-execution-reroute-pattern">
+              The post-execution reroute pattern
+            </Link>{" "}
+            — what happens when a natural-language query accidentally runs as a
+            shell command and fails.
+          </li>
+        </ul>
+      </section>
     </article>
+    <FaqSchema items={faqs} />
+    </>
   );
 }

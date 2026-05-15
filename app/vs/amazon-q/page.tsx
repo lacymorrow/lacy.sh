@@ -1,4 +1,34 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { FaqSchema } from "../faq-schema";
+
+const faqs = [
+  {
+    question: "What is the difference between Lacy Shell and Amazon Q Developer CLI?",
+    answer:
+      "Amazon Q Developer CLI is a full AWS-backed platform with autocomplete, chat, code transformation, and AWS service integration. Lacy Shell is a single-purpose ZSH/Bash plugin that detects natural language in your shell and routes it to an AI agent. Amazon Q requires an AWS account; Lacy requires nothing.",
+  },
+  {
+    question: "Can I use Lacy Shell and Amazon Q Developer CLI together?",
+    answer:
+      "Yes. Amazon Q's autocomplete works at the tab-completion level while Lacy handles enter-to-execute routing. Both can be active simultaneously — Q for tab suggestions, Lacy for natural language detection.",
+  },
+  {
+    question: "Is Lacy Shell free?",
+    answer:
+      "Yes. Lacy Shell is free and MIT licensed with no account required. Amazon Q has a free tier but requires an AWS Builder ID or IAM account.",
+  },
+  {
+    question: "Does Lacy Shell have AWS integration?",
+    answer:
+      "No. Lacy Shell is AWS-agnostic. It routes your shell input to whichever AI CLI agent you have installed. If your agent knows about AWS, it can answer AWS questions — but Lacy itself has no AWS dependency.",
+  },
+  {
+    question: "How large is Lacy Shell?",
+    answer:
+      "Lacy Shell is approximately 100KB of shell scripts with zero external dependencies. Amazon Q requires a desktop app and CLI binary.",
+  },
+];
 
 export const metadata: Metadata = {
   title: "Lacy vs Amazon Q CLI — Plugin vs Cloud Platform",
@@ -23,6 +53,7 @@ export const metadata: Metadata = {
 
 export default function VsAmazonQ() {
   return (
+    <>
     <article className="vs-article">
       <p className="vs-label">comparison</p>
       <h1>
@@ -151,6 +182,21 @@ export default function VsAmazonQ() {
           Q&rsquo;s autocomplete plus Lacy&rsquo;s NL routing, both can be active.
         </p>
       </section>
+
+      <section>
+        <h2>Further reading</h2>
+        <ul>
+          <li>
+            <Link href="/blog/why-i-didnt-use-ai-to-classify-ai-input">
+              Why I didn&rsquo;t use AI to classify AI input
+            </Link>{" "}
+            — how Lacy decides whether your input is a shell command or natural
+            language, without ML.
+          </li>
+        </ul>
+      </section>
     </article>
+    <FaqSchema items={faqs} />
+    </>
   );
 }

@@ -1,4 +1,34 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { FaqSchema } from "../faq-schema";
+
+const faqs = [
+  {
+    question: "What is the difference between Lacy Shell and AI Shell?",
+    answer:
+      "AI Shell (by Builder.io) generates shell commands from natural language — you run `ai \"query\"`, review the generated command, and confirm to execute it. Lacy Shell is a plugin that automatically detects whether your terminal input is a command or a question and routes it, without a separate invocation or confirmation step.",
+  },
+  {
+    question: "Can I use Lacy Shell and AI Shell together?",
+    answer:
+      "Yes. AI Shell installs as a standalone `ai` command. Lacy recognizes `ai \"...\"` as a valid shell command and lets it run normally. They do not interfere with each other.",
+  },
+  {
+    question: "Is Lacy Shell free?",
+    answer:
+      "Yes. Lacy Shell is free and MIT licensed. AI Shell requires an OpenAI API key or a local Ollama installation.",
+  },
+  {
+    question: "Does Lacy Shell generate shell commands?",
+    answer:
+      "No. Lacy Shell routes your input to an AI agent of your choice. The agent handles the response — which may include commands, explanations, or both. Lacy itself is a router, not a command generator.",
+  },
+  {
+    question: "Does Lacy Shell work with local AI models?",
+    answer:
+      "Lacy Shell routes input to whatever CLI agent you have installed. If your installed agent supports local models, Lacy will use that agent. Lacy itself has no model dependency.",
+  },
+];
 
 export const metadata: Metadata = {
   title: "Lacy vs AI Shell — Auto-Route vs Command Generator",
@@ -23,6 +53,7 @@ export const metadata: Metadata = {
 
 export default function VsAiShell() {
   return (
+    <>
     <article className="vs-article">
       <p className="vs-label">comparison</p>
       <h1>
@@ -151,6 +182,21 @@ export default function VsAiShell() {
           it run in the shell. They don&rsquo;t interfere with each other.
         </p>
       </section>
+
+      <section>
+        <h2>Further reading</h2>
+        <ul>
+          <li>
+            <Link href="/blog/why-i-didnt-use-ai-to-classify-ai-input">
+              Why I didn&rsquo;t use AI to classify AI input
+            </Link>{" "}
+            — how Lacy decides whether your input is a shell command or natural
+            language, without ML.
+          </li>
+        </ul>
+      </section>
     </article>
+    <FaqSchema items={faqs} />
+    </>
   );
 }

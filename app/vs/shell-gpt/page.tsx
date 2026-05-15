@@ -1,4 +1,34 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { FaqSchema } from "../faq-schema";
+
+const faqs = [
+  {
+    question: "What is the difference between Lacy Shell and ShellGPT?",
+    answer:
+      "ShellGPT (sgpt) requires you to type `sgpt` before every query — it is an explicit command you invoke. Lacy Shell is a ZSH/Bash plugin that automatically detects whether your input is a shell command or natural language and routes it accordingly. No prefix or invocation needed.",
+  },
+  {
+    question: "Can I use Lacy Shell and ShellGPT together?",
+    answer:
+      "Yes. ShellGPT installs as a standalone `sgpt` binary. Lacy will recognize it as a valid command and let it run in the shell. You can use Lacy for automatic routing and still call sgpt directly when you prefer explicit control.",
+  },
+  {
+    question: "Is Lacy Shell free?",
+    answer:
+      "Yes. Lacy Shell is free and MIT licensed with no account or API key required. ShellGPT requires an OpenAI API key.",
+  },
+  {
+    question: "Does Lacy Shell require an API key?",
+    answer:
+      "No. Lacy Shell works by routing your input to whatever AI CLI tool you already have installed (Claude Code, Gemini CLI, OpenCode, etc.). You do not need a separate API key for Lacy itself.",
+  },
+  {
+    question: "Does Lacy Shell have dependencies?",
+    answer:
+      "No. Lacy Shell is written in pure shell (ZSH/Bash) with no external dependencies — no Python, no npm, nothing to install beyond the shell script itself.",
+  },
+];
 
 export const metadata: Metadata = {
   title: "Lacy Shell vs ShellGPT — Transparent Routing vs Explicit Commands",
@@ -23,6 +53,7 @@ export const metadata: Metadata = {
 
 export default function VsShellGpt() {
   return (
+    <>
     <article className="vs-article">
       <p className="vs-label">comparison</p>
       <h1>
@@ -134,6 +165,28 @@ export default function VsShellGpt() {
           <li>You don&rsquo;t want any shell-level hooks or modifications</li>
         </ul>
       </section>
+
+      <section>
+        <h2>Further reading</h2>
+        <ul>
+          <li>
+            <Link href="/blog/why-i-didnt-use-ai-to-classify-ai-input">
+              Why I didn&rsquo;t use AI to classify AI input
+            </Link>{" "}
+            — how Lacy decides whether your input is a shell command or natural
+            language, without ML.
+          </li>
+          <li>
+            <Link href="/blog/the-post-execution-reroute-pattern">
+              The post-execution reroute pattern
+            </Link>{" "}
+            — what happens when a natural-language query accidentally runs as a
+            shell command and fails.
+          </li>
+        </ul>
+      </section>
     </article>
+    <FaqSchema items={faqs} />
+    </>
   );
 }
