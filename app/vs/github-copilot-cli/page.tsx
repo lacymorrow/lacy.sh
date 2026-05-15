@@ -1,5 +1,35 @@
 import type { Metadata } from "next";
 import { RelatedComparisons } from "../RelatedComparisons";
+import Link from "next/link";
+import { FaqSchema } from "../faq-schema";
+
+const faqs = [
+  {
+    question: "What is the difference between Lacy Shell and GitHub Copilot CLI?",
+    answer:
+      "GitHub Copilot CLI adds explicit commands (`gh copilot suggest`, `gh copilot explain`) that you invoke when you want AI help. Lacy Shell is a plugin that passively watches what you type and automatically routes natural language to an AI agent — no invocation needed.",
+  },
+  {
+    question: "Can I use Lacy Shell and GitHub Copilot CLI together?",
+    answer:
+      "Yes. Copilot CLI is a standalone command and does not conflict with Lacy. You can use Lacy for automatic routing and still call `gh copilot suggest` when you want explicit command suggestions with a confirmation step.",
+  },
+  {
+    question: "Is Lacy Shell free?",
+    answer:
+      "Yes. Lacy Shell is free, open source, and MIT licensed — no subscription required. GitHub Copilot CLI requires a paid Copilot subscription.",
+  },
+  {
+    question: "Does Lacy Shell require a GitHub account?",
+    answer:
+      "No. Lacy Shell requires no account. GitHub Copilot CLI requires a GitHub account and a Copilot subscription.",
+  },
+  {
+    question: "Which AI models does Lacy Shell support?",
+    answer:
+      "Lacy Shell routes your input to whatever AI CLI tool you have installed — Claude Code, Gemini CLI, OpenCode, and others. You choose the backend; Lacy handles the routing.",
+  },
+];
 
 export const metadata: Metadata = {
   title: "Lacy Shell vs GitHub Copilot CLI — Always-On vs On-Demand AI",
@@ -11,19 +41,20 @@ export const metadata: Metadata = {
     description:
       "Compare Lacy Shell and GitHub Copilot CLI. Automatic routing vs explicit invocation.",
     url: "https://lacy.sh/vs/github-copilot-cli",
-    images: [{ url: "/api/og?section=vs&title=GitHub+Copilot+CLI&subtitle=Always-on+vs+on-demand+AI", width: 1200, height: 630, alt: "Lacy Shell vs GitHub Copilot CLI" }],
+    images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "Lacy Shell — talk to your terminal with AI" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Lacy Shell vs GitHub Copilot CLI — Always-On vs On-Demand",
     description:
       "Compare Lacy Shell and GitHub Copilot CLI. Automatic routing vs explicit invocation.",
-    images: ["/api/og?section=vs&title=GitHub+Copilot+CLI&subtitle=Always-on+vs+on-demand+AI"],
+    images: ["/og.jpg"],
   },
 };
 
 export default function VsGitHubCopilotCli() {
   return (
+    <>
     <article className="vs-article">
       <p className="vs-label">comparison</p>
       <h1>
@@ -158,7 +189,22 @@ export default function VsGitHubCopilotCli() {
           suggestion with a confirmation step.
         </p>
       </section>
+
+      <section>
+        <h2>Further reading</h2>
+        <ul>
+          <li>
+            <Link href="/blog/why-i-didnt-use-ai-to-classify-ai-input">
+              Why I didn&rsquo;t use AI to classify AI input
+            </Link>{" "}
+            — how Lacy decides whether your input is a shell command or natural
+            language, without ML.
+          </li>
+        </ul>
+      </section>
       <RelatedComparisons current="github-copilot-cli" />
     </article>
+    <FaqSchema items={faqs} />
+    </>
   );
 }

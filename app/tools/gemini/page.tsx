@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Using Gemini CLI with Lacy Shell",
@@ -130,6 +131,26 @@ export default function ToolsGemini() {
           </li>
         </ul>
         <p>No surprises. You always know what will happen before you hit enter.</p>
+      </section>
+
+      <section>
+        <h2>Further reading</h2>
+        <ul>
+          <li>
+            <Link href="/blog/why-i-didnt-use-ai-to-classify-ai-input">
+              Why I didn&rsquo;t use AI to classify AI input
+            </Link>{" "}
+            — how Lacy decides whether your input is a shell command or natural
+            language, without ML.
+          </li>
+          <li>
+            <Link href="/blog/the-post-execution-reroute-pattern">
+              The post-execution reroute pattern
+            </Link>{" "}
+            — what happens when a natural-language query accidentally runs as a
+            shell command and fails.
+          </li>
+        </ul>
       </section>
     </article>
   );

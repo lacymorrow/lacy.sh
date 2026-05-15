@@ -1,5 +1,35 @@
 import type { Metadata } from "next";
 import { RelatedComparisons } from "../RelatedComparisons";
+import Link from "next/link";
+import { FaqSchema } from "../faq-schema";
+
+const faqs = [
+  {
+    question: "What is the difference between Lacy Shell and Aider?",
+    answer:
+      "Aider is an AI pair programming tool — you run it in a repo, have a conversation, and it edits your files directly with git commits. Lacy Shell is a ZSH/Bash plugin that routes shell input to either a command or an AI agent. Aider edits code; Lacy routes input.",
+  },
+  {
+    question: "Can I use Lacy Shell and Aider together?",
+    answer:
+      "Absolutely. Lacy recognizes `aider` as a valid shell command and lets it run normally. Use Lacy for day-to-day terminal work and quick questions, and open Aider when you need a focused coding session. They complement each other well.",
+  },
+  {
+    question: "Is Lacy Shell free?",
+    answer:
+      "Yes. Lacy Shell is free and MIT licensed. Aider is also open source (Apache 2.0) but requires an API key for the AI provider you choose.",
+  },
+  {
+    question: "Does Lacy Shell edit my files?",
+    answer:
+      "No. Lacy Shell routes your shell input to an AI agent but does not edit files itself. The AI agent you connect to (such as Claude Code) may edit files depending on how you use it.",
+  },
+  {
+    question: "Does Lacy Shell require an API key?",
+    answer:
+      "No. Lacy Shell routes input to whichever AI CLI tool you already have installed. It does not make API calls directly and does not need its own API key.",
+  },
+];
 
 export const metadata: Metadata = {
   title: "Lacy Shell vs Aider — Shell Plugin vs AI Coding Assistant",
@@ -11,19 +41,20 @@ export const metadata: Metadata = {
     description:
       "Compare Lacy Shell and Aider. Shell-level AI routing vs conversational code editing.",
     url: "https://lacy.sh/vs/aider",
-    images: [{ url: "/api/og?section=vs&title=Aider&subtitle=Shell+plugin+vs+AI+coding+assistant", width: 1200, height: 630, alt: "Lacy Shell vs Aider" }],
+    images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "Lacy Shell — talk to your terminal with AI" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Lacy Shell vs Aider — Shell Plugin vs AI Coding Assistant",
     description:
       "Compare Lacy Shell and Aider. Shell-level AI routing vs conversational code editing.",
-    images: ["/api/og?section=vs&title=Aider&subtitle=Shell+plugin+vs+AI+coding+assistant"],
+    images: ["/og.jpg"],
   },
 };
 
 export default function VsAider() {
   return (
+    <>
     <article className="vs-article">
       <p className="vs-label">comparison</p>
       <h1>
@@ -179,7 +210,22 @@ export default function VsAider() {
           fluency everywhere else.
         </p>
       </section>
+
+      <section>
+        <h2>Further reading</h2>
+        <ul>
+          <li>
+            <Link href="/blog/why-i-didnt-use-ai-to-classify-ai-input">
+              Why I didn&rsquo;t use AI to classify AI input
+            </Link>{" "}
+            — how Lacy decides whether your input is a shell command or natural
+            language, without ML.
+          </li>
+        </ul>
+      </section>
       <RelatedComparisons current="aider" />
     </article>
+    <FaqSchema items={faqs} />
+    </>
   );
 }

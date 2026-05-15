@@ -1,5 +1,35 @@
 import type { Metadata } from "next";
 import { RelatedComparisons } from "../RelatedComparisons";
+import Link from "next/link";
+import { FaqSchema } from "../faq-schema";
+
+const faqs = [
+  {
+    question: "What is the difference between Lacy Shell and Cursor?",
+    answer:
+      "Cursor is a full AI-native code editor (VS Code fork) with autocomplete, inline edits, and multi-file AI changes. Lacy Shell is a ZSH/Bash plugin that adds natural language routing to your terminal. Cursor lives in your editor; Lacy lives in your shell.",
+  },
+  {
+    question: "Can I use Lacy Shell and Cursor together?",
+    answer:
+      "Yes, and many developers do. Use Cursor for code editing with its powerful AI features, and use Lacy in your terminal (or even inside Cursor's built-in terminal) for shell workflows, DevOps tasks, and quick questions. They cover different surfaces with no overlap.",
+  },
+  {
+    question: "Is Lacy Shell free?",
+    answer:
+      "Yes. Lacy Shell is free and MIT licensed. Cursor has a free tier but requires a paid subscription ($20/mo Pro) for full AI usage.",
+  },
+  {
+    question: "Does Lacy Shell work inside Cursor's terminal?",
+    answer:
+      "Yes. Lacy is a shell plugin that works inside any terminal, including Cursor's built-in terminal panel. If you type natural language in Cursor's terminal without Lacy, it tries to execute it as a command. With Lacy, it routes to your AI agent.",
+  },
+  {
+    question: "Is Lacy Shell open source?",
+    answer:
+      "Yes. Lacy Shell is open source under the MIT license. Cursor is proprietary.",
+  },
+];
 
 export const metadata: Metadata = {
   title: "Lacy Shell vs Cursor — Terminal Plugin vs AI Code Editor",
@@ -11,19 +41,20 @@ export const metadata: Metadata = {
     description:
       "Compare Lacy Shell and Cursor. Terminal-native AI routing vs IDE-integrated AI coding.",
     url: "https://lacy.sh/vs/cursor",
-    images: [{ url: "/api/og?section=vs&title=Cursor&subtitle=Terminal+plugin+vs+AI+code+editor", width: 1200, height: 630, alt: "Lacy Shell vs Cursor" }],
+    images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "Lacy Shell — talk to your terminal with AI" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Lacy Shell vs Cursor — Terminal Plugin vs AI Code Editor",
     description:
       "Compare Lacy Shell and Cursor. Terminal-native AI routing vs IDE-integrated AI coding.",
-    images: ["/api/og?section=vs&title=Cursor&subtitle=Terminal+plugin+vs+AI+code+editor"],
+    images: ["/og.jpg"],
   },
 };
 
 export default function VsCursor() {
   return (
+    <>
     <article className="vs-article">
       <p className="vs-label">comparison</p>
       <h1>
@@ -177,7 +208,22 @@ export default function VsCursor() {
           places.
         </p>
       </section>
+
+      <section>
+        <h2>Further reading</h2>
+        <ul>
+          <li>
+            <Link href="/blog/why-i-didnt-use-ai-to-classify-ai-input">
+              Why I didn&rsquo;t use AI to classify AI input
+            </Link>{" "}
+            — how Lacy decides whether your input is a shell command or natural
+            language, without ML.
+          </li>
+        </ul>
+      </section>
       <RelatedComparisons current="cursor" />
     </article>
+    <FaqSchema items={faqs} />
+    </>
   );
 }
