@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { RelatedComparisons } from "../RelatedComparisons";
 import Link from "next/link";
 import { FaqSchema } from "../faq-schema";
 
@@ -195,6 +196,7 @@ export default function VsAmazonQ() {
           </li>
         </ul>
       </section>
+      <RelatedComparisons current="amazon-q" />
     </article>
     <FaqSchema items={faqs} />
     </>

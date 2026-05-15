@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { RelatedComparisons } from "../RelatedComparisons";
 import Link from "next/link";
 import { FaqSchema } from "../faq-schema";
 
@@ -222,6 +223,7 @@ export default function VsAider() {
           </li>
         </ul>
       </section>
+      <RelatedComparisons current="aider" />
     </article>
     <FaqSchema items={faqs} />
     </>

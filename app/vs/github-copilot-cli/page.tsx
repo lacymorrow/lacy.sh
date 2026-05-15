@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { RelatedComparisons } from "../RelatedComparisons";
 import Link from "next/link";
 import { FaqSchema } from "../faq-schema";
 
@@ -201,6 +202,7 @@ export default function VsGitHubCopilotCli() {
           </li>
         </ul>
       </section>
+      <RelatedComparisons current="github-copilot-cli" />
     </article>
     <FaqSchema items={faqs} />
     </>

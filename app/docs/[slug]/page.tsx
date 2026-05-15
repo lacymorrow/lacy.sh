@@ -26,13 +26,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: `${mod.meta.title} — Lacy Shell Docs`,
       description: mod.meta.description,
       url: `/docs/${slug}`,
-      images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "Lacy Shell — talk to your terminal with AI" }],
+      images: [{ url: `/api/og?section=docs&title=${encodeURIComponent(mod.meta.title)}`, width: 1200, height: 630, alt: `${mod.meta.title} — Lacy Shell Docs` }],
     },
     twitter: {
       card: "summary_large_image",
       title: `${mod.meta.title} — Lacy Shell Docs`,
       description: mod.meta.description,
-      images: ["/og.jpg"],
+      images: [`/api/og?section=docs&title=${encodeURIComponent(mod.meta.title)}`],
     },
   };
 }
