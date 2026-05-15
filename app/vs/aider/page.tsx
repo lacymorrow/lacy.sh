@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { RelatedComparisons } from "../RelatedComparisons";
 
 export const metadata: Metadata = {
   title: "Lacy Shell vs Aider — Shell Plugin vs AI Coding Assistant",
@@ -178,6 +179,7 @@ export default function VsAider() {
           fluency everywhere else.
         </p>
       </section>
+      <RelatedComparisons current="aider" />
     </article>
   );
 }

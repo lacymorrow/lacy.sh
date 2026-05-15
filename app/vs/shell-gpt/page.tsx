@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { RelatedComparisons } from "../RelatedComparisons";
 
 export const metadata: Metadata = {
   title: "Lacy Shell vs ShellGPT — Transparent Routing vs Explicit Commands",
@@ -134,6 +135,8 @@ export default function VsShellGpt() {
           <li>You don&rsquo;t want any shell-level hooks or modifications</li>
         </ul>
       </section>
+
+      <RelatedComparisons current="shell-gpt" />
     </article>
   );
 }

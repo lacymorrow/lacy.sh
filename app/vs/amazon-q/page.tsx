@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { RelatedComparisons } from "../RelatedComparisons";
 
 export const metadata: Metadata = {
   title: "Lacy vs Amazon Q CLI — Plugin vs Cloud Platform",
@@ -151,6 +152,7 @@ export default function VsAmazonQ() {
           Q&rsquo;s autocomplete plus Lacy&rsquo;s NL routing, both can be active.
         </p>
       </section>
+      <RelatedComparisons current="amazon-q" />
     </article>
   );
 }

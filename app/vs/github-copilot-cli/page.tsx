@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { RelatedComparisons } from "../RelatedComparisons";
 
 export const metadata: Metadata = {
   title: "Lacy Shell vs GitHub Copilot CLI — Always-On vs On-Demand AI",
@@ -157,6 +158,7 @@ export default function VsGitHubCopilotCli() {
           suggestion with a confirmation step.
         </p>
       </section>
+      <RelatedComparisons current="github-copilot-cli" />
     </article>
   );
 }

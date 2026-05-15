@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { RelatedComparisons } from "../RelatedComparisons";
 
 export const metadata: Metadata = {
   title: "Lacy Shell vs Warp — Plugin vs Terminal Replacement",
@@ -135,6 +136,7 @@ export default function VsWarp() {
           prefix, add Lacy to your ZSH config and get the best of both.
         </p>
       </section>
+      <RelatedComparisons current="warp" />
     </article>
   );
 }
