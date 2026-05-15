@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title: "Lacy Shell vs ShellGPT — Transparent Routing vs Explicit Commands",
     description:
       "Compare Lacy Shell and ShellGPT. Automatic NL detection vs explicit command prefix.",
-    url: "/vs/shell-gpt",
+    url: "https://lacy.sh/vs/shell-gpt",
     images: [{ url: "/api/og?section=vs&title=ShellGPT&subtitle=Transparent+routing+vs+explicit+commands", width: 1200, height: 630, alt: "Lacy Shell vs ShellGPT" }],
   },
   twitter: {

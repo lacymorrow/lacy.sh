@@ -16,6 +16,24 @@ function isSection(s: string): s is Section {
   return s in SECTIONS;
 }
 
+const FONT_URLS = [
+  "https://fonts.gstatic.com/s/instrumentserif/v5/jizHRFtNs2ka5fXjeivQ4LroWlx-6zATiw.ttf",
+  "https://fonts.gstatic.com/s/instrumentserif/v5/jizBRFtNs2ka5fXjeivQ4LroWlx-2zI.ttf",
+  "https://fonts.gstatic.com/s/dmmono/v16/aFTU7PB1QTsUX8KYhh0.ttf",
+] as const;
+
+let fontCache: [ArrayBuffer, ArrayBuffer, ArrayBuffer] | null = null;
+
+async function loadFonts() {
+  if (fontCache) return fontCache;
+  const fetchFont = (url: string) =>
+    fetch(url).then((r) =>
+      r.ok ? r.arrayBuffer() : Promise.reject(new Error("Failed to fetch font: " + url))
+    );
+  fontCache = (await Promise.all(FONT_URLS.map(fetchFont))) as [ArrayBuffer, ArrayBuffer, ArrayBuffer];
+  return fontCache;
+}
+
 export async function GET(req: NextRequest) {
   const { searchParams } = req.nextUrl;
   const section = searchParams.get("section") ?? "vs";
@@ -28,22 +46,7 @@ export async function GET(req: NextRequest) {
 
   const { label, accent } = SECTIONS[section];
 
-  const fetchFont = (url: string) =>
-    fetch(url).then((r) =>
-      r.ok ? r.arrayBuffer() : Promise.reject("Failed to fetch font: " + url)
-    );
-
-  const [instrumentSerifItalic, instrumentSerif, dmMono] = await Promise.all([
-    fetchFont(
-      "https://fonts.gstatic.com/s/instrumentserif/v5/jizHRFtNs2ka5fXjeivQ4LroWlx-6zATiw.ttf"
-    ),
-    fetchFont(
-      "https://fonts.gstatic.com/s/instrumentserif/v5/jizBRFtNs2ka5fXjeivQ4LroWlx-2zI.ttf"
-    ),
-    fetchFont(
-      "https://fonts.gstatic.com/s/dmmono/v16/aFTU7PB1QTsUX8KYhh0.ttf"
-    ),
-  ]);
+  const [instrumentSerifItalic, instrumentSerif, dmMono] = await loadFonts();
 
   const isBlogOrDocs = section === "blog" || section === "docs";
 
@@ -234,6 +237,9 @@ export async function GET(req: NextRequest) {
     {
       width: 1200,
       height: 630,
+      headers: {
+        "Cache-Control": "public, immutable, no-transform, s-maxage=31536000, max-age=31536000",
+      },
       fonts: [
         {
           name: "Instrument Serif",
