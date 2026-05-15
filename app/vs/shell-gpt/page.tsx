@@ -135,7 +135,6 @@ export default function VsShellGpt() {
           <li>You don&rsquo;t want any shell-level hooks or modifications</li>
         </ul>
       </section>
-
       <RelatedComparisons current="shell-gpt" />
     </article>
   );

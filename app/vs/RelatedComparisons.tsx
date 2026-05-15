@@ -8,7 +8,9 @@ const ALL_COMPARISONS = [
   { slug: "cursor", name: "Cursor", tagline: "Terminal-native vs IDE-based" },
   { slug: "ai-shell", name: "AI Shell", tagline: "Real-time routing vs on-demand generation" },
   { slug: "amazon-q", name: "Amazon Q", tagline: "Open source vs AWS ecosystem" },
-];
+] as const;
+
+type ComparisonSlug = (typeof ALL_COMPARISONS)[number]["slug"];
 
 const TOOLS = [
   { slug: "claude", name: "Claude Code", tagline: "Using Lacy with Claude Code" },
@@ -16,7 +18,7 @@ const TOOLS = [
   { slug: "opencode", name: "OpenCode", tagline: "Using Lacy with OpenCode" },
 ];
 
-export function RelatedComparisons({ current }: { current: string }) {
+export function RelatedComparisons({ current }: { current: ComparisonSlug }) {
   const others = ALL_COMPARISONS.filter((c) => c.slug !== current);
 
   return (
@@ -44,7 +46,7 @@ export function RelatedComparisons({ current }: { current: string }) {
         ))}
         <li>
           <Link href="/docs/supported-ai-tools">
-            <strong>Supported AI Tools</strong>
+            <strong>Supported AI tools</strong>
             <span>Full list of AI CLI tools that work with Lacy</span>
           </Link>
         </li>
