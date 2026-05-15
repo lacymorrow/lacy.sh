@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getContentLoader, ALL_SLUGS } from "../content/index";
 import DocsBreadcrumb from "../DocsBreadcrumb";
+import DocsBreadcrumbSchema from "../DocsBreadcrumbSchema";
 import DocsPrevNext from "../DocsPrevNext";
 
 interface Props {
@@ -46,6 +47,7 @@ export default async function DocPage({ params }: Props) {
 
   return (
     <>
+      <DocsBreadcrumbSchema slug={slug} title={mod.meta.title} />
       <DocsBreadcrumb slug={slug} title={mod.meta.title} />
       <Content />
       <DocsPrevNext slug={slug} />
