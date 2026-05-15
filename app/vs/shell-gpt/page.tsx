@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { RelatedComparisons } from "../RelatedComparisons";
 
 export const metadata: Metadata = {
   title: "Lacy Shell vs ShellGPT — Transparent Routing vs Explicit Commands",
@@ -9,15 +10,15 @@ export const metadata: Metadata = {
     title: "Lacy Shell vs ShellGPT — Transparent Routing vs Explicit Commands",
     description:
       "Compare Lacy Shell and ShellGPT. Automatic NL detection vs explicit command prefix.",
-    url: "/vs/shell-gpt",
-    images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "Lacy Shell — talk to your terminal with AI" }],
+    url: "https://lacy.sh/vs/shell-gpt",
+    images: [{ url: "/api/og?section=vs&title=ShellGPT&subtitle=Transparent+routing+vs+explicit+commands", width: 1200, height: 630, alt: "Lacy Shell vs ShellGPT" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Lacy Shell vs ShellGPT — Transparent Routing vs Explicit Commands",
     description:
       "Compare Lacy Shell and ShellGPT. Automatic NL detection vs explicit command prefix.",
-    images: ["/og.jpg"],
+    images: ["/api/og?section=vs&title=ShellGPT&subtitle=Transparent+routing+vs+explicit+commands"],
   },
 };
 
@@ -211,6 +212,7 @@ $ archive all .log files older than 7 days`}</pre>
           <li>You don&rsquo;t want any shell-level hooks or modifications to your prompt</li>
         </ul>
       </section>
+<<<<<<< HEAD
 
       <section>
         <h2>Frequently asked questions</h2>
@@ -278,6 +280,7 @@ $ archive all .log files older than 7 days`}</pre>
         </p>
       </section>
 
+      <RelatedComparisons current="shell-gpt" />
     </article>
   );
 }

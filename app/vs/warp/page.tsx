@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { RelatedComparisons } from "../RelatedComparisons";
 
 export const metadata: Metadata = {
   title: "Lacy Shell vs Warp — Plugin vs Terminal Replacement",
@@ -9,15 +10,15 @@ export const metadata: Metadata = {
     title: "Lacy Shell vs Warp — Plugin vs Terminal Replacement",
     description:
       "Compare Lacy Shell and Warp Terminal. Plugin approach vs full terminal replacement.",
-    url: "/vs/warp",
-    images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "Lacy Shell — talk to your terminal with AI" }],
+    url: "https://lacy.sh/vs/warp",
+    images: [{ url: "/api/og?section=vs&title=Warp&subtitle=Plugin+vs+terminal+replacement", width: 1200, height: 630, alt: "Lacy Shell vs Warp" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Lacy Shell vs Warp — Plugin vs Terminal Replacement",
     description:
       "Compare Lacy Shell and Warp Terminal. Plugin approach vs full terminal replacement.",
-    images: ["/og.jpg"],
+    images: ["/api/og?section=vs&title=Warp&subtitle=Plugin+vs+terminal+replacement"],
   },
 };
 
@@ -233,6 +234,7 @@ $ why is my container exiting immediately      ← auto-routed`}</pre>
           interface and Lacy&rsquo;s transparent routing.
         </p>
       </section>
+<<<<<<< HEAD
 
       <section>
         <h2>Frequently asked questions</h2>
@@ -298,6 +300,7 @@ $ why is my container exiting immediately      ← auto-routed`}</pre>
         </p>
       </section>
 
+      <RelatedComparisons current="warp" />
     </article>
   );
 }

@@ -10,14 +10,14 @@ export const metadata: Metadata = {
     description:
       "Type questions in your terminal and they route to OpenCode automatically.",
     url: "https://lacy.sh/tools/opencode",
-    images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "Lacy Shell — talk to your terminal with AI" }],
+    images: [{ url: "/api/og?section=tools&title=OpenCode&subtitle=Type+questions+and+they+route+to+OpenCode+automatically", width: 1200, height: 630, alt: "Lacy Shell + OpenCode" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Using OpenCode with Lacy Shell",
     description:
       "Type questions in your terminal and they route to OpenCode automatically.",
-    images: ["/og.jpg"],
+    images: ["/api/og?section=tools&title=OpenCode&subtitle=Type+questions+and+they+route+to+OpenCode+automatically"],
   },
 };
 

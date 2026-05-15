@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { RelatedComparisons } from "../RelatedComparisons";
 
 export const metadata: Metadata = {
   title: "Lacy vs Amazon Q CLI — Plugin vs Cloud Platform",
@@ -10,14 +11,14 @@ export const metadata: Metadata = {
     description:
       "Compare Lacy Shell and Amazon Q Developer. Lightweight plugin vs AWS-integrated assistant.",
     url: "https://lacy.sh/vs/amazon-q",
-    images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "Lacy Shell — talk to your terminal with AI" }],
+    images: [{ url: "/api/og?section=vs&title=Amazon+Q&subtitle=Plugin+vs+cloud+platform", width: 1200, height: 630, alt: "Lacy Shell vs Amazon Q" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Lacy Shell vs Amazon Q Developer CLI",
     description:
       "Compare Lacy Shell and Amazon Q Developer. Lightweight plugin vs AWS-integrated assistant.",
-    images: ["/og.jpg"],
+    images: ["/api/og?section=vs&title=Amazon+Q&subtitle=Plugin+vs+cloud+platform"],
   },
 };
 
@@ -151,6 +152,7 @@ export default function VsAmazonQ() {
           Q&rsquo;s autocomplete plus Lacy&rsquo;s NL routing, both can be active.
         </p>
       </section>
+      <RelatedComparisons current="amazon-q" />
     </article>
   );
 }

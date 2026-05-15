@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { RelatedComparisons } from "../RelatedComparisons";
 
 export const metadata: Metadata = {
   title: "Lacy Shell vs GitHub Copilot CLI — Always-On vs On-Demand AI",
@@ -10,14 +11,14 @@ export const metadata: Metadata = {
     description:
       "Compare Lacy Shell and GitHub Copilot CLI. Automatic routing vs explicit invocation.",
     url: "https://lacy.sh/vs/github-copilot-cli",
-    images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "Lacy Shell — talk to your terminal with AI" }],
+    images: [{ url: "/api/og?section=vs&title=GitHub+Copilot+CLI&subtitle=Always-on+vs+on-demand+AI", width: 1200, height: 630, alt: "Lacy Shell vs GitHub Copilot CLI" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Lacy Shell vs GitHub Copilot CLI — Always-On vs On-Demand",
     description:
       "Compare Lacy Shell and GitHub Copilot CLI. Automatic routing vs explicit invocation.",
-    images: ["/og.jpg"],
+    images: ["/api/og?section=vs&title=GitHub+Copilot+CLI&subtitle=Always-on+vs+on-demand+AI"],
   },
 };
 
@@ -157,6 +158,7 @@ export default function VsGitHubCopilotCli() {
           suggestion with a confirmation step.
         </p>
       </section>
+      <RelatedComparisons current="github-copilot-cli" />
     </article>
   );
 }
