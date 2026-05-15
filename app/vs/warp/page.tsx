@@ -181,8 +181,8 @@ $ why is my container exiting immediately      ← auto-routed`}</pre>
         </p>
         <p>
           <strong>Choosing your AI.</strong> Warp uses its own proprietary AI model.
-          Lacy routes to whatever CLI agent you configure &mdash; Claude Code, Gemini
-          CLI, OpenCode, or anything else. If you already have a preferred AI and
+          Lacy routes to whatever CLI agent you configure &mdash; Claude Code (<code>claude</code>), Gemini
+          CLI (<code>gemini</code>), OpenCode (<code>opencode</code>), or anything else. If you already have a preferred AI and
           don&rsquo;t want to switch, Lacy lets you keep using it.
         </p>
       </section>
@@ -275,8 +275,8 @@ $ why is my container exiting immediately      ← auto-routed`}</pre>
         </p>
         <p>
           It depends on your preference. Warp uses its own model. Lacy routes to
-          whichever CLI agent you configure. If you already have Claude Code or
-          Gemini CLI installed and use them regularly, Lacy routes to them at full
+          whichever CLI agent you configure. If you already have <code>claude</code> or
+          <code>gemini</code> installed and use them regularly, Lacy routes to them at full
           quality &mdash; no additional subscription or account needed.
         </p>
       </section>
