@@ -1,4 +1,4 @@
-const BASE_URL = "https://lacy.sh";
+const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || "https://lacy.sh";
 
 interface DocsBreadcrumbSchemaProps {
   slug: string;
@@ -34,7 +34,7 @@ export default function DocsBreadcrumbSchema({ slug, title }: DocsBreadcrumbSche
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }}
     />
   );
 }

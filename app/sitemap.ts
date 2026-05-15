@@ -50,12 +50,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  const newestBlogDate = Object.values(BLOG_PUBLISH_DATES).sort().at(-1)!;
+  const newestBlogDate = Object.values(BLOG_PUBLISH_DATES).sort().at(-1) || DOCS_LAST_MODIFIED;
 
   return [
     {
       url: BASE,
-      lastModified: "2026-05-12",
+      lastModified: newestBlogDate,
       changeFrequency: "weekly",
       priority: 1.0,
     },
