@@ -20,10 +20,10 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://lacy.sh"),
   title: {
     default: "Lacy Shell — AI Shell & Natural Language Terminal for ZSH/Bash",
-    template: "%s | Lacy Shell",
+    template: "%s — Lacy Shell",
   },
   description:
-    "AI shell plugin for ZSH and Bash. Type commands or natural language — commands run in your shell, questions route to Claude, Gemini, or any AI automatically.",
+    "AI plugin for ZSH and Bash. Type commands or natural language — your terminal runs commands directly and routes questions to Claude, Gemini, or any AI automatically.",
   keywords: [
     "ai shell",
     "ai terminal",
