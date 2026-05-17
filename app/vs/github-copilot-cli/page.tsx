@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     title: "Lacy Shell vs GitHub Copilot CLI",
     description:
       "Compare Lacy Shell and GitHub Copilot CLI. Automatic routing vs explicit invocation.",
-    url: "https://lacy.sh/vs/github-copilot-cli",
+    url: "/vs/github-copilot-cli",
     images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "Lacy Shell — talk to your terminal with AI" }],
   },
   twitter: {

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
       "Shell reserved words are trickier than they look | Lacy Shell Blog",
     description:
       "do, then, in: they pass command -v but aren't real commands. How Lacy Shell handles the trickiest edge case in shell input classification.",
-    url: "https://lacy.sh/blog/shell-reserved-words-are-trickier-than-they-look",
+    url: "/blog/shell-reserved-words-are-trickier-than-they-look",
     images: [
       {
         url: "/api/og?section=blog&title=Shell+reserved+words+are+trickier+than+they+look",

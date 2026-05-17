@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     title: "Using Claude Code with Lacy Shell",
     description:
       "Type questions in your terminal and they route to Claude Code automatically.",
-    url: "https://lacy.sh/tools/claude",
+    url: "/tools/claude",
     images: [{ url: "/api/og?section=tools&title=Claude+Code&subtitle=Type+questions+and+they+route+to+Claude+automatically", width: 1200, height: 630, alt: "Lacy Shell + Claude Code" }],
   },
   twitter: {

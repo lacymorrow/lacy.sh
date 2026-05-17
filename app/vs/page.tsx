@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     title: "Lacy Shell vs Alternatives",
     description:
       "How Lacy Shell compares to Warp, ShellGPT, GitHub Copilot CLI, Aider, Cursor, AI Shell, and Amazon Q.",
-    url: "https://lacy.sh/vs",
+    url: "/vs",
   },
 };
 

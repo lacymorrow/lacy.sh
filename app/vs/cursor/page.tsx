@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     title: "Lacy Shell vs Cursor — Terminal Plugin vs AI Code Editor",
     description:
       "Compare Lacy Shell and Cursor. Terminal-native AI routing vs IDE-integrated AI coding.",
-    url: "https://lacy.sh/vs/cursor",
+    url: "/vs/cursor",
     images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "Lacy Shell — talk to your terminal with AI" }],
   },
   twitter: {

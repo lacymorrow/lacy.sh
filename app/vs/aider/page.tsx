@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     title: "Lacy Shell vs Aider — Shell Plugin vs AI Coding Assistant",
     description:
       "Compare Lacy Shell and Aider. Shell-level AI routing vs conversational code editing.",
-    url: "https://lacy.sh/vs/aider",
+    url: "/vs/aider",
     images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "Lacy Shell — talk to your terminal with AI" }],
   },
   twitter: {

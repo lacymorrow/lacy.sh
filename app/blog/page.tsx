@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     title: "Blog | Lacy Shell",
     description:
       "Technical posts about building Lacy Shell: natural language detection, shell plugin development, and AI terminal integration.",
-    url: "https://lacy.sh/blog",
+    url: "/blog",
     images: [
       {
         url: "/og.jpg",

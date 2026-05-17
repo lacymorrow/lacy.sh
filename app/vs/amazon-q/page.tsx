@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     title: "Lacy Shell vs Amazon Q Developer CLI",
     description:
       "Compare Lacy Shell and Amazon Q Developer. Lightweight plugin vs AWS-integrated assistant.",
-    url: "https://lacy.sh/vs/amazon-q",
+    url: "/vs/amazon-q",
     images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "Lacy Shell — talk to your terminal with AI" }],
   },
   twitter: {

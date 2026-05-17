@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title: "The post-execution reroute pattern | Lacy Shell Blog",
     description:
       "How Lacy Shell catches failed commands that were actually natural language and silently reroutes them to the AI agent.",
-    url: "https://lacy.sh/blog/the-post-execution-reroute-pattern",
+    url: "/blog/the-post-execution-reroute-pattern",
     images: [
       {
         url: "/api/og?section=blog&title=The+post-execution+reroute+pattern",

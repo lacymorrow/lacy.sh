@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title: "Why I didn't use AI to classify AI input | Lacy Shell Blog",
     description:
       "Everyone assumes a shell that routes to AI must use AI for detection. Lacy uses pure string matching. Here's why the obvious approach is the wrong one.",
-    url: "https://lacy.sh/blog/why-i-didnt-use-ai-to-classify-ai-input",
+    url: "/blog/why-i-didnt-use-ai-to-classify-ai-input",
     images: [
       {
         url: "/api/og?section=blog&title=Why+I+didn't+use+AI+to+classify+AI+input",
