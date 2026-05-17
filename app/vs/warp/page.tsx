@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     title: "Lacy Shell vs Warp — Plugin vs Terminal Replacement",
     description:
       "Compare Lacy Shell and Warp Terminal. Plugin approach vs full terminal replacement.",
-    url: "https://lacy.sh/vs/warp",
+    url: "/vs/warp",
     images: [{ url: "/api/og?section=vs&title=Warp&subtitle=Plugin+vs+terminal+replacement", width: 1200, height: 630, alt: "Lacy Shell vs Warp" }],
   },
   twitter: {

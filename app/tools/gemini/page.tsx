@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     title: "Using Gemini CLI with Lacy Shell",
     description:
       "Type questions in your terminal and they route to Gemini CLI automatically.",
-    url: "https://lacy.sh/tools/gemini",
+    url: "/tools/gemini",
     images: [{ url: "/api/og?section=tools&title=Gemini+CLI&subtitle=Type+questions+and+they+route+to+Gemini+automatically", width: 1200, height: 630, alt: "Lacy Shell + Gemini CLI" }],
   },
   twitter: {

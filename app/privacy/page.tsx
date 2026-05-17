@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     title: "Privacy Policy — Lacy Shell",
     description:
       "Privacy policy for Lacy Shell. Runs locally, no telemetry, no data collection.",
-    url: "https://lacy.sh/privacy",
+    url: "/privacy",
     images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "Lacy Shell — talk to your terminal with AI" }],
   },
 };

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     title: "AI Shell Integrations — Claude, Gemini, OpenCode, and more",
     description:
       "Integration guides for Claude Code, Gemini CLI, OpenCode, Codex CLI, lash, and custom AI CLIs. Lacy routes natural language to any of them.",
-    url: "https://lacy.sh/tools",
+    url: "/tools",
   },
   keywords: [
     "ai shell integrations",

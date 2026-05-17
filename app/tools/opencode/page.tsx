@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     title: "Using OpenCode with Lacy Shell",
     description:
       "Type questions in your terminal and they route to OpenCode automatically.",
-    url: "https://lacy.sh/tools/opencode",
+    url: "/tools/opencode",
     images: [{ url: "/api/og?section=tools&title=OpenCode&subtitle=Type+questions+and+they+route+to+OpenCode+automatically", width: 1200, height: 630, alt: "Lacy Shell + OpenCode" }],
   },
   twitter: {

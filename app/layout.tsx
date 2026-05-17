@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     description:
       "Type commands or natural language in your terminal. Commands run in your shell, questions route to Claude, Gemini, or any AI CLI automatically.",
     type: "website",
-    url: "https://lacy.sh",
+    url: "/",
   },
   twitter: {
     card: "summary_large_image",
@@ -109,7 +109,7 @@ export default function RootLayout({
         <meta charSet="utf-8" />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
         />
       </head>
       <body className={`${instrumentSerif.variable} ${dmMono.variable}`}>

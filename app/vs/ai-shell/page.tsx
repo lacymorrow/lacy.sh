@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     title: "Lacy Shell vs AI Shell",
     description:
       "Compare Lacy Shell and AI Shell. Inline auto-routing vs separate AI prompt.",
-    url: "https://lacy.sh/vs/ai-shell",
+    url: "/vs/ai-shell",
     images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "Lacy Shell — talk to your terminal with AI" }],
   },
   twitter: {
