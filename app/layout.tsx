@@ -18,9 +18,12 @@ const dmMono = DM_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://lacy.sh"),
-  title: "Lacy Shell — AI Shell & Natural Language Terminal for ZSH/Bash",
+  title: {
+    default: "Lacy Shell — AI Shell & Natural Language Terminal for ZSH/Bash",
+    template: "%s | Lacy Shell",
+  },
   description:
-    "AI shell plugin for ZSH and Bash. Type commands or natural language — commands run in your shell, questions route to Claude, Gemini, or any AI CLI automatically. Zero config, no prefix needed.",
+    "AI shell plugin for ZSH and Bash. Type commands or natural language — commands run in your shell, questions route to Claude, Gemini, or any AI automatically.",
   keywords: [
     "ai shell",
     "ai terminal",
