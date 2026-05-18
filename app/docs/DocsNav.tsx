@@ -40,6 +40,7 @@ export default function DocsNav({ onLinkClick }: DocsNavProps) {
               className="doc-nav-section-btn"
               onClick={() => toggleSection(section.title)}
               aria-expanded={!isCollapsed}
+              aria-controls={`nav-section-${section.title.toLowerCase().replace(/\s+/g, "-")}`}
             >
               <span>{section.title}</span>
               <svg
@@ -59,7 +60,10 @@ export default function DocsNav({ onLinkClick }: DocsNavProps) {
               </svg>
             </button>
             {!isCollapsed && (
-              <ul className="doc-nav-list">
+              <ul
+                className="doc-nav-list"
+                id={`nav-section-${section.title.toLowerCase().replace(/\s+/g, "-")}`}
+              >
                 {section.pages.map((page) => {
                   const href = `/docs/${page.slug}`;
                   const isActive = pathname === href;
