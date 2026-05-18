@@ -24,8 +24,8 @@ export default function DocsMobileDrawer({ open, onClose }: DocsMobileDrawerProp
 
   return (
     <>
-      <div className="doc-drawer-backdrop" onClick={onClose} />
-      <div className="doc-drawer">
+      <div className="doc-drawer-backdrop" onClick={onClose} aria-hidden="true" />
+      <div className="doc-drawer" role="dialog" aria-modal="true" aria-label="Navigation">
         <div className="doc-drawer-header">
           <span className="doc-drawer-title">Documentation</span>
           <button className="doc-drawer-close" onClick={onClose} aria-label="Close navigation">

@@ -175,22 +175,6 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-    document.querySelectorAll(".scroll-reveal").forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
-
   const copyInstall = useCallback(() => {
     const tab = tabs.find((t) => t.id === activeTab);
     if (!tab) return;
@@ -215,7 +199,7 @@ export default function Home() {
       <header>
         <div className="wrap">
           <nav className="nav">
-            <a href="#" className="nav-name">
+            <a href="/" className="nav-name">
               <span className="nav-bar" />
               lacy
             </a>
@@ -254,13 +238,15 @@ export default function Home() {
             </p>
 
             <div className="install reveal reveal-d3">
-              <div className="install-head" role="tablist">
+              <div className="install-head" role="tablist" aria-label="Installation method">
                 {tabs.map((tab) => (
                   <button
                     key={tab.id}
+                    id={`tab-${tab.id}`}
                     className={`install-tab${activeTab === tab.id ? " active" : ""}`}
                     role="tab"
                     aria-selected={activeTab === tab.id}
+                    aria-controls={`panel-${tab.id}`}
                     onClick={() => setActiveTab(tab.id)}
                     data-umami-event="install-method-select"
                     data-umami-event-method={tab.id}
@@ -300,7 +286,12 @@ export default function Home() {
                 {tabs.map((tab) => (
                   <div
                     key={tab.id}
+                    id={`panel-${tab.id}`}
                     className={`install-panel${activeTab === tab.id ? " active" : ""}`}
+                    role="tabpanel"
+                    aria-labelledby={`tab-${tab.id}`}
+                    aria-hidden={activeTab !== tab.id}
+                    tabIndex={activeTab === tab.id ? 0 : -1}
                   >
                     {tab.lines.map((line, i) => (
                       <code key={i}>
