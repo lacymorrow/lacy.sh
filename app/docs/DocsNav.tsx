@@ -5,6 +5,10 @@ import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { NAV } from "./nav";
 
+function sectionId(title: string) {
+  return `nav-section-${title.toLowerCase().replace(/\s+/g, "-")}`;
+}
+
 interface DocsNavProps {
   onLinkClick?: () => void;
 }
@@ -40,6 +44,7 @@ export default function DocsNav({ onLinkClick }: DocsNavProps) {
               className="doc-nav-section-btn"
               onClick={() => toggleSection(section.title)}
               aria-expanded={!isCollapsed}
+              aria-controls={sectionId(section.title)}
             >
               <span>{section.title}</span>
               <svg
@@ -59,7 +64,10 @@ export default function DocsNav({ onLinkClick }: DocsNavProps) {
               </svg>
             </button>
             {!isCollapsed && (
-              <ul className="doc-nav-list">
+              <ul
+                className="doc-nav-list"
+                id={sectionId(section.title)}
+              >
                 {section.pages.map((page) => {
                   const href = `/docs/${page.slug}`;
                   const isActive = pathname === href;
