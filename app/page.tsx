@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import Link from "next/link";
 import HeroBeam from "./hero-beam";
 
@@ -150,6 +150,31 @@ export default function Home() {
   const [copyLabel, setCopyLabel] = useState("copy");
   const [bottomCopied, setBottomCopied] = useState(false);
   const [version, setVersion] = useState<string | null>(null);
+  const tabListRef = useRef<HTMLDivElement>(null);
+
+  const handleTabKeyDown = useCallback((e: React.KeyboardEvent) => {
+    const ids = tabs.map((t) => t.id);
+    const currentIndex = ids.indexOf(activeTab);
+    if (e.key === "ArrowRight") {
+      e.preventDefault();
+      const next = ids[(currentIndex + 1) % ids.length];
+      setActiveTab(next);
+      tabListRef.current?.querySelector<HTMLElement>(`#tab-${next}`)?.focus();
+    } else if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      const prev = ids[(currentIndex - 1 + ids.length) % ids.length];
+      setActiveTab(prev);
+      tabListRef.current?.querySelector<HTMLElement>(`#tab-${prev}`)?.focus();
+    } else if (e.key === "Home") {
+      e.preventDefault();
+      setActiveTab(ids[0]);
+      tabListRef.current?.querySelector<HTMLElement>(`#tab-${ids[0]}`)?.focus();
+    } else if (e.key === "End") {
+      e.preventDefault();
+      setActiveTab(ids[ids.length - 1]);
+      tabListRef.current?.querySelector<HTMLElement>(`#tab-${ids[ids.length - 1]}`)?.focus();
+    }
+  }, [activeTab]);
 
   useEffect(() => {
     fetch("https://api.github.com/repos/lacymorrow/lacy/releases/latest")
@@ -238,7 +263,13 @@ export default function Home() {
             </p>
 
             <div className="install reveal reveal-d3">
-              <div className="install-head" role="tablist" aria-label="Installation method">
+              <div
+                className="install-head"
+                role="tablist"
+                aria-label="Installation method"
+                ref={tabListRef}
+                onKeyDown={handleTabKeyDown}
+              >
                 {tabs.map((tab) => (
                   <button
                     key={tab.id}
@@ -247,6 +278,7 @@ export default function Home() {
                     role="tab"
                     aria-selected={activeTab === tab.id}
                     aria-controls={`panel-${tab.id}`}
+                    tabIndex={activeTab === tab.id ? 0 : -1}
                     onClick={() => setActiveTab(tab.id)}
                     data-umami-event="install-method-select"
                     data-umami-event-method={tab.id}
