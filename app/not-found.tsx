@@ -13,10 +13,10 @@ export default function NotFound() {
       <header>
         <div className="wrap">
           <nav className="nav">
-            <a href="/" className="nav-name">
+            <Link href="/" className="nav-name">
               <span className="nav-bar" />
               lacy
-            </a>
+            </Link>
             <div className="nav-right">
               <Link href="/docs">Docs</Link>
               <a
