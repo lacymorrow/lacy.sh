@@ -18,7 +18,7 @@ export default function NotFound() {
               lacy
             </Link>
             <div className="nav-right">
-              <Link href="/docs">Docs</Link>
+              <Link href="/docs/introduction">Docs</Link>
               <a
                 href="https://github.com/lacymorrow/lacy"
                 target="_blank"
@@ -47,7 +47,7 @@ export default function NotFound() {
               <Link href="/" style={{ color: "var(--violet)", textDecoration: "underline" }}>
                 Home
               </Link>
-              <Link href="/docs" style={{ color: "var(--violet)", textDecoration: "underline" }}>
+              <Link href="/docs/introduction" style={{ color: "var(--violet)", textDecoration: "underline" }}>
                 Docs
               </Link>
               <Link href="/blog" style={{ color: "var(--violet)", textDecoration: "underline" }}>
