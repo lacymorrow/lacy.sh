@@ -37,7 +37,7 @@ export default function DocsShell({ children }: DocsShellProps) {
                 lacy.sh
               </Link>
               <span className="doc-breadcrumb-sep">/</span>
-              <Link href="/docs" className="nav-name doc-nav-docs-link">
+              <Link href="/docs/introduction" className="nav-name doc-nav-docs-link">
                 docs
               </Link>
             </div>

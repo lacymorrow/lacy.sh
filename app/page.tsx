@@ -232,7 +232,7 @@ export default function Home() {
               <a href="#demo">Demo</a>
               <a href="#how">How it works</a>
               <a href="#tools">Tools</a>
-              <Link href="/docs">Docs</Link>
+              <Link href="/docs/introduction">Docs</Link>
               <a
                 href="https://github.com/lacymorrow/lacy"
                 target="_blank"
@@ -523,7 +523,7 @@ export default function Home() {
             </span>
             <div className="foot-rows">
               <div className="foot-right">
-                <Link href="/docs">docs</Link>
+                <Link href="/docs/introduction">docs</Link>
                 <Link href="/blog">blog</Link>
                 <a
                   href="https://github.com/lacymorrow/lacy"
@@ -549,6 +549,7 @@ export default function Home() {
                 <Link href="/privacy">privacy</Link>
               </div>
               <div className="foot-right">
+                <Link href="/vs">compare</Link>
                 <Link href="/vs/shell-gpt">vs ShellGPT</Link>
                 <Link href="/vs/warp">vs Warp</Link>
                 <Link href="/vs/github-copilot-cli">vs Copilot CLI</Link>
@@ -558,6 +559,7 @@ export default function Home() {
                 <Link href="/vs/ai-shell">vs AI Shell</Link>
               </div>
               <div className="foot-right">
+                <Link href="/tools">integrations</Link>
                 <Link href="/tools/claude">with Claude</Link>
                 <Link href="/tools/gemini">with Gemini</Link>
                 <Link href="/tools/opencode">with OpenCode</Link>

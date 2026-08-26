@@ -10,7 +10,7 @@ export default function DocsBreadcrumb({ slug, title }: DocsBreadcrumbProps) {
   const section = getSectionForSlug(slug);
   return (
     <nav className="doc-breadcrumb" aria-label="Breadcrumb">
-      <Link href="/docs">Docs</Link>
+      <Link href="/docs/introduction">Docs</Link>
       <span className="doc-breadcrumb-sep">/</span>
       {section && (
         <>
