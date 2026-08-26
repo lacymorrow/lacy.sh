@@ -3,7 +3,8 @@ import DocsCodeBlock from "../DocsCodeBlock";
 
 export const meta = {
   title: "Quick Start",
-  description: "Get up and running with Lacy Shell in 5 minutes.",
+  description:
+    "Get up and running with Lacy Shell in five minutes: install the plugin, pick your AI tool, and type your first natural language command.",
 };
 
 export default function QuickStart() {

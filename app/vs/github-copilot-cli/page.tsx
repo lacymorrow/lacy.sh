@@ -32,7 +32,7 @@ const faqs = [
 ];
 
 export const metadata: Metadata = {
-  title: "Lacy Shell vs GitHub Copilot CLI — Always-On vs On-Demand AI",
+  title: "Lacy Shell vs GitHub Copilot CLI",
   description:
     "Compare Lacy Shell and GitHub Copilot CLI. Lacy auto-routes natural language to AI. Copilot CLI requires explicit invocation.",
   alternates: { canonical: "/vs/github-copilot-cli" },

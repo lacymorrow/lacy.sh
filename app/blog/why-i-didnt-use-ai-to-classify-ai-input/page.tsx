@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Why I didn't use AI to classify AI input",
   description:
-    "Lacy Shell routes natural language to AI and commands to your shell. Everyone assumes it uses ML for classification. It uses pure string matching instead. Here's why.",
+    "Lacy Shell routes natural language to AI and commands to your shell. Everyone assumes it uses ML to classify input. It uses string matching. Here's why.",
   alternates: { canonical: "/blog/why-i-didnt-use-ai-to-classify-ai-input" },
   openGraph: {
     title: "Why I didn't use AI to classify AI input | Lacy Shell Blog",

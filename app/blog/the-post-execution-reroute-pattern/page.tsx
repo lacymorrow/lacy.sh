@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "The post-execution reroute pattern",
   description:
-    "When someone types 'make sure the tests pass', the shell runs make and fails. Lacy catches the failure, detects natural language, and silently reroutes to the AI agent.",
+    "Type 'make sure the tests pass' and the shell runs make, which fails. Lacy catches the failure, detects natural language, and silently reroutes to AI.",
   alternates: { canonical: "/blog/the-post-execution-reroute-pattern" },
   openGraph: {
     title: "The post-execution reroute pattern | Lacy Shell Blog",

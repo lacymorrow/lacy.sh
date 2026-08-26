@@ -2,12 +2,12 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: { absolute: "Blog | Lacy Shell" },
+  title: { absolute: "Lacy Shell Blog: AI Terminals & Shell Plugins" },
   description:
     "Technical posts about building Lacy Shell: natural language detection in the terminal, shell plugin development, and AI-powered developer tools.",
   alternates: { canonical: "/blog" },
   openGraph: {
-    title: "Blog | Lacy Shell",
+    title: "Lacy Shell Blog: AI Terminals & Shell Plugins",
     description:
       "Technical posts about building Lacy Shell: natural language detection, shell plugin development, and AI terminal integration.",
     url: "/blog",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Blog | Lacy Shell",
+    title: "Lacy Shell Blog: AI Terminals & Shell Plugins",
     description:
       "Technical posts about building Lacy Shell: natural language detection, shell plugin development, and AI terminal integration.",
     images: ["/og.jpg"],

@@ -2,15 +2,23 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "AI Shell Integrations — Claude, Gemini, OpenCode, and more",
+  title: "AI Shell Integrations: Claude, Gemini & More",
   description:
-    "Lacy Shell works with every major AI CLI. Full integration guides for Claude Code, Gemini CLI, OpenCode, Codex CLI, lash, and custom tools — with setup steps, feature comparison, and when to use each.",
+    "Lacy Shell works with every major AI CLI. Integration guides for Claude Code, Gemini CLI, OpenCode, Codex CLI, lash, and custom tools, with setup steps.",
   alternates: { canonical: "/tools" },
   openGraph: {
     title: "AI Shell Integrations — Claude, Gemini, OpenCode, and more",
     description:
       "Integration guides for Claude Code, Gemini CLI, OpenCode, Codex CLI, lash, and custom AI CLIs. Lacy routes natural language to any of them.",
     url: "/tools",
+    images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "Lacy Shell — talk to your terminal with AI" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI Shell Integrations — Claude, Gemini, OpenCode, and more",
+    description:
+      "Integration guides for Claude Code, Gemini CLI, OpenCode, Codex CLI, lash, and custom AI CLIs. Lacy routes natural language to any of them.",
+    images: ["/og.jpg"],
   },
   keywords: [
     "ai shell integrations",

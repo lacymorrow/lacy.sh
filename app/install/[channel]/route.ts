@@ -30,6 +30,8 @@ export async function GET(
     headers: {
       "Content-Type": "text/plain; charset=utf-8",
       "Cache-Control": "public, max-age=60, s-maxage=60",
+      // Plain-text script endpoint — keep it out of search indexes and crawler audits
+      "X-Robots-Tag": "noindex",
     },
   });
 }
