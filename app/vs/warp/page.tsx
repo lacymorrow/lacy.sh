@@ -34,7 +34,7 @@ const faqs = [
 export const metadata: Metadata = {
   title: "Lacy Shell vs Warp — Plugin vs Terminal Replacement",
   description:
-    "Compare Lacy Shell and Warp Terminal. Lacy is a ZSH/Bash plugin that adds AI routing to your existing terminal. Warp replaces your terminal entirely. See the differences.",
+    "Compare Lacy Shell and Warp Terminal. Lacy is a ZSH/Bash plugin that adds AI routing to the terminal you already use. Warp replaces your terminal entirely.",
   alternates: { canonical: "/vs/warp" },
   openGraph: {
     title: "Lacy Shell vs Warp — Plugin vs Terminal Replacement",

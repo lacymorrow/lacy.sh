@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     template: "%s — Lacy Shell",
   },
   description:
-    "AI plugin for ZSH and Bash. Type commands or natural language — your terminal runs commands directly and routes questions to Claude, Gemini, or any AI automatically.",
+    "AI plugin for ZSH and Bash. Type commands or natural language. Commands run in your shell, questions route to Claude, Gemini, or any AI automatically.",
   keywords: [
     "ai shell",
     "ai terminal",
@@ -76,25 +76,18 @@ export const metadata: Metadata = {
   },
 };
 
+// WebSite, not SoftwareApplication: Google's software-app rich result requires
+// aggregateRating or review, which we have no real data for, so a sitewide
+// SoftwareApplication block fails rich-results validation on every page.
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
+  "@type": "WebSite",
   name: "Lacy Shell",
   alternateName: "lacy",
   description:
     "Talk to your shell. Commands run in your shell, questions route to AI automatically. ZSH and Bash plugin.",
   url: "https://lacy.sh",
-  applicationCategory: "DeveloperApplication",
-  operatingSystem: "macOS, Linux, WSL",
-  downloadUrl: "https://github.com/lacymorrow/lacy",
-  softwareVersion: "1.0",
-  offers: {
-    "@type": "Offer",
-    price: "0",
-    priceCurrency: "USD",
-    availability: "https://schema.org/OnlineOnly",
-  },
-  author: {
+  publisher: {
     "@type": "Person",
     name: "Lacy Morrow",
     url: "https://lacymorrow.com",

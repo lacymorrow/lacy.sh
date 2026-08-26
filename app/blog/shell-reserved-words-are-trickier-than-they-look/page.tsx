@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Shell reserved words are trickier than they look",
   description:
-    "Words like do, then, and in pass command -v but are never valid standalone commands. Building Lacy Shell's natural language detection meant solving this edge case first.",
+    "Words like do, then, and in pass command -v but are never valid standalone commands. Lacy Shell's natural language detection had to solve this first.",
   alternates: {
     canonical: "/blog/shell-reserved-words-are-trickier-than-they-look",
   },

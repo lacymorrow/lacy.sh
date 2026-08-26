@@ -32,7 +32,7 @@ const faqs = [
 ];
 
 export const metadata: Metadata = {
-  title: "Lacy Shell vs ShellGPT — Transparent Routing vs Explicit Commands",
+  title: "Lacy Shell vs ShellGPT (sgpt)",
   description:
     "Compare Lacy Shell and ShellGPT (sgpt). Lacy auto-detects natural language. ShellGPT requires an explicit sgpt command. See the differences.",
   alternates: { canonical: "/vs/shell-gpt" },
