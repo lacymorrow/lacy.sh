@@ -3,7 +3,7 @@ import DocsCallout from "../DocsCallout";
 
 export const meta = {
   title: "Plugin Coexistence",
-  description: "How Lacy coexists with zsh-autosuggestions and zsh-syntax-highlighting.",
+  description: "How Lacy coexists with zsh-autosuggestions, zsh-syntax-highlighting, powerlevel10k, and starship without clobbering their hooks, keymaps, or highlights.",
 };
 
 export default function PluginCoexistence() {

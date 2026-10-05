@@ -3,7 +3,7 @@ import DocsCodeBlock from "../DocsCodeBlock";
 
 export const meta = {
   title: "How Detection Works",
-  description: "The six-rule cascade that classifies your input as shell command or natural language.",
+  description: "The rule cascade that classifies each line as shell command or natural language: leading sigils, reserved words, agent words, valid commands, and NL markers.",
 };
 
 export default function HowDetectionWorks() {

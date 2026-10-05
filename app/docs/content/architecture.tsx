@@ -2,7 +2,7 @@ import DocsCodeBlock from "../DocsCodeBlock";
 
 export const meta = {
   title: "Architecture",
-  description: "File tree, module map, entry points, and data flow for Lacy Shell.",
+  description: "File tree, module map, entry points, and data flow for Lacy Shell: shared core logic, per-shell adapters for zsh, Bash 4+, and fish, and the npm installer.",
 };
 
 export default function Architecture() {

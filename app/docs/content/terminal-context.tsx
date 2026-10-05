@@ -3,7 +3,7 @@ import DocsCodeBlock from "../DocsCodeBlock";
 
 export const meta = {
   title: "Terminal Context",
-  description: "How Lacy injects delta-based terminal context into AI queries.",
+  description: "How Lacy injects delta-based terminal context into AI queries: current directory, git branch, exit code, recent commands, and captured terminal output.",
 };
 
 export default function TerminalContext() {

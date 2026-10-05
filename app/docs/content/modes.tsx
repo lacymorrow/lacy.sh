@@ -3,7 +3,7 @@ import DocsCodeBlock from "../DocsCodeBlock";
 
 export const meta = {
   title: "Modes",
-  description: "Auto, Shell, and Agent modes — how to switch between them and what each does.",
+  description: "Auto, Shell, and Agent modes in Lacy Shell: how to switch, what each does, how glyphs and badges reflect your current state, and when auto picks the agent.",
 };
 
 export default function Modes() {

@@ -3,7 +3,7 @@ import DocsCallout from "../DocsCallout";
 
 export const meta = {
   title: "Troubleshooting",
-  description: "Common issues, fixes, and diagnostic commands for Lacy Shell.",
+  description: "Troubleshoot Lacy Shell: fix install failures, missing indicators, broken keybindings, Ctrl+C hangs, PATH problems, and config loading issues step by step.",
 };
 
 export default function Troubleshooting() {

@@ -3,7 +3,7 @@ import DocsCallout from "../DocsCallout";
 
 export const meta = {
   title: "Commands Reference",
-  description: "All Lacy Shell in-shell commands — mode, tool, session, ask, and keybindings.",
+  description: "All Lacy Shell in-shell commands: mode, tool, ask, quit, session reset and resume, plus the Ctrl+Space toggle and Enter accept-line handling in every shell.",
 };
 
 export default function CommandsReference() {
