@@ -3,7 +3,7 @@ import DocsCallout from "../DocsCallout";
 
 export const meta = {
   title: "Smart Rerouting",
-  description: "How Lacy silently reroutes failed shell commands that look like natural language.",
+  description: "How Lacy silently reroutes failed shell commands that look like natural language: ghost-text suggestions, exit-code detection, and the NL marker set.",
 };
 
 export default function SmartRerouting() {

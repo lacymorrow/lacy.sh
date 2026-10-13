@@ -3,7 +3,7 @@ import DocsCodeBlock from "../DocsCodeBlock";
 
 export const meta = {
   title: "Supported AI Tools",
-  description: "All AI backends supported by Lacy Shell — lash, claude, opencode, gemini, codex, hermes, and custom commands.",
+  description: "All AI backends supported by Lacy Shell: lash, claude, opencode, gemini, codex, hermes, copilot, goose, aider, and custom commands with per-tool setup notes.",
 };
 
 export default function SupportedAiTools() {

@@ -3,7 +3,7 @@ import DocsCallout from "../DocsCallout";
 
 export const meta = {
   title: "Contributing",
-  description: "How to contribute to Lacy Shell — dev setup, design principles, and PR process.",
+  description: "How to contribute to Lacy Shell: clone the repo, run the test suite across zsh and bash, follow the project's design principles, and open a pull request.",
 };
 
 export default function Contributing() {

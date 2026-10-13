@@ -2,7 +2,7 @@ import DocsCallout from "../DocsCallout";
 
 export const meta = {
   title: "Shell Differences",
-  description: "Feature matrix comparing ZSH and Bash 4+ support in Lacy Shell.",
+  description: "Feature matrix comparing ZSH, Bash 4+, and fish support in Lacy Shell: keybindings, indicators, reroute hints, ghost text, and terminal context capture.",
 };
 
 export default function ShellDifferences() {

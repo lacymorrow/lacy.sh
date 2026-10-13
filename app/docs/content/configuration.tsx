@@ -3,7 +3,7 @@ import DocsCallout from "../DocsCallout";
 
 export const meta = {
   title: "Configuration",
-  description: "Full reference for ~/.lacy/config.yaml — AI tools, modes, preheating, and context settings.",
+  description: "Full reference for ~/.lacy/config.yaml: agent tool, default mode, preheating, claude keeper timeout, context capture, spinner style, and query logging.",
 };
 
 export default function Configuration() {

@@ -2,7 +2,7 @@ import DocsCodeBlock from "../DocsCodeBlock";
 
 export const meta = {
   title: "CLI Reference",
-  description: "All lacy CLI commands — setup, status, doctor, update, config, and more.",
+  description: "All lacy CLI commands: setup, status, doctor, update, reinstall, config, new, resume, logs, changelog, completions, and version, with flags and examples.",
 };
 
 export default function CliReference() {

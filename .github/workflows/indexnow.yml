@@ -1,0 +1,27 @@
+name: Submit to IndexNow
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "app/**"
+      - "public/**"
+      - "scripts/indexnow.mjs"
+      - ".github/workflows/indexnow.yml"
+  workflow_dispatch:
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      # Give Vercel a moment to redeploy the pushed commit before pinging IndexNow.
+      - name: Wait for deploy
+        run: sleep 90
+      - name: Submit sitemap
+        run: node scripts/indexnow.mjs
+        env:
+          HOST: https://lacy.sh

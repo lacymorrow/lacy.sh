@@ -3,7 +3,7 @@ import DocsCodeBlock from "../DocsCodeBlock";
 
 export const meta = {
   title: "Introduction",
-  description: "What Lacy Shell is, how it works, and why you might want it.",
+  description: "What Lacy Shell is: a ZSH and Bash plugin that routes commands to your shell and natural language to an AI CLI inline, with no new terminal to learn.",
 };
 
 export default function Introduction() {

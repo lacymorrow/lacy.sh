@@ -3,7 +3,7 @@ import DocsCodeBlock from "../DocsCodeBlock";
 
 export const meta = {
   title: "Installation",
-  description: "Install Lacy Shell via curl, Homebrew, npx, or manually from GitHub.",
+  description: "Install Lacy Shell via curl, Homebrew, npx, or manually from GitHub. Supports ZSH, Bash 4+, and fish on macOS and Linux with one source line in your rc.",
 };
 
 export default function Installation() {
