@@ -1,3 +1,4 @@
+import { MoreByLacy } from "../more-by-lacy";
 import Link from "next/link";
 
 export default function VsLayout({
@@ -35,6 +36,7 @@ export default function VsLayout({
             <a href="https://github.com/lacymorrow/lacy">Source</a> &middot;{" "}
             <a href="https://github.com/lacymorrow/lacy/issues">Issues</a>
           </p>
+          <MoreByLacy className="vs-more" />
         </div>
       </footer>
     </>

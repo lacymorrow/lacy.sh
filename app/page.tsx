@@ -1,5 +1,6 @@
 "use client";
 
+import { MoreByLacy } from "./more-by-lacy";
 import { useState, useCallback, useEffect, useRef } from "react";
 import Link from "next/link";
 import HeroBeam from "./hero-beam";
@@ -566,6 +567,7 @@ export default function Home() {
               </div>
             </div>
           </div>
+          <MoreByLacy className="foot-more" />
         </div>
       </footer>
     </>

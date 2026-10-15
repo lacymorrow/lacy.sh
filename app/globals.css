@@ -1895,3 +1895,16 @@ footer {
         text-align: left;
     }
 }
+
+/* -- more by lacy -- */
+.foot-more {
+    margin-top: 20px;
+    font-size: 11px;
+    color: var(--fg-4);
+    letter-spacing: 0.02em;
+}
+.vs-more {
+    margin-top: 20px;
+    font-size: 11px;
+    color: var(--fg-4);
+}
