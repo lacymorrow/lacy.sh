@@ -115,6 +115,7 @@ export default function RootLayout({
           data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID || "577521d7-3db7-4a77-a45c-3c97f21b5322"}
           strategy="afterInteractive"
         />
+        <Script src="https://www.lacymorrow.com/more.js" strategy="afterInteractive" />
       </body>
     </html>
   );

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { MoreByLacy } from "../more-by-lacy";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -66,6 +67,7 @@ export default function BlogLayout({
               Post-Execution Reroute
             </Link>
           </p>
+          <MoreByLacy className="vs-more" />
         </div>
       </footer>
     </>

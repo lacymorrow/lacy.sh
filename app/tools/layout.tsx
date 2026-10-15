@@ -1,3 +1,4 @@
+import { MoreByLacy } from "../more-by-lacy";
 export default function ToolsLayout({
   children,
 }: {
@@ -40,6 +41,7 @@ export default function ToolsLayout({
             <a href="/tools/opencode">OpenCode</a> &middot;{" "}
             <a href="/tools/gemini">Gemini CLI</a>
           </p>
+          <MoreByLacy className="vs-more" />
         </div>
       </footer>
     </>
