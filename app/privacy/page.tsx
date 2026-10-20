@@ -138,21 +138,35 @@ export default function PrivacyPolicy() {
           <section>
             <h2>Data retention</h2>
             <p>
-              Lacy does not store any data. There is no database, no log file,
-              and no history of your queries beyond what your shell and your AI
-              tool already keep. Your shell history is managed by your shell
-              (ZSH or Bash), not by Lacy. If your AI CLI tool keeps
-              conversation logs, that is governed by that tool&rsquo;s own
-              configuration.
+              The install ping is stored in our self-hosted Umami instance:
+              install method, Lacy version, OS, CPU architecture, and shell.
+              It carries no account, no email, and no device id, so there is no
+              row that can be traced back to you, and nothing for us to look up
+              or hand over.
+            </p>
+            <p>
+              On your machine, Lacy writes one empty marker file at{" "}
+              <code>~/.lacy/.telemetry_sent</code> so the ping never fires a
+              second time. Delete that file and the next shell sends one more
+              ping. Set <code>DO_NOT_TRACK=1</code> and it sends nothing.
+            </p>
+            <p>
+              Nothing else is retained. Lacy keeps no record of your commands
+              or queries, in a database or a log file. Your shell history is
+              managed by your shell (ZSH or Bash), not by Lacy. If your AI CLI
+              tool keeps conversation logs, that is governed by that
+              tool&rsquo;s own configuration.
             </p>
           </section>
 
           <section>
             <h2>Children&rsquo;s privacy</h2>
             <p>
-              Lacy Shell does not knowingly collect any information from anyone,
-              including children under 13. Since no data is collected at all,
-              there is nothing to disclose or delete.
+              Lacy Shell has no accounts, no sign-up, and no age gate, and it
+              asks for no personal information from anyone, including children
+              under 13. The install ping described above carries no identifier,
+              so we hold nothing about any individual user, child or adult, to
+              disclose or delete.
             </p>
           </section>
 
@@ -160,8 +174,9 @@ export default function PrivacyPolicy() {
             <h2>Changes to this policy</h2>
             <p>
               If this policy changes, the updated version will be posted here
-              with a new &ldquo;last updated&rdquo; date. Since Lacy collects
-              no data, significant changes are unlikely.
+              with a new &ldquo;last updated&rdquo; date. What Lacy sends is one
+              anonymous install ping and nothing else, so changes should be
+              rare. If that ever stops being true, this page changes first.
             </p>
           </section>
 

@@ -36,7 +36,6 @@ export default function Post() {
         title={"Why I didn't use AI to classify AI input"}
         slug="why-i-didnt-use-ai-to-classify-ai-input"
         published="2026-05-12"
-        updated="2026-05-17"
       />
       <h1>
         Why I didn&rsquo;t use AI to classify <em>AI input</em>
