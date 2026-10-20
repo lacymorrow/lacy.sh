@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Byline } from "../byline";
 
 export const metadata: Metadata = {
   title: "The post-execution reroute pattern",
@@ -31,7 +32,11 @@ export const metadata: Metadata = {
 export default function Post() {
   return (
     <article className="vs-article">
-      <p className="vs-label">May 26, 2026</p>
+      <Byline
+        title={"The post-execution reroute pattern"}
+        slug="the-post-execution-reroute-pattern"
+        published="2026-05-26"
+      />
       <h1>
         The post-execution <em>reroute</em> pattern
       </h1>

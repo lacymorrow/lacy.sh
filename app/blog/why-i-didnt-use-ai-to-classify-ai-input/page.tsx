@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Byline } from "../byline";
 
 export const metadata: Metadata = {
   title: "Why I didn't use AI to classify AI input",
@@ -31,7 +32,12 @@ export const metadata: Metadata = {
 export default function Post() {
   return (
     <article className="vs-article">
-      <p className="vs-label">May 12, 2026</p>
+      <Byline
+        title={"Why I didn't use AI to classify AI input"}
+        slug="why-i-didnt-use-ai-to-classify-ai-input"
+        published="2026-05-12"
+        updated="2026-05-17"
+      />
       <h1>
         Why I didn&rsquo;t use AI to classify <em>AI input</em>
       </h1>

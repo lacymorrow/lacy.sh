@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Byline } from "../byline";
 
 export const metadata: Metadata = {
   title: "Shell reserved words are trickier than they look",
@@ -35,7 +36,11 @@ export const metadata: Metadata = {
 export default function Post() {
   return (
     <article className="vs-article">
-      <p className="vs-label">May 19, 2026</p>
+      <Byline
+        title={"Shell reserved words are trickier than they look"}
+        slug="shell-reserved-words-are-trickier-than-they-look"
+        published="2026-05-19"
+      />
       <h1>
         Shell reserved words are <em>trickier</em> than they look
       </h1>
