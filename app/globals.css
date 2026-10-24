@@ -357,6 +357,21 @@ header {
     user-select: none;
     font-size: 12px;
 }
+/* The mark Lacy draws after the prompt: green $ for shell, magenta ? for agent. */
+.dl-prompt.g {
+    color: var(--green);
+}
+.dl-prompt.m {
+    color: var(--magenta);
+}
+/* Ghost text: the suggestion sitting in the buffer, not yet sent. */
+.dl-ghost {
+    color: var(--fg-3);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
+}
 .dl-input {
     color: var(--fg);
     overflow: hidden;
@@ -386,9 +401,6 @@ header {
 .dl-tag.reroute {
     color: var(--blue);
     background: rgba(96, 165, 250, 0.08);
-}
-.dl-out.reroute {
-    color: var(--blue);
 }
 .dl-out {
     grid-column: 3 / -1;

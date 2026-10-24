@@ -107,33 +107,33 @@ export default function HowDetectionWorks() {
       </section>
 
       <section>
-        <h2>Post-execution reroute (Rule 6)</h2>
+        <h2>Post-execution suggestion (Rule 6)</h2>
         <p>
-          When a valid command receives natural-language-style arguments and fails (exit code 1–127),
-          Lacy analyzes the error output. If it matches a known error pattern AND the input has
-          NL markers, the command silently rerouts to the agent.
+          A line flagged as natural language still runs in your shell first. If it fails with
+          an exit code under 128, Lacy offers the same line to your agent as ghost text instead
+          of sending it. You accept with Tab or the right arrow, then send with Enter.
         </p>
         <div className="dl-demo">
           <div className="dl">
-            <span className="dl-bar r" />
-            <span className="dl-prompt">$</span>
-            <span className="dl-input">kill the process on localhost:3000</span>
-            <span className="dl-tag reroute">reroute</span>
+            <span className="dl-bar g" />
+            <span className="dl-prompt g">$</span>
+            <span className="dl-input">make sure the tests pass</span>
+            <span className="dl-tag shell">shell</span>
           </div>
-          <div className="dl-out reroute">No such signal: the → caught, rerouting to AI...</div>
+          <div className="dl-out">make: *** No rule to make target &apos;sure&apos;.  Stop.</div>
           <div className="dl">
             <span className="dl-bar r" />
-            <span className="dl-prompt">$</span>
-            <span className="dl-input">make sure the tests pass</span>
-            <span className="dl-tag reroute">reroute</span>
+            <span className="dl-prompt g">$</span>
+            <span className="dl-ghost">@ make sure the tests pass</span>
+            <span className="dl-tag reroute">tab to accept</span>
           </div>
-          <div className="dl-out reroute">No rule to make target &apos;sure&apos; → caught, rerouting to AI...</div>
         </div>
         <p>
-          Both criteria must match for reroute: an error pattern from <code>LACY_SHELL_ERROR_PATTERNS</code>
-          AND an NL signal (second word in <code>LACY_NL_MARKERS</code>, or 5+ words with a parse/syntax error).
+          The natural-language check runs on your input before the command executes, through{" "}
+          <code>lacy_shell_has_nl_markers</code>. It needs a bare word from{" "}
+          <code>LACY_NL_MARKERS</code> after the first word, and it bails on any line
+          containing a shell operator. Only active in Auto mode.
         </p>
-        <p>Only active in Auto mode. The reroute is silent — no user-facing hint.</p>
       </section>
 
       <section>

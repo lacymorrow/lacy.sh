@@ -18,7 +18,7 @@ curl -fsSL https://lacy.sh/install | bash
 - Magenta indicator = AI query
 - Commands execute in your shell
 - Natural language goes to your AI agent
-- Smart rerouting: if a command contains natural language and fails, it auto-sends to AI
+- Smart rerouting: if a command that reads like a sentence fails, Lacy offers it to your agent as ghost text. Tab accepts, Enter sends. Nothing is sent on its own
 
 ## Modes
 - Auto: smart routing (default)

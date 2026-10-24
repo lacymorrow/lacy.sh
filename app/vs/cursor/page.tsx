@@ -17,7 +17,7 @@ const faqs = [
   {
     question: "Is Lacy Shell free?",
     answer:
-      "Yes. Lacy Shell is free and MIT licensed. Cursor has a free tier but requires a paid subscription ($20/mo Pro) for full AI usage.",
+      "Yes. Lacy Shell is free to install and use, and the source is available under FSL-1.1-MIT. Cursor has a free tier but requires a paid subscription ($20/mo Pro) for full AI usage.",
   },
   {
     question: "Does Lacy Shell work inside Cursor's terminal?",
@@ -27,7 +27,7 @@ const faqs = [
   {
     question: "Is Lacy Shell open source?",
     answer:
-      "Yes. Lacy Shell is open source under the MIT license. Cursor is proprietary.",
+      "Not in the OSI sense. Lacy Shell is source available under the Functional Source License (FSL-1.1-MIT): you can read, run, fork and modify it, and the only thing the licence withholds is shipping a competing product. Each release becomes MIT two years after it ships. Cursor is proprietary.",
   },
 ];
 
@@ -126,13 +126,13 @@ export default function VsCursor() {
             </tr>
             <tr>
               <td>Price</td>
-              <td>Free, MIT licensed</td>
+              <td>Free</td>
               <td>Free tier + $20/mo Pro</td>
             </tr>
             <tr>
-              <td>Open source</td>
-              <td>Yes</td>
-              <td>No (proprietary)</td>
+              <td>License</td>
+              <td>FSL-1.1-MIT, source available</td>
+              <td>Proprietary</td>
             </tr>
             <tr>
               <td>Platform</td>

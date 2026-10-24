@@ -22,8 +22,8 @@ export default function QuickStart() {
 # or open a new terminal`}
         </DocsCodeBlock>
         <p>
-          You'll see the lacy indicator appear to the left of your prompt. It changes color
-          as you type — green for shell, magenta for agent.
+          You'll see the lacy mark appear between your prompt and your cursor. It changes
+          as you type: green <code>$</code> for shell, magenta <code>?</code> for agent.
         </p>
       </section>
 

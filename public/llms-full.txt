@@ -10,7 +10,7 @@ Works with ZSH and Bash 4+ on macOS, Linux, and WSL.
 ## Why Lacy?
 - No new tools to learn. Lacy works with your existing AI CLI (Claude Code, Gemini, OpenCode, Codex, Lash). It complements, not replaces.
 - Zero friction. No slash commands, no hotkeys, no separate terminal. Type naturally and Lacy routes it. A real-time color indicator shows you what will happen before you press enter.
-- Smart detection. Lacy classifies input using word analysis, not AI. It's instant. Commands like `ls -la` stay green (shell). Questions like `what files are here` turn magenta (AI). If a command fails with natural language patterns, it silently reroutes to AI.
+- Smart detection. Lacy classifies input using word analysis, not AI. It's instant. Commands like `ls -la` stay green (shell). Questions like `what files are here` turn magenta (AI). If a command that reads like a sentence fails, Lacy offers the same line to the agent as ghost text. Tab accepts it, Enter sends it.
 
 ## Install
 
@@ -52,13 +52,13 @@ The first word of your input is syntax-highlighted in real-time: green for shell
 | git status                     | Shell      | Valid command                               |
 | do we have a way to install?   | AI         | Reserved word, never a real command          |
 | fix the bug                    | AI         | Multi-word, not a command                   |
-| kill the process on 3000       | Shell > AI | Valid command, but fails; rerouted           |
-| go ahead and fix it            | Shell > AI | "go" is valid, but "ahead" triggers reroute |
+| kill the process on 3000       | Shell, then offered | Valid command, but fails; Lacy suggests sending it |
+| go ahead and fix it            | Shell, then offered | "go" is valid, but "ahead" marks it as a candidate |
 | !rm -rf *                      | Shell      | ! prefix forces shell                       |
 
 ## Smart Rerouting (Auto Mode)
 
-When a valid command contains natural language patterns (3+ bare words with articles, pronouns, etc.) and fails, Lacy shows a hint and automatically re-sends it to the AI agent. Shell reserved words like `do`, `then`, `in`, `else` are routed directly to the agent since they pass `command -v` but are never standalone commands.
+When a valid command reads like a sentence (at least one bare word after the first from the natural-language marker set: articles, pronouns, prepositions) and then fails with an exit code under 128, Lacy puts `@ <your line>` after the prompt as ghost text. Right arrow or Tab accepts it into the buffer, Enter sends it. Nothing reaches the agent until you send it. Shell reserved words like `do`, `then`, `in`, `else` are routed directly to the agent since they pass `command -v` but are never standalone commands.
 
 ## Modes
 
@@ -130,7 +130,7 @@ No AI response: Check `tool` to see if a tool is detected. Install one: `npm i -
 
 Colors not showing: Ensure your terminal supports 256 colors (green=34, magenta=200, blue=75).
 
-Command rerouted unexpectedly: In auto mode, commands with natural language patterns that fail are re-sent to the AI. Switch to `mode shell` to disable this, or prefix with `!`.
+Unexpected suggestion after a failed command: in auto mode, a failed command that reads like a sentence is offered as ghost text. Press any other key to dismiss it, switch to `mode shell` to turn it off, or prefix with `!`.
 
 Emergency bypass: Prefix any command with `!` to force shell execution: `!rm -rf node_modules`
 
@@ -139,4 +139,4 @@ Emergency bypass: Prefix any command with `!` to force shell execution: `!rm -rf
 - GitHub: https://github.com/lacymorrow/lacy
 - npm: https://www.npmjs.com/package/lacy
 - Twitter: https://twitter.com/lacybuilds
-- License: MIT
+- License: FSL-1.1-MIT (source available; each release becomes MIT two years after it ships)

@@ -16,7 +16,7 @@ Type `ls -la` and your shell runs it. Type `what files are here` and your AI ans
 
 ![Diagram illustrating the Lacy Shell routing logic between shell commands and the AI agent](public/images/how-it-works.png)
 
-Lacy adds a tiny colored bar to your prompt. Green means shell. Magenta means agent. Toggle between auto, shell-only, and agent-only with `Ctrl+Space`.
+Lacy draws one character between your prompt and your cursor. Green `$` means the line goes to your shell, magenta `?` means it goes to your agent. Toggle between auto, shell-only and agent-only with `Ctrl+Space`.
 
 ## Mobile
 

@@ -36,7 +36,7 @@ export default async function Image() {
           position: "relative",
         }}
       >
-        {/* OPEN SOURCE label */}
+        {/* SOURCE AVAILABLE label */}
         <div
           style={{
             fontSize: 13,
@@ -47,7 +47,7 @@ export default async function Image() {
             marginBottom: 24,
           }}
         >
-          OPEN SOURCE
+          SOURCE AVAILABLE
         </div>
 
         {/* Heading row with accent bar */}

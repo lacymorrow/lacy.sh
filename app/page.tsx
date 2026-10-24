@@ -80,29 +80,48 @@ const tabs = [
 ];
 
 const demoLines = [
-  { bar: "g", input: "ls -la", tag: "shell", tagCls: "shell" },
+  { bar: "g", mark: "$", input: "ls -la", tag: "shell", tagCls: "shell" },
   { output: "drwxr-xr-x  12 user  staff  384 Feb  3 09:21 ." },
-  { bar: "m", input: "what files are here", tag: "agent", tagCls: "agent" },
+  {
+    bar: "m",
+    mark: "?",
+    input: "what files are here",
+    tag: "agent",
+    tagCls: "agent",
+  },
   {
     output: "You have 12 files including package.json, src/, ...",
   },
-  { bar: "g", input: "git status", tag: "shell", tagCls: "shell" },
+  { bar: "g", mark: "$", input: "git status", tag: "shell", tagCls: "shell" },
   {
     bar: "m",
+    mark: "?",
     input: "fix the build error in src/index.ts",
     tag: "agent",
     tagCls: "agent",
   },
-  { bar: "g", input: "cd .. && npm test", tag: "shell", tagCls: "shell" },
   {
-    bar: "r",
-    input: "make sure the tests pass",
-    tag: "reroute",
-    tagCls: "reroute",
+    bar: "g",
+    mark: "$",
+    input: "cd .. && npm test",
+    tag: "shell",
+    tagCls: "shell",
   },
   {
-    output: "No rule to make target 'sure' → caught, rerouting to AI...",
-    reroute: true,
+    bar: "g",
+    mark: "$",
+    input: "make sure the tests pass",
+    tag: "shell",
+    tagCls: "shell",
+  },
+  { output: "make: *** No rule to make target 'sure'.  Stop." },
+  {
+    bar: "r",
+    mark: "$",
+    markCls: "g",
+    ghost: "@ make sure the tests pass",
+    tag: "tab to accept",
+    tagCls: "reroute",
   },
 ];
 
@@ -352,7 +371,7 @@ export default function Home() {
           {/* demo */}
           <section className="demo scroll-reveal" id="demo">
             <div className="demo-label">
-              Green bar = shell. Purple bar = AI.
+              Green <code>$</code> = shell. Magenta <code>?</code> = agent.
             </div>
             <div className="demo-lines">
               {demoLines.map((line, i) =>
@@ -363,15 +382,19 @@ export default function Home() {
                       style={{ background: "transparent" }}
                     />
                     <span />
-                    <span className={`dl-out${line.reroute ? " reroute" : ""}`}>
-                      {line.output}
-                    </span>
+                    <span className="dl-out">{line.output}</span>
                   </div>
                 ) : (
                   <div className="dl" key={i}>
                     <div className={`dl-bar ${line.bar}`} />
-                    <span className="dl-prompt">&gt;</span>
-                    <span className="dl-input">{line.input}</span>
+                    <span className={`dl-prompt ${line.markCls ?? line.bar}`}>
+                      {line.mark}
+                    </span>
+                    {line.ghost ? (
+                      <span className="dl-ghost">{line.ghost}</span>
+                    ) : (
+                      <span className="dl-input">{line.input}</span>
+                    )}
                     <span className={`dl-tag ${line.tagCls}`}>{line.tag}</span>
                   </div>
                 ),
@@ -424,11 +447,12 @@ export default function Home() {
               Lacy <em>decides.</em>
             </h2>
             <p className="how-desc">
-              Lacy adds a tiny colored bar to your prompt. That{"'"}s it. Your
-              shell stays exactly the same. Commands run locally, questions go
-              to your agent. Works on your laptop, on a VPS over SSH, anywhere
-              you have a shell. Toggle between auto, shell-only, and agent-only
-              with Ctrl+Space.
+              Lacy draws one character after your prompt. Green <code>$</code>{" "}
+              sends the line to your shell, magenta <code>?</code> sends it to
+              your agent. It never rewrites <code>PS1</code>, so Powerlevel10k
+              and starship keep the prompt you already built. Works on your
+              laptop or on a VPS over SSH. Ctrl+Space toggles between auto,
+              shell-only and agent-only.
             </p>
             <div className="how-grid">
               <div className="how-cell">
@@ -455,8 +479,8 @@ export default function Home() {
                 </div>
                 <p>
                   Local terminal, remote server, SSH session. If you have
-                  ZSH or Bash, Lacy works. No GUI, no daemon, no background
-                  process.
+                  ZSH or Bash, Lacy works. No GUI, and nothing running in the
+                  background until you ask your agent a question.
                 </p>
               </div>
               <div className="how-cell">
@@ -468,9 +492,10 @@ export default function Home() {
                   Stays local
                 </div>
                 <p>
-                  Lacy runs on your machine. Nothing leaves unless you
-                  send it to your agent. MIT licensed, no telemetry, open
-                  source.
+                  Lacy runs on your machine. Your commands and your files stay
+                  there unless you send a question to your agent. Source
+                  available under FSL-1.1-MIT. Every release turns MIT two
+                  years after it ships.
                 </p>
               </div>
             </div>
@@ -545,7 +570,7 @@ export default function Home() {
                   target="_blank"
                   rel="noopener"
                 >
-                  mit
+                  license
                 </a>
                 <Link href="/privacy">privacy</Link>
               </div>

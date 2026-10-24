@@ -56,7 +56,7 @@ const comparisons = [
   {
     slug: "amazon-q",
     name: "Amazon Q",
-    tagline: "Open source vs AWS ecosystem",
+    tagline: "Source available vs AWS ecosystem",
   },
 ];
 
@@ -76,11 +76,11 @@ export default function VsIndex() {
       <section>
         <h2>How Lacy is different</h2>
         <p>
-          Most AI terminal tools require you to invoke them explicitly — a
-          prefix, a hotkey, a separate command. Lacy runs inside your existing
-          shell and detects intent as you type. Commands execute. Questions go
-          to your AI agent. The colored bar next to your prompt tells you which
-          will happen before you press enter.
+          Most AI terminal tools make you invoke them explicitly, with a
+          prefix, a hotkey or a separate command. Lacy runs inside your existing
+          shell and reads intent as you type. Commands execute. Questions go
+          to your AI agent. The mark between your prompt and your cursor tells
+          you which will happen before you press enter.
         </p>
       </section>
 

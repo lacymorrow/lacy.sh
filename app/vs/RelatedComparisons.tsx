@@ -7,7 +7,7 @@ const ALL_COMPARISONS = [
   { slug: "aider", name: "Aider", tagline: "Shell integration vs code editor" },
   { slug: "cursor", name: "Cursor", tagline: "Terminal-native vs IDE-based" },
   { slug: "ai-shell", name: "AI Shell", tagline: "Real-time routing vs on-demand generation" },
-  { slug: "amazon-q", name: "Amazon Q", tagline: "Open source vs AWS ecosystem" },
+  { slug: "amazon-q", name: "Amazon Q", tagline: "Source available vs AWS ecosystem" },
 ] as const;
 
 type ComparisonSlug = (typeof ALL_COMPARISONS)[number]["slug"];

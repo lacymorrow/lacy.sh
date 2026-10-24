@@ -17,7 +17,7 @@ const faqs = [
   {
     question: "Is Lacy Shell free?",
     answer:
-      "Yes. Lacy Shell is free and MIT licensed. There is no subscription, no account required, and no paid tier.",
+      "Yes. Lacy Shell is free to install and use, with no subscription, no account and no paid tier. The source is available under FSL-1.1-MIT.",
   },
   {
     question: "Does Lacy Shell work on macOS and Linux?",
@@ -111,13 +111,13 @@ export default function VsWarp() {
             </tr>
             <tr>
               <td>Price</td>
-              <td>Free, MIT licensed</td>
+              <td>Free</td>
               <td>Free tier + paid plans</td>
             </tr>
             <tr>
-              <td>Open source</td>
-              <td>Yes</td>
-              <td>Partially (warpd)</td>
+              <td>License</td>
+              <td>FSL-1.1-MIT, source available</td>
+              <td>Proprietary, warpd is open source</td>
             </tr>
             <tr>
               <td>Platform</td>
