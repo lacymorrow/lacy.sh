@@ -9,9 +9,11 @@ const BASE = "https://lacy.sh";
 // told Google the whole docs section had been untouched since May.
 const DATES: Record<string, string> = lastmod;
 
-// Oldest real commit in the repo. Only used if a page has no recorded date,
-// which means someone added a route without rerunning the generator.
-const FALLBACK = "2026-05-11";
+// Only reached when a page has no recorded date, which means a route was added
+// without rerunning the generator. Such a page is new, so the build date is the
+// honest guess — a hardcoded old date would understate it by however long the
+// constant has been sitting here, which is the bug this file just fixed.
+const FALLBACK = new Date().toISOString().slice(0, 10);
 
 function modified(...sources: string[]): string {
   const dates = sources.map((s) => DATES[s]).filter(Boolean);

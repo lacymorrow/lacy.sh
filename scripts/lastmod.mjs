@@ -36,7 +36,9 @@ function pageSources(dir) {
 }
 
 function lastCommitDate(path) {
-  const out = execFileSync("git", ["log", "-1", "--format=%cs", "--", path], {
+  // %as (author date), not %cs: a rebase rewrites committer dates and would tell
+  // Google every page changed today — the same false signal, inverted.
+  const out = execFileSync("git", ["log", "-1", "--format=%as", "--", path], {
     cwd: root,
     encoding: "utf8",
   }).trim();

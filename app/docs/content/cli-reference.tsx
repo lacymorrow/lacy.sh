@@ -142,7 +142,7 @@ export default function CliReference() {
 
       <section>
         <h2>Flags and arguments</h2>
-        <p>Four commands take arguments:</p>
+        <p>Three commands take arguments:</p>
         <DocsCodeBlock lang="bash">
           {`lacy config              # print config.yaml
 lacy config path         # print the path to config.yaml
@@ -155,9 +155,7 @@ lacy logs --count        # how many queries are logged
 lacy logs --clear        # delete the log file
 
 lacy completions zsh     # print the zsh completion script
-lacy completions bash    # print the bash completion script
-
-lacy uninstall           # prompts [y/N] on a terminal, never when piped`}
+lacy completions bash    # print the bash completion script`}
         </DocsCodeBlock>
         <p>To keep completions, write the script somewhere your shell loads it:</p>
         <DocsCodeBlock lang="bash">
@@ -171,6 +169,54 @@ lacy completions zsh > ~/.zsh/completions/_lacy
 mkdir -p ~/.local/share/bash-completion/completions
 lacy completions bash > ~/.local/share/bash-completion/completions/lacy`}
         </DocsCodeBlock>
+      </section>
+
+      <section>
+        <h2>Short forms</h2>
+        <p>
+          The dispatcher accepts these aliases. The session commands take a leading slash too, so
+          the muscle memory you build inside Lacy still works outside it.
+        </p>
+        <div className="doc-table-wrap">
+          <table className="doc-table">
+            <thead>
+              <tr>
+                <th>Command</th>
+                <th>Also accepts</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>lacy status</code></td>
+                <td><code>lacy s</code></td>
+              </tr>
+              <tr>
+                <td><code>lacy config</code></td>
+                <td><code>lacy c</code>, <code>lacy config show</code></td>
+              </tr>
+              <tr>
+                <td><code>lacy version</code></td>
+                <td><code>lacy -v</code>, <code>lacy --version</code></td>
+              </tr>
+              <tr>
+                <td><code>lacy help</code></td>
+                <td><code>lacy -h</code>, <code>lacy --help</code></td>
+              </tr>
+              <tr>
+                <td><code>lacy new</code></td>
+                <td><code>reset</code>, <code>clear</code>, and each with a slash: <code>/new</code>, <code>/reset</code>, <code>/clear</code></td>
+              </tr>
+              <tr>
+                <td><code>lacy resume</code></td>
+                <td><code>lacy /resume</code></td>
+              </tr>
+              <tr>
+                <td><code>lacy logs --clear</code></td>
+                <td><code>lacy logs -c</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </section>
 
       <section>
@@ -230,14 +276,14 @@ logging:
           <code>lacy doctor</code> is the first thing to run when Lacy is installed but nothing
           happens. It checks, in order:
         </p>
-        <ul>
+        <ol className="doc-list doc-list-ol">
           <li>The plugin file exists in <code>~/.lacy</code></li>
           <li>Your rc file has an uncommented source line for it</li>
           <li>Bash users are on Bash 4 or newer (macOS ships 3.2, which Lacy refuses)</li>
           <li><code>config.yaml</code> exists</li>
           <li>The configured AI tool is on your PATH, or auto-detect can find one</li>
           <li><code>~/.lacy/bin</code> is on your PATH</li>
-        </ul>
+        </ol>
         <p>
           Every failed check prints the command that fixes it. The exit code is 1 if anything
           failed, so you can use it in a script. For the longer list of symptoms and causes, see{" "}
@@ -298,7 +344,7 @@ logging:
 
       <section>
         <h2>Next</h2>
-        <ul>
+        <ul className="doc-list">
           <li>
             <Link href="/docs/commands-reference">Commands Reference</Link> &mdash; the commands
             that work inside your shell, once Lacy is loaded.
