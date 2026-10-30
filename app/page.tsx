@@ -101,7 +101,7 @@ const demoLines = [
     tagCls: "reroute",
   },
   {
-    output: "No rule to make target 'sure' → caught, rerouting to AI...",
+    output: "No rule to make target 'sure' → @ make sure the tests pass  (Tab to send)",
     reroute: true,
   },
 ];
@@ -259,8 +259,10 @@ export default function Home() {
               your <em>shell</em>
             </h1>
             <p className="hero-desc reveal reveal-d2">
-              Commands execute. Questions go to AI. No prefix, no mode
-              switching. You just type.
+              <strong>Lacy Shell is a ZSH and Bash plugin</strong> for people
+              who already live in a terminal. It reads each line you type and
+              decides where it goes: shell commands execute, questions go to the
+              AI agent you already use. No prefix, no mode switching.
             </p>
 
             <div className="install reveal reveal-d3">
@@ -352,7 +354,7 @@ export default function Home() {
           {/* demo */}
           <section className="demo scroll-reveal" id="demo">
             <div className="demo-label">
-              Green bar = shell. Purple bar = AI.
+              Green $ = shell. Magenta ? = AI.
             </div>
             <div className="demo-lines">
               {demoLines.map((line, i) =>
@@ -424,11 +426,13 @@ export default function Home() {
               Lacy <em>decides.</em>
             </h2>
             <p className="how-desc">
-              Lacy adds a tiny colored bar to your prompt. That{"'"}s it. Your
-              shell stays exactly the same. Commands run locally, questions go
-              to your agent. Works on your laptop, on a VPS over SSH, anywhere
-              you have a shell. Toggle between auto, shell-only, and agent-only
-              with Ctrl+Space.
+              Lacy draws one small mark in front of what you type: a green{" "}
+              <code>$</code> when it will run, a magenta <code>?</code> when it
+              will go to your agent. Your <code>PS1</code> is never touched, so
+              p10k and starship keep working. The current mode sits on the right
+              prompt. Commands run locally, questions go to your agent. Works on
+              your laptop, on a VPS over SSH, anywhere you have a shell. Toggle
+              between auto, shell-only, and agent-only with Ctrl+Space.
             </p>
             <div className="how-grid">
               <div className="how-cell">
@@ -455,8 +459,8 @@ export default function Home() {
                 </div>
                 <p>
                   Local terminal, remote server, SSH session. If you have
-                  ZSH or Bash, Lacy works. No GUI, no daemon, no background
-                  process.
+                  ZSH or Bash, Lacy works. No GUI, no account, and nothing
+                  listening outside your own machine.
                 </p>
               </div>
               <div className="how-cell">
@@ -468,9 +472,10 @@ export default function Home() {
                   Stays local
                 </div>
                 <p>
-                  Lacy runs on your machine. Nothing leaves unless you
-                  send it to your agent. MIT licensed, no telemetry, open
-                  source.
+                  Lacy runs on your machine. Your commands and queries never
+                  leave it unless you send them to your agent. One anonymous
+                  install ping on first load, off with{" "}
+                  <code>DO_NOT_TRACK=1</code>. MIT licensed, open source.
                 </p>
               </div>
             </div>
@@ -486,25 +491,18 @@ export default function Home() {
               <br />
               Start shipping.
             </h2>
-            <div
+            <button
+              type="button"
               className="cta-section-cmd"
-              role="button"
-              tabIndex={0}
-              aria-label={bottomCopied ? "Copied to clipboard" : "curl -fsSL https://lacy.sh/install | bash"}
+              aria-label={bottomCopied ? "Copied to clipboard" : "Copy install command: curl -fsSL https://lacy.sh/install | bash"}
               onClick={copyBottom}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  e.preventDefault();
-                  copyBottom();
-                }
-              }}
               data-umami-event="cta-install-copy"
             >
               <span className="p">$ </span>
               {bottomCopied
                 ? "copied to clipboard"
                 : "curl -fsSL https://lacy.sh/install | bash"}
-            </div>
+            </button>
           </section>
         </div>
       </main>

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { FaqSchema } from "../faq-schema";
+import { Faq } from "../faq";
 import { RelatedComparisons } from "../RelatedComparisons";
 
 const faqs = [
@@ -27,7 +27,22 @@ const faqs = [
   {
     question: "Does Lacy Shell have dependencies?",
     answer:
-      "No. Lacy Shell is written in pure shell (ZSH/Bash) with no external dependencies — no Python, no npm, nothing to install beyond the shell script itself.",
+      "Almost none. Detection and routing are pure ZSH/Bash, with nothing to install beyond the shell script itself. Two optional helpers use Python: a keeper process that holds a Claude Code session open, and a local server that keeps lash or opencode warm. Neither runs unless you use those agents.",
+  },
+  {
+    question: "Does Lacy support OpenAI like ShellGPT does?",
+    answer:
+      "Not directly. Lacy routes to whatever CLI agent you have installed rather than calling a provider itself. To use OpenAI models, point Lacy at a CLI that connects to OpenAI, such as Codex.",
+  },
+  {
+    question: "Will Lacy interfere with ShellGPT if I have both installed?",
+    answer:
+      "No. Lacy hooks into ZSH's execute function and classifies input based on whether it looks like natural language. It recognizes sgpt as a valid shell command and passes it through untouched. Both tools coexist without conflict.",
+  },
+  {
+    question: "What if Lacy routes a real shell command to AI by mistake?",
+    answer:
+      "Detection is tuned to tell shell syntax from natural language, and it errs toward running your command. If something it treated as a command then fails, Lacy offers the line back as grey ghost text prefixed with @. Press Tab or the right arrow to accept it, Enter to send it. Nothing reaches your agent on its own. Ctrl+Space toggles between shell and agent mode at any time.",
   },
 ];
 
@@ -63,6 +78,13 @@ export default function VsShellGpt() {
       <p className="vs-subtitle">
         Transparent routing vs explicit command prefix.
       </p>
+
+      <section>
+        <h2>Which is better, Lacy Shell or ShellGPT?</h2>
+        <p className="vs-answer">
+          It depends on whether you want to ask on purpose. ShellGPT is the better choice if you like an explicit command you can pipe into other commands, call with flags, and use in scripts, pointed straight at OpenAI with your own key. Lacy Shell is the better choice if the prefix is the thing you keep forgetting: it reads each line and routes it, with nothing to type in front. They coexist, so you can keep sgpt for scripts.
+        </p>
+      </section>
 
       <section>
         <h2>The core difference</h2>
@@ -130,6 +152,9 @@ export default function VsShellGpt() {
             </tr>
           </tbody>
         </table>
+        <p className="vs-asof">
+          ShellGPT pricing, API key requirements, and features verified October 2026.
+        </p>
       </section>
 
       <section>
@@ -265,55 +290,6 @@ $ archive all .log files older than 7 days`}</pre>
       </section>
 
       <section>
-        <h2>Frequently asked questions</h2>
-        <p>
-          <strong>Does Lacy support OpenAI like ShellGPT does?</strong>
-        </p>
-        <p>
-          Lacy doesn&rsquo;t call OpenAI directly &mdash; it routes to whatever CLI agent
-          you have installed. To use OpenAI models, configure Lacy with a CLI that
-          connects to OpenAI, or use one of the supported agents that may also access
-          OpenAI models depending on your configuration.
-        </p>
-        <p>
-          <strong>Will Lacy interfere with ShellGPT if I have both installed?</strong>
-        </p>
-        <p>
-          No. Lacy hooks into ZSH&rsquo;s execute function and classifies input based on
-          whether it looks like natural language. It recognizes <code>sgpt</code> as a
-          valid shell command and passes it through untouched. Both tools coexist
-          without conflict.
-        </p>
-        <p>
-          <strong>Does Lacy support command generation like <code>sgpt --shell</code>?</strong>
-        </p>
-        <p>
-          Lacy routes your input to whichever agent you configure. If that agent can
-          generate shell commands &mdash; and most can &mdash; it will. The behavior
-          depends on your connected agent rather than Lacy itself. Lacy handles
-          detection and routing; the agent handles the response.
-        </p>
-        <p>
-          <strong>What if Lacy routes a real shell command to AI by mistake?</strong>
-        </p>
-        <p>
-          The detection is tuned to distinguish natural language from shell syntax.
-          For ambiguous input, Lacy has a smart reroute: if the shell fails to
-          execute something it classified as a command, it automatically retries
-          through AI. You can also press Ctrl+Space to manually toggle between shell
-          and agent mode at any time.
-        </p>
-        <p>
-          <strong>Does Lacy require Python?</strong>
-        </p>
-        <p>
-          No. Lacy is pure ZSH/Bash &mdash; no Python, Node.js, or other runtime
-          dependencies. It installs as a single shell function and adds no measurable
-          weight to your shell startup time.
-        </p>
-      </section>
-
-      <section>
         <h2>The bottom line</h2>
         <p>
           ShellGPT is a capable tool that does exactly what it says: a command you run
@@ -330,9 +306,10 @@ $ archive all .log files older than 7 days`}</pre>
         </p>
       </section>
 
+      <Faq items={faqs} />
+
       <RelatedComparisons current="shell-gpt" />
     </article>
-    <FaqSchema items={faqs} />
     </>
   );
 }

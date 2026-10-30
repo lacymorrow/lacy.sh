@@ -1,21 +1,22 @@
 import type { Metadata } from "next";
+import { Byline } from "../byline";
 
 export const metadata: Metadata = {
   title: "The post-execution reroute pattern",
   description:
-    "Type 'make sure the tests pass' and the shell runs make, which fails. Lacy catches the failure, detects natural language, and silently reroutes to AI.",
+    "Type 'make sure the tests pass' and the shell runs make, which fails. Lacy notices, and offers the line to the agent as a suggestion you accept with Tab. It never sends it for you.",
   alternates: { canonical: "/blog/the-post-execution-reroute-pattern" },
   openGraph: {
     title: "The post-execution reroute pattern | Lacy Shell Blog",
     description:
-      "How Lacy Shell catches failed commands that were actually natural language and silently reroutes them to the AI agent.",
+      "How Lacy Shell catches failed commands that were really natural language, and why it offers them to the agent instead of sending them automatically.",
     url: "/blog/the-post-execution-reroute-pattern",
     images: [
       {
         url: "/api/og?section=blog&title=The+post-execution+reroute+pattern",
         width: 1200,
         height: 630,
-        alt: "The post-execution reroute pattern — Lacy Shell Blog",
+        alt: "The post-execution reroute pattern, Lacy Shell Blog",
       },
     ],
   },
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "The post-execution reroute pattern | Lacy Shell Blog",
     description:
-      "How Lacy catches failed shell commands that were actually natural language and reroutes to AI.",
+      "How Lacy offers a failed shell line to the AI agent, and why it stopped sending it for you.",
     images: ["/api/og?section=blog&title=The+post-execution+reroute+pattern"],
   },
 };
@@ -31,16 +32,38 @@ export const metadata: Metadata = {
 export default function Post() {
   return (
     <article className="vs-article">
-      <p className="vs-label">May 26, 2026</p>
+      <Byline
+        title={"The post-execution reroute pattern"}
+        slug="the-post-execution-reroute-pattern"
+        published="2026-05-26"
+        updated="2026-10-27"
+      />
       <h1>
         The post-execution <em>reroute</em> pattern
       </h1>
       <p className="vs-subtitle">
         Some natural language starts with a valid command
         name. <code>make sure the tests pass</code> begins
-        with <code>make</code>. The shell runs it, it fails, and Lacy detects
-        what happened. No user action needed.
+        with <code>make</code>. The shell runs it, it fails, and Lacy offers the
+        line to the agent. You accept with Tab, or you ignore it and it goes
+        away.
       </p>
+
+      <section>
+        <h2>What happens when I type a sentence that starts with a command?</h2>
+        <p>
+          The shell runs it. If it fails and the line looks like English, Lacy
+          prints the agent version of it as a suggestion on your next prompt. In
+          zsh that is gray ghost text reading <code>@ make sure the tests pass</code>.
+          Tab or Right arrow puts it on the command line, Enter sends it. Type
+          anything else and it&rsquo;s gone.
+        </p>
+        <p>
+          Nothing reaches the agent unless you press a key. That&rsquo;s the
+          whole behaviour. The rest of this post is how it decides when to
+          offer.
+        </p>
+      </section>
 
       <section>
         <h2>The problem with valid first words</h2>
@@ -83,172 +106,140 @@ export default function Post() {
           it fail.
         </p>
         <p>
-          So Lacy lets the shell try it. If it works, great. If it fails, Lacy
-          looks at why.
+          So Lacy lets the shell try it. If it works, nothing happens. If it
+          fails, Lacy asks whether the line was worth offering to the agent.
         </p>
       </section>
 
       <section>
-        <h2>Two criteria, both required</h2>
+        <h2>Two conditions, both required</h2>
         <p>
-          Not every failed command is natural language. <code>git psuh</code> is
-          a typo. <code>rm nonexistent.txt</code> is a valid command targeting a
-          missing file. Lacy needs to distinguish &ldquo;the shell tried to
-          interpret English and choked&rdquo; from &ldquo;the user made a
-          mistake.&rdquo;
+          The first condition is checked before the command runs, and the second
+          is the exit code it runs with.
         </p>
+        <h2>Condition one: the line is a candidate</h2>
         <p>
-          The detection function (<code>lacy_shell_detect_natural_language</code>)
-          checks two criteria. Both must match for a reroute.
-        </p>
-        <h2>Criterion A: error pattern</h2>
-        <p>
-          The command&rsquo;s error output must contain at least one of these
-          strings (case-insensitive):
-        </p>
-        <pre className="blog-pre">
-          <code>{`parse error
-syntax error
-unexpected token
-command not found
-no such file or directory
-no rule to make target
-is not a git command
-unknown command
-unknown primary or operator
-missing argument to
-invalid regular expression
-...and a few more`}</code>
-        </pre>
-        <p>
-          These are the errors shells and common tools produce when they receive
-          English words as arguments. <code>make sure the tests pass</code> produces{" "}
-          <code>No rule to make target &lsquo;sure&rsquo;</code>. <code>find out how auth works</code> produces{" "}
-          <code>find: unknown primary or operator: &lsquo;out&rsquo;</code>. <code>git me the latest</code> produces{" "}
-          <code>&lsquo;me&rsquo; is not a git command</code>.
-        </p>
-        <p>
-          Each error pattern on this list was added because a real user
-          triggered it with natural language input. The list grows over time
-          as new tools and error messages surface.
-        </p>
-        <h2>Criterion B: natural language signal</h2>
-        <p>
-          The error pattern alone is not enough. <code>make nonexistent_target</code> also
-          triggers &ldquo;No rule to make target,&rdquo; but the user probably
-          meant to run make and just got the target name wrong.
-        </p>
-        <p>
-          So Lacy also checks for a natural language signal in the original
-          input. One of two conditions must hold:
+          Before execution, <code>lacy_shell_has_nl_markers</code> decides
+          whether the line is a reroute candidate at all. It is, when both of
+          these hold:
         </p>
         <ul>
           <li>
-            The second word is a natural language marker (articles
-            like <code>the</code>, pronouns like <code>me</code>,
-            prepositions like <code>out</code>, conjunctions
-            like <code>and</code>, about 300 common English words)
+            The input has more than one word and contains no shell operator
+            (<code>|</code>, <code>&amp;&amp;</code>, <code>||</code>, <code>;</code>, <code>&gt;</code>).
+            Pipelines and compound commands are shell syntax, not English.
           </li>
           <li>
-            The input has 5 or more words AND the error is a parse/syntax error
+            At least one bare word after the first word is
+            in <code>LACY_NL_MARKERS</code>. Bare means not a flag, a path, a
+            number, or a <code>$variable</code>.
           </li>
         </ul>
         <p>
-          The second-word check is the primary gate. In <code>make sure the tests pass</code>,
-          the second word is <code>sure</code>, which is a natural language
-          marker. In <code>make mytarget</code>, the second word
-          is <code>mytarget</code>, which is not. The heuristic
-          separates &ldquo;English sentence starting with a command&rdquo;
-          from &ldquo;command with a wrong argument.&rdquo;
+          The marker list holds 315 entries, 313 of them distinct,
+          in <code>lib/core/constants.sh</code>. They are common English words
+          that are unusual as shell arguments: articles, pronouns,
+          prepositions, question words, sentence words
+          like <code>sure</code> and <code>ahead</code>, and nouns that show up
+          constantly in developer conversation
+          like <code>bug</code>, <code>tests</code> and <code>repo</code>.
         </p>
         <p>
-          The 5+ word fallback catches cases where the second word is not in the
-          marker list but the input is clearly a sentence. If the shell throws a
-          parse error on 5+ words of input, it&rsquo;s almost certainly not
-          intended shell syntax.
+          This is why <code>git push origin main</code> is never a
+          candidate. <code>push</code>, <code>origin</code> and <code>main</code> are
+          not markers, so the line is never considered even if the push fails.
+        </p>
+        <h2>Condition two: it failed, but not by signal</h2>
+        <p>
+          A candidate triggers the suggestion when it exits with a code from 1
+          to 127. Success does nothing, which is
+          why <code>echo the quick brown fox</code> stays
+          quiet. Codes 128 and above do nothing either, because those are
+          signals. A command you killed with Ctrl+C was running on purpose, and
+          offering to hand it to an agent would be an odd reading of what you
+          just did.
+        </p>
+        <p>
+          There is no inspection of the error text. An earlier design read the
+          error output against a list of 17 patterns
+          (<code>no rule to make target</code>, <code>is not a git command</code>,
+          and so on), and that function still exists
+          as <code>lacy_shell_detect_natural_language</code> for parity with
+          lash, where the same spec is implemented. No adapter in Lacy Shell
+          calls it. The marker check and the exit code are the whole test,
+          because the error text turned out to add nothing the markers had not
+          already caught, and it was a second list to keep current for every
+          tool that prints a new message.
         </p>
       </section>
 
       <section>
-        <h2>The safety rails</h2>
+        <h2>What you actually see</h2>
         <p>
-          Several guards prevent false reroutes:
+          The suggestion only appears in auto mode. In shell mode or agent mode
+          you have already told Lacy where the line should go, so there is
+          nothing to suggest.
         </p>
         <ul>
           <li>
-            Successful commands (exit code 0) are never rerouted.{" "}
-            <code>echo the quick brown fox</code> succeeds and produces output.
-            No reroute.
+            <strong>zsh:</strong> <code>@ &lt;command&gt;</code> appears as gray
+            ghost text on the next empty prompt. Right arrow or Tab moves it
+            onto the command line, and Enter sends it to the agent. Typing
+            anything else, or pressing Enter on the empty line, dismisses it.
           </li>
           <li>
-            Single-word inputs are never rerouted. If you type <code>make</code> and
-            it fails, that&rsquo;s a real make invocation, not a sentence.
+            <strong>Bash:</strong> a hint line reading <code>? @ &lt;command&gt;</code> is
+            printed above the next prompt. You type it to send it.
           </li>
           <li>
-            Signal exits (code 128+) are excluded. A command killed by a signal
-            is not a misrouted sentence.
-          </li>
-          <li>
-            Shell operators in the input (<code>|</code>, <code>&amp;&amp;</code>, <code>||</code>, <code>;</code>, <code>&gt;</code>)
-            disqualify it. Pipelines and compound commands are
-            shell syntax, not English.
+            <strong>fish:</strong> no suggestion.
           </li>
         </ul>
       </section>
 
       <section>
-        <h2>Silent reroute</h2>
+        <h2>I shipped the automatic version first, and took it back</h2>
         <p>
-          When both criteria match, Lacy reroutes the input to the AI agent
-          without any user-facing indication that a reroute happened. The
-          original shell error output stays in the terminal as context. The agent
-          receives the full input and can reference the error.
+          The original reroute sent the line to the agent on its own. Both
+          conditions matched and the input went out. Nothing on screen said a
+          reroute had happened. I argued for that at the time: when the guess is
+          right, a &ldquo;Rerouting to agent...&rdquo; banner is noise. You
+          typed a question, you got an answer. The machinery stayed out of the
+          way.
         </p>
         <p>
-          Early versions showed a &ldquo;Rerouting to agent...&rdquo; message.
-          I removed it. When the reroute is correct (and it almost always is),
-          the message is noise. The user typed a question. They got an answer.
-          The mechanism is invisible, which is the point.
+          Living with it changed my mind. A shell that sometimes does something
+          other than what you typed is a shell you stop trusting. The keystroke
+          has to stay yours. Lacy can be as opinionated as it likes about what
+          you probably meant, right up to the point of acting on it without
+          asking.
         </p>
         <p>
-          When the reroute is wrong, the AI agent handles it gracefully because
-          it can see what the user typed and what the shell returned. The agent
-          can say &ldquo;it looks like you meant to run <code>make</code> with
-          a specific target&rdquo; rather than just echoing the error.
-        </p>
-      </section>
-
-      <section>
-        <h2>Pre-flagging reroute candidates</h2>
-        <p>
-          There&rsquo;s one more optimization. Post-execution detection only
-          runs on inputs that Lacy pre-flagged as reroute candidates before
-          execution. The pre-flagging function (<code>lacy_shell_has_nl_markers</code>)
-          checks if the input contains natural language markers after the first
-          word, filtering out flags, paths, numbers, and variables.
+          The smaller costs were real too. A misfire made you wait on an agent
+          round trip, and pay tokens, for an answer to a question you never
+          asked. And reading your scrollback back later, there was no way to
+          tell which lines the shell had answered and which an agent had.
         </p>
         <p>
-          This means <code>git push origin main</code> never triggers
-          post-execution analysis even if it fails. The arguments
-          (<code>push</code>, <code>origin</code>, <code>main</code>) are not
-          NL markers. Only inputs that look like they might contain English
-          get the full two-criteria check.
+          1.8.24 moved the line. The guess is still automatic, the send
+          isn&rsquo;t.
         </p>
         <p>
-          The pre-flagging is intentionally aggressive. It&rsquo;s cheap (pure
-          string matching) and it only sets a flag. The expensive part
-          (analyzing error output) only runs when the flag is set AND the
-          command fails. False positives in pre-flagging cost nothing. False
-          negatives mean missed reroutes.
+          The suggestion turned out better than the banner I&rsquo;d rejected,
+          for a reason I didn&rsquo;t predict. A banner tells you a decision was
+          already made. Ghost text shows you the decision and waits. One
+          keystroke when the guess is right, nothing at all when it&rsquo;s
+          wrong.
         </p>
       </section>
 
       <section>
-        <h2>Real examples</h2>
+        <h2>Examples</h2>
         <table className="vs-table">
           <thead>
             <tr>
               <th>Input</th>
+              <th>Candidate</th>
               <th>What happens</th>
             </tr>
           </thead>
@@ -257,60 +248,70 @@ invalid regular expression
               <td>
                 <code>make sure the tests pass</code>
               </td>
+              <td>yes</td>
               <td>
-                make fails with &ldquo;No rule to make target &lsquo;sure&rsquo;&rdquo;.
-                Second word <code>sure</code> is NL marker. Reroute.
+                Fails with &ldquo;No rule to make target &lsquo;sure&rsquo;&rdquo;.
+                Suggestion offered.
               </td>
             </tr>
             <tr>
               <td>
-                <code>find out how auth works</code>
+                <code>kill the process on localhost:3000</code>
               </td>
-              <td>
-                find fails with &ldquo;unknown primary or operator&rdquo;.
-                Second word <code>out</code> is NL marker. Reroute.
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <code>git me the latest changes</code>
-              </td>
-              <td>
-                git fails with &ldquo;&lsquo;me&rsquo; is not a git command&rdquo;.
-                Second word <code>me</code> is NL marker. Reroute.
-              </td>
+              <td>yes</td>
+              <td>Fails. Suggestion offered.</td>
             </tr>
             <tr>
               <td>
                 <code>go ahead and fix the tests</code>
               </td>
+              <td>yes</td>
               <td>
-                go fails with &ldquo;unknown command&rdquo;.
-                Second word <code>ahead</code> is NL marker. Reroute.
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <code>echo the quick brown fox</code>
-              </td>
-              <td>
-                echo succeeds (exit 0). No reroute.
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <code>git psuh</code>
-              </td>
-              <td>
-                git fails but <code>psuh</code> is not an NL marker. No reroute.
+                Fails with &ldquo;unknown command&rdquo;. Suggestion offered.
               </td>
             </tr>
             <tr>
               <td>
                 <code>kill -9 my baby</code>
               </td>
+              <td>yes</td>
               <td>
-                Only 2 bare words after flags. Below threshold. No reroute.
+                Suggestion only if <code>kill</code> actually fails. If it kills
+                something, nothing happens.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <code>echo the quick brown fox</code>
+              </td>
+              <td>yes</td>
+              <td>Succeeds, exit 0. Nothing happens.</td>
+            </tr>
+            <tr>
+              <td>
+                <code>git push origin main</code>
+              </td>
+              <td>no</td>
+              <td>No marker words. Never considered, pass or fail.</td>
+            </tr>
+            <tr>
+              <td>
+                <code>echo hello | grep the</code>
+              </td>
+              <td>no</td>
+              <td>
+                Contains an operator. Never considered, even
+                though <code>the</code> is a marker.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <code>git psuh</code>
+              </td>
+              <td>no</td>
+              <td>
+                One word after the first, and <code>psuh</code> is not a marker.
+                A typo stays a typo.
               </td>
             </tr>
           </tbody>
@@ -320,25 +321,25 @@ invalid regular expression
       <section>
         <h2>Why this pattern works</h2>
         <p>
-          The post-execution reroute is effective because it uses the shell
-          itself as the first classifier. Instead of trying to predict whether
-          input is a valid command, Lacy runs it and observes the result. The
-          shell is always right about whether the input was valid shell syntax.
-          Lacy just adds a layer that asks: &ldquo;if it wasn&rsquo;t valid
-          shell, was it English?&rdquo;
+          The reroute is effective because it uses the shell itself as the first
+          classifier. Instead of predicting whether input is a valid command,
+          Lacy runs it and reads the result. The shell is never wrong about
+          whether something was valid shell syntax. Lacy adds one question on
+          top: if it wasn&rsquo;t, was it English?
         </p>
         <p>
-          The user cost is one failed command execution (typically 10-50ms for
-          the errors that trigger rerouting). The benefit is zero false positives
-          on pre-execution routing. Lacy never steals a command away from the
-          shell that the user meant to run. It only catches the ones that were
-          never going to work.
+          You pay for one failed command, typically 10 to 50ms for the errors
+          that trigger a suggestion. In exchange, pre-execution routing never
+          has to gamble. Lacy does not take a command away from the shell
+          because it suspected English, and it does not hand your line to an
+          agent because it suspected the same. It runs what you typed and then
+          offers an opinion.
         </p>
         <p>
           Combined with the <a href="/blog/shell-reserved-words-are-trickier-than-they-look">reserved word filter</a> and
           the <a href="/blog/why-i-didnt-use-ai-to-classify-ai-input">agent word list</a>,
-          the three layers cover nearly every input correctly without any ML,
-          any network calls, or any dependencies beyond Bash 4+.
+          these layers cover nearly every input correctly with no ML, no network
+          calls, and no dependencies beyond Bash 4+ or zsh.
         </p>
       </section>
     </article>

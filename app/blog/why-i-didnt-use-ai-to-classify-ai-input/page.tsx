@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Byline } from "../byline";
 
 export const metadata: Metadata = {
   title: "Why I didn't use AI to classify AI input",
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
         url: "/api/og?section=blog&title=Why+I+didn't+use+AI+to+classify+AI+input",
         width: 1200,
         height: 630,
-        alt: "Why I didn't use AI to classify AI input — Lacy Shell Blog",
+        alt: "Why I didn't use AI to classify AI input, Lacy Shell Blog",
       },
     ],
   },
@@ -31,7 +32,12 @@ export const metadata: Metadata = {
 export default function Post() {
   return (
     <article className="vs-article">
-      <p className="vs-label">May 12, 2026</p>
+      <Byline
+        title={"Why I didn't use AI to classify AI input"}
+        slug="why-i-didnt-use-ai-to-classify-ai-input"
+        published="2026-05-12"
+        updated="2026-10-27"
+      />
       <h1>
         Why I didn&rsquo;t use AI to classify <em>AI input</em>
       </h1>
@@ -141,10 +147,10 @@ export default function Post() {
         </p>
         <ul>
           <li>
-            First word is an agent word (like <code>why</code>, <code>how</code>, <code>explain</code>, about 150 common English words)? Route to agent.
+            First word is a shell reserved word (like <code>do</code>, <code>then</code>, <code>in</code>)? Route to agent. These pass <code>command -v</code> but are never standalone commands.
           </li>
           <li>
-            First word is a shell reserved word (like <code>do</code>, <code>then</code>, <code>in</code>)? Route to agent. These pass <code>command -v</code> but are never standalone commands.
+            First word is an agent word (like <code>why</code>, <code>how</code>, <code>explain</code>, 209 common English words)? Route to agent, unless the rest of the line reads as shell arguments.
           </li>
           <li>
             First word is a valid command? Route to shell.
@@ -168,10 +174,20 @@ export default function Post() {
         <h2>Debuggability matters</h2>
         <p>
           When a user reports that Lacy misrouted their input, I can trace the
-          exact path through the decision tree. First word
-          was <code>go</code>. <code>go</code> is in the agent words list.
-          It&rsquo;s also a valid command. The input
-          had 2+ bare words after it with NL markers. Result: agent.
+          exact path through the decision tree. Take <code>yes lets go</code>.
+          First word is <code>yes</code>, which is not a reserved word, so
+          Layer 1a passes. It is in the agent words list, so Layer 1b takes it,
+          and <code>yes</code> is also a real command
+          at <code>/usr/bin/yes</code>, so Lacy reads the rest of the line
+          before deciding. No shell operators, and two bare words after the
+          first. Two is more than a command with one argument, so: agent.
+        </p>
+        <p>
+          The same word goes the other way with different
+          arguments. <code>yes | head -3</code> contains an operator, which
+          means shell, and a bare <code>yes</code> that you have aliased
+          yourself means shell too. Each of those is a line of code you can
+          read, not a weight.
         </p>
         <p>
           With a model, the answer is &ldquo;the classifier gave it a 0.62
