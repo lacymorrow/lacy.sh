@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { RelatedComparisons } from "../RelatedComparisons";
 import Link from "next/link";
-import { FaqSchema } from "../faq-schema";
+import { Faq } from "../faq";
 
 const faqs = [
   {
@@ -63,6 +63,19 @@ export default function VsGitHubCopilotCli() {
       <p className="vs-subtitle">
         Always-on routing vs on-demand suggestions.
       </p>
+
+      <section>
+        <h2>Which is better, Lacy Shell or GitHub Copilot CLI?</h2>
+        <p className="vs-answer">
+          It depends on whether you already pay for Copilot. Copilot CLI is the
+          better choice if you have the subscription and want GitHub&rsquo;s
+          models explaining and suggesting commands through{" "}
+          <code>gh</code>, inside the GitHub tooling you already trust. Lacy
+          Shell is the better choice if you want routing that happens on its
+          own, with no subscription of its own, pointed at whichever agent you
+          already have installed. Both can live in the same shell.
+        </p>
+      </section>
 
       <section>
         <h2>The core difference</h2>
@@ -134,6 +147,9 @@ export default function VsGitHubCopilotCli() {
             </tr>
           </tbody>
         </table>
+        <p className="vs-asof">
+          GitHub Copilot CLI pricing, subscription requirements, and features verified October 2026.
+        </p>
       </section>
 
       <section>
@@ -202,9 +218,10 @@ export default function VsGitHubCopilotCli() {
           </li>
         </ul>
       </section>
+      <Faq items={faqs} />
+
       <RelatedComparisons current="github-copilot-cli" />
     </article>
-    <FaqSchema items={faqs} />
     </>
   );
 }

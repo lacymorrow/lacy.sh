@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { FaqSchema } from "../faq-schema";
+import { Faq } from "../faq";
 import { RelatedComparisons } from "../RelatedComparisons";
 
 const faqs = [
@@ -10,19 +10,29 @@ const faqs = [
       "Lacy Shell is a ZSH/Bash plugin that adds AI routing to your existing terminal — it detects natural language and sends it to an AI agent automatically. Warp is a full terminal replacement app. You install Lacy into your current terminal; Warp requires switching to a new terminal emulator.",
   },
   {
-    question: "Can I use Lacy Shell and Warp together?",
+    question: "Does Lacy work inside Warp?",
     answer:
-      "Yes. Lacy is a shell plugin that works inside any terminal, including Warp. If you use Warp but prefer automatic natural language detection over the # prefix, you can add Lacy to your ZSH config and get both.",
+      "Yes. Lacy hooks into ZSH/Bash, not the terminal emulator. If you run ZSH inside Warp, Lacy works there too. You can have Warp's blocks and UI alongside Lacy's natural-language routing.",
+  },
+  {
+    question: "Does Lacy have Warp's blocks feature?",
+    answer:
+      "No. Lacy is a pure input router — it detects whether your input is natural language or a shell command and routes accordingly. It does not change how terminal output is displayed or add a blocks-style interface. If you want Warp's visual command grouping, Warp is the right tool for that.",
+  },
+  {
+    question: "What terminal should I pair with Lacy?",
+    answer:
+      "Any terminal running ZSH or Bash works. iTerm2, Ghostty, Alacritty, Kitty, and Terminal.app are all common choices on macOS. The emulator does not matter — Lacy operates at the shell level, not the terminal level.",
+  },
+  {
+    question: "Is Warp's AI better than what Lacy routes to?",
+    answer:
+      "It depends on your preference. Warp uses its own model. Lacy routes to whichever CLI agent you configure. If you already have claude or gemini installed and use them regularly, Lacy routes to them at full quality, with no additional subscription or account.",
   },
   {
     question: "Is Lacy Shell free?",
     answer:
       "Yes. Lacy Shell is free and MIT licensed. There is no subscription, no account required, and no paid tier.",
-  },
-  {
-    question: "Does Lacy Shell work on macOS and Linux?",
-    answer:
-      "Yes. Lacy Shell supports macOS, Linux, and WSL. It works with ZSH and Bash 4+.",
   },
   {
     question: "Does Lacy Shell require an account?",
@@ -63,6 +73,19 @@ export default function VsWarp() {
       <p className="vs-subtitle">
         A plugin for your terminal vs a replacement for your terminal.
       </p>
+
+      <section>
+        <h2>Which is better, Lacy Shell or Warp?</h2>
+        <p className="vs-answer">
+          It depends on whether you want a different terminal. Warp is the
+          better choice if you want blocks, a modern input editor, team sharing,
+          and an AI you don&rsquo;t have to configure, and you&rsquo;re willing
+          to switch apps and make an account. Lacy Shell is the better choice if
+          you like the terminal you already have and want natural-language
+          routing inside it, pointed at your own agent, with no account. Lacy
+          also runs inside Warp, so this isn&rsquo;t either-or.
+        </p>
+      </section>
 
       <section>
         <h2>The core difference</h2>
@@ -136,6 +159,9 @@ export default function VsWarp() {
             </tr>
           </tbody>
         </table>
+        <p className="vs-asof">
+          Warp pricing, platforms, and features verified October 2026.
+        </p>
       </section>
 
       <section>
@@ -286,52 +312,7 @@ $ why is my container exiting immediately      ← auto-routed`}</pre>
         </ul>
       </section>
 
-      <section>
-        <h2>Frequently asked questions</h2>
-        <p>
-          <strong>Does Lacy work inside Warp?</strong>
-        </p>
-        <p>
-          Yes. Lacy hooks into ZSH/Bash, not the terminal emulator. If you run ZSH
-          inside Warp, Lacy works there too. You can have Warp&rsquo;s blocks and UI
-          alongside Lacy&rsquo;s automatic natural-language routing.
-        </p>
-        <p>
-          <strong>Does Lacy have Warp&rsquo;s blocks feature?</strong>
-        </p>
-        <p>
-          No. Lacy is a pure input router &mdash; it detects whether your input is
-          natural language or a shell command and routes accordingly. It doesn&rsquo;t
-          change how terminal output is displayed or add a blocks-style interface.
-          If you want Warp&rsquo;s visual command grouping, Warp is the right tool for that.
-        </p>
-        <p>
-          <strong>What terminal should I pair with Lacy?</strong>
-        </p>
-        <p>
-          Any terminal running ZSH or Bash works. iTerm2, Ghostty, Alacritty, Kitty,
-          and Terminal.app are all common choices on macOS. The emulator doesn&rsquo;t
-          matter &mdash; Lacy operates at the shell level, not the terminal level.
-        </p>
-        <p>
-          <strong>Can I get Warp&rsquo;s AI features in my existing terminal?</strong>
-        </p>
-        <p>
-          Not Warp&rsquo;s specifically &mdash; those are tied to the Warp app. But Lacy
-          gives you automatic AI routing in any terminal, connected to Claude Code,
-          Gemini CLI, or whatever AI CLI you prefer. Whether that&rsquo;s equivalent
-          depends on which agent you connect.
-        </p>
-        <p>
-          <strong>Is Warp&rsquo;s AI better than what Lacy routes to?</strong>
-        </p>
-        <p>
-          It depends on your preference. Warp uses its own model. Lacy routes to
-          whichever CLI agent you configure. If you already have <code>claude</code> or
-          <code>gemini</code> installed and use them regularly, Lacy routes to them at full
-          quality &mdash; no additional subscription or account needed.
-        </p>
-      </section>
+      <Faq items={faqs} />
 
       <section>
         <h2>The bottom line</h2>
@@ -352,7 +333,6 @@ $ why is my container exiting immediately      ← auto-routed`}</pre>
 
       <RelatedComparisons current="warp" />
     </article>
-    <FaqSchema items={faqs} />
     </>
   );
 }

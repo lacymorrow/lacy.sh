@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { RelatedComparisons } from "../RelatedComparisons";
 import Link from "next/link";
-import { FaqSchema } from "../faq-schema";
+import { Faq } from "../faq";
 
 const faqs = [
   {
@@ -63,6 +63,13 @@ export default function VsCursor() {
       <p className="vs-subtitle">
         A shell plugin for your terminal vs an AI-native code editor.
       </p>
+
+      <section>
+        <h2>Which is better, Lacy Shell or Cursor?</h2>
+        <p className="vs-answer">
+          It depends on where you are working. Cursor is the better choice inside an editor: it reads your project, edits files across a codebase, and holds context while it does. Lacy Shell is the better choice at the prompt, where you are running commands and asking short questions. Cursor replaces your editor. Lacy adds to your shell. Using both is the normal setup, not a compromise.
+        </p>
+      </section>
 
       <section>
         <h2>The core difference</h2>
@@ -141,6 +148,9 @@ export default function VsCursor() {
             </tr>
           </tbody>
         </table>
+        <p className="vs-asof">
+          Cursor pricing, tiers, and features verified October 2026.
+        </p>
       </section>
 
       <section>
@@ -221,9 +231,10 @@ export default function VsCursor() {
           </li>
         </ul>
       </section>
+      <Faq items={faqs} />
+
       <RelatedComparisons current="cursor" />
     </article>
-    <FaqSchema items={faqs} />
     </>
   );
 }

@@ -2,14 +2,14 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — Lacy Shell (No Tracking)",
+  title: "Privacy Policy — Lacy Shell",
   description:
-    "Privacy policy for Lacy Shell. Lacy runs locally, collects no data, and sends nothing unless you route a query to your AI agent.",
+    "Privacy policy for Lacy Shell. Classification runs locally. One anonymous install ping, opt out with DO_NOT_TRACK=1. Your commands and queries are never collected.",
   alternates: { canonical: "/privacy" },
   openGraph: {
     title: "Privacy Policy — Lacy Shell",
     description:
-      "Privacy policy for Lacy Shell. Runs locally, no telemetry, no data collection.",
+      "Classification runs locally. One anonymous install ping, opt out with DO_NOT_TRACK=1. Your commands and queries are never collected.",
     url: "/privacy",
     images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "Lacy Shell — talk to your terminal with AI" }],
   },
@@ -31,14 +31,34 @@ export default function PrivacyPolicy() {
         <article className="vs-article">
           <p className="vs-label">legal</p>
           <h1>Privacy Policy</h1>
-          <p className="vs-subtitle">Last updated: April 2026</p>
+          <p className="vs-subtitle">Last updated: October 2026</p>
 
           <section>
             <h2>What Lacy collects</h2>
             <p>
-              Nothing. Lacy Shell is a local shell plugin that runs entirely on
-              your machine. It does not phone home, collect usage data, or send
-              telemetry of any kind.
+              One anonymous install ping, once, and nothing after that. The
+              first time the plugin loads it sends a single event to our
+              self-hosted Umami instance recording how you installed it (curl,
+              brew, npx, or git), the Lacy version, your OS, your CPU
+              architecture, and whether you run ZSH or Bash. That is the whole
+              payload. It fires once per machine and never again.
+            </p>
+            <p>
+              What it never sends: what you type, your commands, your queries,
+              your shell history, file names, paths, your IP as an identifier,
+              or anything else that could identify you or your work.
+            </p>
+            <p>
+              To send nothing at all, set either variable before the plugin
+              loads:
+            </p>
+            <p>
+              <code>export DO_NOT_TRACK=1</code> or{" "}
+              <code>export LACY_NO_TELEMETRY=1</code>
+            </p>
+            <p>
+              The code is in <code>lib/core/telemetry.sh</code> if you want to
+              read exactly what it does.
             </p>
           </section>
 
@@ -52,10 +72,17 @@ export default function PrivacyPolicy() {
               Code, Gemini CLI, OpenCode, etc.).
             </p>
             <p>
-              Lacy itself never contacts any external server. Any data sent to
-              an AI provider is governed by that provider&rsquo;s privacy policy,
-              not ours — because Lacy is just routing your input to a tool you
-              already installed and configured.
+              Classification happens locally, with string matching. Your input
+              is not sent anywhere to decide where it goes. Any data sent to an
+              AI provider is governed by that provider&rsquo;s privacy policy,
+              not ours, because Lacy is routing your input to a tool you already
+              installed and configured.
+            </p>
+            <p>
+              Lacy may also start a local helper on{" "}
+              <code>127.0.0.1:4096</code> to keep lash or opencode warm, plus a
+              per-shell keeper process for Claude Code. These listen on loopback
+              only and are not reachable from outside your machine.
             </p>
           </section>
 
@@ -81,8 +108,10 @@ export default function PrivacyPolicy() {
             <p>
               The install script (<code>curl -fsSL https://lacy.sh/install | bash</code>)
               downloads Lacy from GitHub. GitHub&rsquo;s privacy policy applies
-              to that download. After installation, Lacy does not contact GitHub
-              or any other service.
+              to that download. After installation the only service Lacy
+              contacts is our own analytics endpoint, once, for the install ping
+              described above. It never contacts GitHub again, and it never
+              contacts an AI provider unless you send it a query.
             </p>
             <p>
               The website loads fonts from Google Fonts. Google&rsquo;s privacy
@@ -109,21 +138,35 @@ export default function PrivacyPolicy() {
           <section>
             <h2>Data retention</h2>
             <p>
-              Lacy does not store any data. There is no database, no log file,
-              and no history of your queries beyond what your shell and your AI
-              tool already keep. Your shell history is managed by your shell
-              (ZSH or Bash), not by Lacy. If your AI CLI tool keeps
-              conversation logs, that is governed by that tool&rsquo;s own
-              configuration.
+              The install ping is stored in our self-hosted Umami instance:
+              install method, Lacy version, OS, CPU architecture, and shell.
+              It carries no account, no email, and no device id, so there is no
+              row that can be traced back to you, and nothing for us to look up
+              or hand over.
+            </p>
+            <p>
+              On your machine, Lacy writes one empty marker file at{" "}
+              <code>~/.lacy/.telemetry_sent</code> so the ping never fires a
+              second time. Delete that file and the next shell sends one more
+              ping. Set <code>DO_NOT_TRACK=1</code> and it sends nothing.
+            </p>
+            <p>
+              Nothing else is retained. Lacy keeps no record of your commands
+              or queries, in a database or a log file. Your shell history is
+              managed by your shell (ZSH or Bash), not by Lacy. If your AI CLI
+              tool keeps conversation logs, that is governed by that
+              tool&rsquo;s own configuration.
             </p>
           </section>
 
           <section>
             <h2>Children&rsquo;s privacy</h2>
             <p>
-              Lacy Shell does not knowingly collect any information from anyone,
-              including children under 13. Since no data is collected at all,
-              there is nothing to disclose or delete.
+              Lacy Shell has no accounts, no sign-up, and no age gate, and it
+              asks for no personal information from anyone, including children
+              under 13. The install ping described above carries no identifier,
+              so we hold nothing about any individual user, child or adult, to
+              disclose or delete.
             </p>
           </section>
 
@@ -131,8 +174,9 @@ export default function PrivacyPolicy() {
             <h2>Changes to this policy</h2>
             <p>
               If this policy changes, the updated version will be posted here
-              with a new &ldquo;last updated&rdquo; date. Since Lacy collects
-              no data, significant changes are unlikely.
+              with a new &ldquo;last updated&rdquo; date. What Lacy sends is one
+              anonymous install ping and nothing else, so changes should be
+              rare. If that ever stops being true, this page changes first.
             </p>
           </section>
 
