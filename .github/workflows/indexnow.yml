@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "22"
       # Give Vercel a moment to redeploy the pushed commit before pinging IndexNow.
       - name: Wait for deploy
         run: sleep 90
