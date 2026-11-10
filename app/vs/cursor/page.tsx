@@ -170,7 +170,7 @@ export default function VsCursor() {
           <li>You use Vim, Neovim, Emacs, or any non-Cursor editor</li>
           <li>You want to pick your own AI backend (Claude Code, Gemini CLI, etc.)</li>
           <li>You want automatic NL routing without hotkeys or prefixes</li>
-          <li>You want a free, open-source, zero-account solution</li>
+          <li>You want a free, source-available, zero-account solution</li>
         </ul>
       </section>
 
