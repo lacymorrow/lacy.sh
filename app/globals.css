@@ -632,6 +632,9 @@ header {
 }
 .cta-section-cmd {
     display: inline-block;
+    appearance: none;
+    font: inherit;
+    text-align: left;
     font-size: 13px;
     color: var(--fg);
     border: 1px solid var(--line);
@@ -986,6 +989,44 @@ footer {
 }
 .vs-table tr:last-child td {
     border-bottom: none;
+}
+.byline time {
+    color: var(--fg-3);
+}
+/* "as of" stamp under a table of facts that go stale */
+.vs-asof {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--fg-4);
+    line-height: 1.6;
+}
+/* the short answer that sits directly under the first h2 */
+.vs-answer {
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--fg);
+    line-height: 1.75;
+    border-left: 2px solid var(--violet);
+    padding-left: 16px;
+}
+.faq dt {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--fg);
+    line-height: 1.7;
+    margin-bottom: 6px;
+}
+.faq dd {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--fg-2);
+    line-height: 1.7;
+    margin: 0 0 20px;
+    padding-left: 16px;
+    border-left: 1px solid var(--line);
+}
+.faq dd:last-child {
+    margin-bottom: 0;
 }
 .vs-footer {
     max-width: 680px;
