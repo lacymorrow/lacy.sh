@@ -175,6 +175,14 @@ export default function ToolsClaude() {
             — what happens when a natural-language query accidentally runs as a
             shell command and fails.
           </li>
+                  <li>
+            <Link href="/vs/cursor">Lacy Shell vs Cursor</Link>{" "}
+            — terminal-native routing compared with an IDE-based assistant.
+          </li>
+          <li>
+            <Link href="/docs/cli-reference">CLI reference</Link>{" "}
+            — every <code>lacy</code> command, flag and config key.
+          </li>
         </ul>
       </section>
     </article>

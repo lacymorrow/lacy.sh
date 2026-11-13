@@ -45,6 +45,12 @@ export function RelatedComparisons({ current }: { current: ComparisonSlug }) {
           </li>
         ))}
         <li>
+          <Link href="/docs/cli-reference">
+            <strong>CLI reference</strong>
+            <span>Every lacy command, flag and config key</span>
+          </Link>
+        </li>
+        <li>
           <Link href="/docs/supported-ai-tools">
             <strong>Supported AI tools</strong>
             <span>Full list of AI CLI tools that work with Lacy</span>

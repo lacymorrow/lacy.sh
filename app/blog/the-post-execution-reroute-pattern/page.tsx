@@ -340,6 +340,12 @@ invalid regular expression
           the three layers cover nearly every input correctly without any ML,
           any network calls, or any dependencies beyond Bash 4+.
         </p>
+        <p>
+          Config keys and commands are listed in
+          the <a href="/docs/cli-reference">CLI reference</a>. If you are
+          choosing between Lacy and an IDE assistant, see
+          {" "}<a href="/vs/cursor">Lacy Shell vs Cursor</a>.
+        </p>
       </section>
     </article>
   );
