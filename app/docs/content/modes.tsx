@@ -89,13 +89,13 @@ mode agent     # agent only`}
         <h2>Visual indicators</h2>
         <h3>ZSH</h3>
         <ul className="doc-list">
-          <li><strong>Left indicator</strong> — colored bar left of your prompt. Green = shell, magenta = agent, gray = neutral.</li>
-          <li><strong>Right prompt (RPS1)</strong> — mode badge: <code>SHELL</code> (green) / <code>AGENT</code> (magenta) / <code>AUTO</code> (blue)</li>
-          <li><strong>First-word highlighting</strong> — the first word of your input is highlighted green (shell) or magenta (agent) as you type</li>
+          <li><strong>Inline mark</strong>: one character between your prompt and what you type. <code>$</code> green for shell, <code>?</code> magenta for agent, <code>▌</code> gray while it is undecided. <code>PS1</code> is never rewritten, so Powerlevel10k and starship keep their prompt.</li>
+          <li><strong>Right prompt (RPS1)</strong>: mode badge: <code>SHELL</code> (green) / <code>AGENT</code> (magenta) / <code>AUTO</code> (blue)</li>
+          <li><strong>First-word highlighting</strong>: the first word of your input is highlighted green (shell) or magenta (agent) as you type</li>
         </ul>
         <h3>Bash</h3>
         <ul className="doc-list">
-          <li><strong>PS1 badge</strong> — <code>SHELL</code> / <code>AGENT</code> / <code>AUTO</code> with matching colors. Updates on each prompt cycle.</li>
+          <li><strong>PS1 badge</strong>: <code>SHELL</code> / <code>AGENT</code> / <code>AUTO</code> with matching colors. Updates on each prompt cycle.</li>
         </ul>
         <DocsCallout type="note">
           <p>

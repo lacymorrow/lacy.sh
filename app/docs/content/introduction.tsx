@@ -74,7 +74,7 @@ export default function Introduction() {
       <section>
         <h2>Visual feedback</h2>
         <p>
-          A real-time indicator to the left of your prompt changes color as you type:
+          A mark between your prompt and your cursor changes as you type:
         </p>
         <ul className="doc-list">
           <li><span style={{ color: "var(--green)" }}>Green</span> — will execute in shell</li>

@@ -3,12 +3,12 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "The post-execution reroute pattern",
   description:
-    "Type 'make sure the tests pass' and the shell runs make, which fails. Lacy catches the failure, detects natural language, and silently reroutes to AI.",
+    "Type 'make sure the tests pass' and the shell runs make, which fails. How Lacy caught that in May 2026, and why 1.8.24 replaced the silent reroute with a ghost-text suggestion you accept yourself.",
   alternates: { canonical: "/blog/the-post-execution-reroute-pattern" },
   openGraph: {
     title: "The post-execution reroute pattern | Lacy Shell Blog",
     description:
-      "How Lacy Shell catches failed commands that were actually natural language and silently reroutes them to the AI agent.",
+      "How Lacy Shell caught failed commands that were actually natural language. Shipped behaviour since 1.8.24 is a ghost-text suggestion, not a silent reroute.",
     url: "/blog/the-post-execution-reroute-pattern",
     images: [
       {

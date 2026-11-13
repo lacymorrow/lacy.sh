@@ -49,7 +49,7 @@ const posts = [
     title: "The post-execution reroute pattern",
     date: "May 26, 2026",
     description:
-      "When someone types 'make sure the tests pass', the shell runs make. It fails. Lacy catches the failure, detects natural language in the error, and silently reroutes to the AI agent.",
+      "When someone types 'make sure the tests pass', the shell runs make. It fails. How Lacy caught that in May 2026, before 1.8.24 replaced the silent reroute with a suggestion you accept yourself.",
   },
 ];
 
