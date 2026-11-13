@@ -56,7 +56,7 @@ const comparisons = [
   {
     slug: "amazon-q",
     name: "Amazon Q",
-    tagline: "Source available vs AWS ecosystem",
+    tagline: "Open source vs AWS ecosystem",
   },
 ];
 

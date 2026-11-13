@@ -17,7 +17,7 @@ const faqs = [
   {
     question: "Is Lacy Shell free?",
     answer:
-      "Yes. Lacy Shell is free to install and use with no subscription, and the source is available under FSL-1.1-MIT. GitHub Copilot CLI requires a paid Copilot subscription.",
+      "Yes. Lacy Shell is free to install and use with no subscription, and it is open source under FSL-1.1-MIT. GitHub Copilot CLI requires a paid Copilot subscription.",
   },
   {
     question: "Does Lacy Shell require a GitHub account?",
@@ -124,7 +124,7 @@ export default function VsGitHubCopilotCli() {
             </tr>
             <tr>
               <td>License</td>
-              <td>FSL-1.1-MIT, source available</td>
+              <td>Open source (FSL-1.1-MIT)</td>
               <td>Proprietary</td>
             </tr>
             <tr>
@@ -161,7 +161,7 @@ export default function VsGitHubCopilotCli() {
             your terminal
           </li>
           <li>You want real-time visual feedback on what will happen</li>
-          <li>You want to read the source and pay nothing</li>
+          <li>You prefer open source with no subscription</li>
         </ul>
       </section>
 

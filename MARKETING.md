@@ -48,7 +48,7 @@ Not competing with Claude Code, OpenCode, Codex CLI, or Gemini CLI — Lacy make
 ### Proof points
 - Real-time indicator shows routing before you hit enter (green = shell, magenta = AI)
 - Smart rerouting: if shell fails, automatically retry with AI
-- Open source, MIT licensed
+- Open source, FSL-1.1-MIT licensed
 - Install in 30 seconds (curl, npx, or homebrew)
 
 ---
@@ -605,7 +605,7 @@ Install:
   # or: npx lacy
   # or: brew install lacymorrow/tap/lacy
 
-Code: https://github.com/lacymorrow/lacy (MIT)
+Code: https://github.com/lacymorrow/lacy (FSL-1.1-MIT)
 
 Technical details for those interested:
 - Pure ZSH, no external dependencies for detection
@@ -685,7 +685,7 @@ curl -fsSL https://lacy.sh/install | sh
 Or: npx lacy
 Or: brew install lacymorrow/tap/lacy
 
-Open source, MIT licensed.
+Open source, FSL-1.1-MIT licensed.
 
 lacy.sh
 ```
@@ -963,7 +963,7 @@ npx lacy
 brew install lacymorrow/tap/lacy
 ```
 
-The code is MIT licensed: [github.com/lacymorrow/lacy](https://github.com/lacymorrow/lacy)
+The code is open source under FSL-1.1-MIT: [github.com/lacymorrow/lacy](https://github.com/lacymorrow/lacy)
 
 ## What's next
 
@@ -1038,7 +1038,7 @@ curl -fsSL https://lacy.sh/install | sh
 
 Or: `npx lacy` | `brew install lacymorrow/tap/lacy`
 
-Open source, MIT licensed.
+Open source, FSL-1.1-MIT licensed.
 ```
 
 ### Maker's first comment
@@ -1070,7 +1070,7 @@ Would love your feedback — especially on edge cases where the detection gets i
 ✅ No mode switching, no prefixes
 ✅ Pure ZSH, no dependencies
 ✅ Install in 30 seconds
-✅ Open source (MIT)
+✅ Open source (FSL-1.1-MIT)
 ```
 
 ### Media checklist for Product Hunt

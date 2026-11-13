@@ -493,8 +493,8 @@ export default function Home() {
                 </div>
                 <p>
                   Lacy runs on your machine. Your commands and your files stay
-                  there unless you send a question to your agent. Source
-                  available under FSL-1.1-MIT. Every release turns MIT two
+                  there unless you send a question to your agent. Open
+                  source under FSL-1.1-MIT. Every release turns MIT two
                   years after it ships.
                 </p>
               </div>

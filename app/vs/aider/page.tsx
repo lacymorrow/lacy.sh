@@ -17,7 +17,7 @@ const faqs = [
   {
     question: "Is Lacy Shell free?",
     answer:
-      "Yes. Lacy Shell is free to install and use, and the source is available under FSL-1.1-MIT. Aider is open source (Apache 2.0) but requires an API key for the AI provider you choose.",
+      "Yes. Lacy Shell is free to install and use, and it is open source under FSL-1.1-MIT. Aider is open source (Apache 2.0) but requires an API key for the AI provider you choose.",
   },
   {
     question: "Does Lacy Shell edit my files?",
@@ -137,7 +137,7 @@ export default function VsAider() {
             </tr>
             <tr>
               <td>License</td>
-              <td>FSL-1.1-MIT, source available</td>
+              <td>Open source (FSL-1.1-MIT)</td>
               <td>Apache 2.0, open source</td>
             </tr>
           </tbody>

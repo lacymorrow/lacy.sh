@@ -139,4 +139,4 @@ Emergency bypass: Prefix any command with `!` to force shell execution: `!rm -rf
 - GitHub: https://github.com/lacymorrow/lacy
 - npm: https://www.npmjs.com/package/lacy
 - Twitter: https://twitter.com/lacybuilds
-- License: FSL-1.1-MIT (source available; each release becomes MIT two years after it ships)
+- License: FSL-1.1-MIT (open source; each release becomes MIT two years after it ships)
