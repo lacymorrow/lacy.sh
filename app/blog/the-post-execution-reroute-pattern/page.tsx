@@ -136,7 +136,7 @@ export default function Post() {
           </li>
         </ul>
         <p>
-          The marker list holds 315 entries, 313 of them distinct,
+          The marker list holds 313 words
           in <code>lib/core/constants.sh</code>. They are common English words
           that are unusual as shell arguments: articles, pronouns,
           prepositions, question words, sentence words
