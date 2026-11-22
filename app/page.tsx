@@ -473,8 +473,8 @@ export default function Home() {
                 </div>
                 <p>
                   Lacy runs on your machine. Your commands and queries never
-                  leave it unless you send them to your agent. One anonymous
-                  install ping on first load, off with{" "}
+                  leave it unless you send them to your agent. Anonymous
+                  install, update, uninstall and first-load events, off with{" "}
                   <code>DO_NOT_TRACK=1</code>. MIT licensed, open source.
                 </p>
               </div>

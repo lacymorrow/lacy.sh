@@ -4,12 +4,12 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Privacy Policy — Lacy Shell",
   description:
-    "Privacy policy for Lacy Shell. Classification runs locally. One anonymous install ping, opt out with DO_NOT_TRACK=1. Your commands and queries are never collected.",
+    "Privacy policy for Lacy Shell. Classification runs locally. A few anonymous install events, opt out with DO_NOT_TRACK=1. Your commands and queries are never collected.",
   alternates: { canonical: "/privacy" },
   openGraph: {
     title: "Privacy Policy — Lacy Shell",
     description:
-      "Classification runs locally. One anonymous install ping, opt out with DO_NOT_TRACK=1. Your commands and queries are never collected.",
+      "Classification runs locally. A few anonymous install events, opt out with DO_NOT_TRACK=1. Your commands and queries are never collected.",
     url: "/privacy",
     images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "Lacy Shell — talk to your terminal with AI" }],
   },
@@ -31,17 +31,22 @@ export default function PrivacyPolicy() {
         <article className="vs-article">
           <p className="vs-label">legal</p>
           <h1>Privacy Policy</h1>
-          <p className="vs-subtitle">Last updated: October 2026</p>
+          <p className="vs-subtitle">Last updated: November 2026</p>
 
           <section>
             <h2>What Lacy collects</h2>
             <p>
-              One anonymous install ping, once, and nothing after that. The
-              first time the plugin loads it sends a single event to our
-              self-hosted Umami instance recording how you installed it (curl,
-              brew, npx, or git), the Lacy version, your OS, your CPU
-              architecture, and whether you run ZSH or Bash. That is the whole
-              payload. It fires once per machine and never again.
+              A few anonymous install events, and nothing else. Lacy sends an
+              event to our self-hosted Umami instance when you install it
+              (<code>install</code>), when you update it (<code>update</code>),
+              and when you uninstall it (<code>uninstall</code>). The first
+              time the plugin loads on a machine it also sends one{" "}
+              <code>first_load</code> event. Each event carries the same
+              payload: how you installed it (curl, brew, npx, or git), the
+              Lacy version, your OS, your CPU architecture, and whether you run
+              ZSH or Bash. That is the whole payload. Only{" "}
+              <code>first_load</code> is limited to once per machine; the other
+              three fire each time you run that action.
             </p>
             <p>
               What it never sends: what you type, your commands, your queries,
@@ -109,7 +114,7 @@ export default function PrivacyPolicy() {
               The install script (<code>curl -fsSL https://lacy.sh/install | bash</code>)
               downloads Lacy from GitHub. GitHub&rsquo;s privacy policy applies
               to that download. After installation the only service Lacy
-              contacts is our own analytics endpoint, once, for the install ping
+              contacts is our own analytics endpoint, for the install events
               described above. It never contacts GitHub again, and it never
               contacts an AI provider unless you send it a query.
             </p>
@@ -138,17 +143,19 @@ export default function PrivacyPolicy() {
           <section>
             <h2>Data retention</h2>
             <p>
-              The install ping is stored in our self-hosted Umami instance:
-              install method, Lacy version, OS, CPU architecture, and shell.
-              It carries no account, no email, and no device id, so there is no
-              row that can be traced back to you, and nothing for us to look up
-              or hand over.
+              The install, update, uninstall, and first_load events are stored in
+              our self-hosted Umami instance: install method, Lacy version, OS,
+              CPU architecture, and shell. They carry no account, no email, and
+              no device id, so there is no row that can be traced back to you,
+              and nothing for us to look up or hand over.
             </p>
             <p>
               On your machine, Lacy writes one empty marker file at{" "}
-              <code>~/.lacy/.telemetry_sent</code> so the ping never fires a
-              second time. Delete that file and the next shell sends one more
-              ping. Set <code>DO_NOT_TRACK=1</code> and it sends nothing.
+              <code>~/.lacy/.telemetry_sent</code> so the{" "}
+              <code>first_load</code> event never fires a second time. Delete
+              that file and the next shell sends one more. The install, update,
+              and uninstall events do not use that file. Set{" "}
+              <code>DO_NOT_TRACK=1</code> and Lacy sends nothing.
             </p>
             <p>
               Nothing else is retained. Lacy keeps no record of your commands
@@ -164,7 +171,7 @@ export default function PrivacyPolicy() {
             <p>
               Lacy Shell has no accounts, no sign-up, and no age gate, and it
               asks for no personal information from anyone, including children
-              under 13. The install ping described above carries no identifier,
+              under 13. The install events described above carry no identifier,
               so we hold nothing about any individual user, child or adult, to
               disclose or delete.
             </p>
@@ -174,8 +181,9 @@ export default function PrivacyPolicy() {
             <h2>Changes to this policy</h2>
             <p>
               If this policy changes, the updated version will be posted here
-              with a new &ldquo;last updated&rdquo; date. What Lacy sends is one
-              anonymous install ping and nothing else, so changes should be
+              with a new &ldquo;last updated&rdquo; date. What Lacy sends is the
+              anonymous install, update, uninstall, and first_load events and
+              nothing else, so changes should be
               rare. If that ever stops being true, this page changes first.
             </p>
           </section>
