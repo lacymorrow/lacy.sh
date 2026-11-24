@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Byline } from "../byline";
 
 export const metadata: Metadata = {
   title: "Shell reserved words are trickier than they look",
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
         url: "/api/og?section=blog&title=Shell+reserved+words+are+trickier+than+they+look",
         width: 1200,
         height: 630,
-        alt: "Shell reserved words are trickier than they look — Lacy Shell Blog",
+        alt: "Shell reserved words are trickier than they look, Lacy Shell Blog",
       },
     ],
   },
@@ -35,7 +36,12 @@ export const metadata: Metadata = {
 export default function Post() {
   return (
     <article className="vs-article">
-      <p className="vs-label">May 19, 2026</p>
+      <Byline
+        title={"Shell reserved words are trickier than they look"}
+        slug="shell-reserved-words-are-trickier-than-they-look"
+        published="2026-05-19"
+        updated="2026-10-27"
+      />
       <h1>
         Shell reserved words are <em>trickier</em> than they look
       </h1>
@@ -107,8 +113,18 @@ export default function Post() {
           The words that are never valid as standalone invocations:
         </p>
         <pre className="blog-pre">
-          <code>do  done  then  else  elif  fi  esac  in  select  function  coproc  {"{"}{" "}{"}"}{" "} !  [[</code>
+          <code>do  done  then  else  elif  fi  esac  in  select  {"}"}{" "} !</code>
         </pre>
+        <p>
+          Eleven words. Two things you might expect on that list are handled
+          somewhere else. <code>{"{"}</code> and <code>[[</code> open a group and
+          a test, and a line starting with either is shell syntax, so they are
+          matched earlier by the same case statement that
+          catches <code>./run.sh</code> and <code>2&gt;/dev/null</code> and sent
+          straight to the shell. A reserved word routes you to the agent, which
+          is the opposite of what you want
+          from <code>[[ -f foo ]] &amp;&amp; echo yes</code>.
+        </p>
         <p>
           Each of these is a continuation or closing token for a compound
           construct. You never type <code>then</code> as the first word of a
@@ -150,18 +166,20 @@ export default function Post() {
       </section>
 
       <section>
-        <h2>The fix is three lines</h2>
+        <h2>The fix is four lines</h2>
         <p>
           Lacy&rsquo;s detection function checks the reserved word list before
           calling <code>command -v</code>. Here&rsquo;s the relevant section
-          from <code>lib/core/detection.sh</code>:
+          from <code>lib/core/detection.sh</code>. The list is joined into a
+          space-delimited string once when the plugin loads, so membership is a
+          single pattern match rather than a loop on every keystroke:
         </p>
         <pre className="blog-pre">
           <code>{`# Layer 1a: Shell reserved words pass command -v
 # but are never valid standalone commands.
-if _lacy_in_list "$first_word" \\
-    "$\{LACY_SHELL_RESERVED_WORDS[@]\}"; then
-  echo "agent"
+if [[ "$_LACY_RESERVED_WORDS_STR" == \
+     *" $first_word_stripped "* ]]; then
+  _LACY_CLASSIFY_RESULT="agent"
   return
 fi`}</code>
         </pre>
@@ -206,10 +224,11 @@ fi`}</code>
         </p>
         <p>
           When a user types <code>while you are at it fix the tests</code>, the
-          shell tries to parse it as a <code>while</code> loop. It fails with a
-          syntax error. Lacy&rsquo;s Layer 2 detection catches that failure,
-          detects the natural language markers in the error context, and reroutes
-          to the agent. I wrote about that mechanism
+          shell tries to parse it as a <code>while</code> loop and fails. Lacy
+          had already flagged the line as a reroute candidate, because of the
+          marker words in it, so the failure makes it offer the agent version as
+          a suggestion on your next prompt. Tab accepts it. Lacy does not send
+          it on its own. I wrote about that mechanism
           in <a href="/blog/the-post-execution-reroute-pattern">the post-execution reroute post</a>.
         </p>
         <p>
@@ -233,7 +252,7 @@ fi`}</code>
           Lacy doesn&rsquo;t need to know &ldquo;does the shell recognize this
           word?&rdquo; It needs to know &ldquo;could this word plausibly start a
           user-intended command?&rdquo; That&rsquo;s a subtly different question,
-          and the answer requires a 15-element array that took weeks of
+          and the answer requires an eleven-element array that took weeks of
           real-world testing to get right.
         </p>
       </section>

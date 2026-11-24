@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { RelatedComparisons } from "../RelatedComparisons";
 import Link from "next/link";
-import { FaqSchema } from "../faq-schema";
+import { Faq } from "../faq";
 
 const faqs = [
   {
@@ -64,6 +64,13 @@ export default function VsAider() {
         A shell plugin that routes your input vs a coding assistant that edits
         your files.
       </p>
+
+      <section>
+        <h2>Which is better, Lacy Shell or Aider?</h2>
+        <p className="vs-answer">
+          It depends on whether you want a coding session or a shell. Aider is the better choice when you want an AI to edit a repository across many files and make git commits as it goes. Lacy Shell is the better choice for the rest of your terminal time: running commands and asking quick questions without leaving the prompt. They barely overlap, so most people end up using both.
+        </p>
+      </section>
 
       <section>
         <h2>The core difference</h2>
@@ -142,6 +149,9 @@ export default function VsAider() {
             </tr>
           </tbody>
         </table>
+        <p className="vs-asof">
+          Aider pricing, model support, and features verified October 2026.
+        </p>
       </section>
 
       <section>
@@ -223,9 +233,10 @@ export default function VsAider() {
           </li>
         </ul>
       </section>
+      <Faq items={faqs} />
+
       <RelatedComparisons current="aider" />
     </article>
-    <FaqSchema items={faqs} />
     </>
   );
 }

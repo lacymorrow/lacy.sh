@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { RelatedComparisons } from "../RelatedComparisons";
 import Link from "next/link";
-import { FaqSchema } from "../faq-schema";
+import { Faq } from "../faq";
 
 const faqs = [
   {
@@ -63,6 +63,13 @@ export default function VsAiShell() {
       <p className="vs-subtitle">
         Inline auto-routing vs separate command generator.
       </p>
+
+      <section>
+        <h2>Which is better, Lacy Shell or AI Shell?</h2>
+        <p className="vs-answer">
+          It depends on what you want the AI to do. AI Shell is the better choice if you want to describe a task and have it write the command for you to inspect before it runs. Lacy Shell is the better choice if you want your own agent answering questions right at the prompt, without a separate command to remember. They solve different problems and install side by side, so running both is reasonable.
+        </p>
+      </section>
 
       <section>
         <h2>The core difference</h2>
@@ -134,6 +141,9 @@ export default function VsAiShell() {
             </tr>
           </tbody>
         </table>
+        <p className="vs-asof">
+          AI Shell pricing, model support, and features verified October 2026.
+        </p>
       </section>
 
       <section>
@@ -196,9 +206,10 @@ export default function VsAiShell() {
           </li>
         </ul>
       </section>
+      <Faq items={faqs} />
+
       <RelatedComparisons current="ai-shell" />
     </article>
-    <FaqSchema items={faqs} />
     </>
   );
 }

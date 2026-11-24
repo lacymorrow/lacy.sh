@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { RelatedComparisons } from "../RelatedComparisons";
 import Link from "next/link";
-import { FaqSchema } from "../faq-schema";
+import { Faq } from "../faq";
 
 const faqs = [
   {
@@ -63,6 +63,13 @@ export default function VsAmazonQ() {
       <p className="vs-subtitle">
         Lightweight shell plugin vs AWS-integrated assistant.
       </p>
+
+      <section>
+        <h2>Which is better, Lacy Shell or Amazon Q Developer?</h2>
+        <p className="vs-answer">
+          It depends on how much of your work is AWS. Amazon Q Developer is the better choice if you live in AWS: it knows your resources, your IAM, and your account, and it answers questions about them that no general agent can. Lacy Shell is the better choice if you want natural-language routing in any shell, pointed at whichever agent you prefer, with no AWS Builder ID. Plenty of people run both.
+        </p>
+      </section>
 
       <section>
         <h2>The core difference</h2>
@@ -137,6 +144,9 @@ export default function VsAmazonQ() {
             </tr>
           </tbody>
         </table>
+        <p className="vs-asof">
+          Amazon Q Developer pricing, tiers, and features verified October 2026.
+        </p>
       </section>
 
       <section>
@@ -196,9 +206,10 @@ export default function VsAmazonQ() {
           </li>
         </ul>
       </section>
+      <Faq items={faqs} />
+
       <RelatedComparisons current="amazon-q" />
     </article>
-    <FaqSchema items={faqs} />
     </>
   );
 }
