@@ -294,6 +294,14 @@ export default function ToolsIndex() {
             — the edge cases in input classification that affect how routing
             works near shell keywords.
           </li>
+                  <li>
+            <Link href="/vs/cursor">Lacy Shell vs Cursor</Link>{" "}
+            — terminal-native routing compared with an IDE-based assistant.
+          </li>
+          <li>
+            <Link href="/docs/cli-reference">CLI reference</Link>{" "}
+            — every <code>lacy</code> command, flag and config key.
+          </li>
         </ul>
       </section>
     </article>
