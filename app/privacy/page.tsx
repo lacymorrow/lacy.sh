@@ -127,7 +127,7 @@ export default function PrivacyPolicy() {
           <section>
             <h2>Open source</h2>
             <p>
-              Lacy Shell is MIT licensed and fully open source. You can audit
+              Lacy Shell is open source under FSL-1.1-MIT. You can audit
               every line of code at{" "}
               <a
                 href="https://github.com/lacymorrow/lacy"

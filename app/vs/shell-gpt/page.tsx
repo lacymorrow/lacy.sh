@@ -17,7 +17,7 @@ const faqs = [
   {
     question: "Is Lacy Shell free?",
     answer:
-      "Yes. Lacy Shell is free and MIT licensed with no account or API key required. ShellGPT requires an OpenAI API key.",
+      "Yes, free, no subscription. The source is public, and you can use, modify and self-host it. The one limit: you can't sell a competing product built on it. No account or API key required. ShellGPT requires an OpenAI API key.",
   },
   {
     question: "Does Lacy Shell require an API key?",

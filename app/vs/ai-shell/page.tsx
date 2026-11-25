@@ -17,7 +17,7 @@ const faqs = [
   {
     question: "Is Lacy Shell free?",
     answer:
-      "Yes. Lacy Shell is free and MIT licensed. AI Shell requires an OpenAI API key or a local Ollama installation.",
+      "Yes, free, no subscription. The source is public, and you can use, modify and self-host it. The one limit: you can't sell a competing product built on it. AI Shell requires an OpenAI API key or a local Ollama installation.",
   },
   {
     question: "Does Lacy Shell generate shell commands?",
