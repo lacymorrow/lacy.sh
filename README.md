@@ -42,4 +42,4 @@ Single-page Next.js app using the App Router. All content is in `app/page.tsx`. 
 
 ## License
 
-[FSL-1.1-MIT](LICENSE)
+[FSL-1.1-MIT](LICENSE).
