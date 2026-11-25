@@ -543,7 +543,7 @@ export default function Home() {
                   target="_blank"
                   rel="noopener"
                 >
-                  mit
+                  fsl-1.1-mit
                 </a>
                 <Link href="/privacy">privacy</Link>
               </div>
