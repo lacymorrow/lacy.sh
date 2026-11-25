@@ -475,7 +475,7 @@ export default function Home() {
                   Lacy runs on your machine. Your commands and queries never
                   leave it unless you send them to your agent. Anonymous
                   install, update, uninstall and first-load events, off with{" "}
-                  <code>DO_NOT_TRACK=1</code>. MIT licensed, open source.
+                  <code>DO_NOT_TRACK=1</code>. Open source, FSL-1.1-MIT.
                 </p>
               </div>
             </div>
@@ -543,7 +543,7 @@ export default function Home() {
                   target="_blank"
                   rel="noopener"
                 >
-                  mit
+                  fsl-1.1-mit
                 </a>
                 <Link href="/privacy">privacy</Link>
               </div>

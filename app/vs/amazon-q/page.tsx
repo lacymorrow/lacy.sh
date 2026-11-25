@@ -17,7 +17,7 @@ const faqs = [
   {
     question: "Is Lacy Shell free?",
     answer:
-      "Yes. Lacy Shell is free and MIT licensed with no account required. Amazon Q has a free tier but requires an AWS Builder ID or IAM account.",
+      "Yes, free, no subscription. The source is public, and you can use, modify and self-host it. The one limit: you can't sell a competing product built on it. No account required. Amazon Q has a free tier but requires an AWS Builder ID or IAM account.",
   },
   {
     question: "Does Lacy Shell have AWS integration?",
@@ -129,12 +129,12 @@ export default function VsAmazonQ() {
             </tr>
             <tr>
               <td>Price</td>
-              <td>Free, MIT licensed</td>
+              <td>Free, FSL-1.1-MIT</td>
               <td>Free tier + paid Pro plan</td>
             </tr>
             <tr>
               <td>Open source</td>
-              <td>Yes</td>
+              <td>Yes (FSL-1.1-MIT)</td>
               <td>Partially</td>
             </tr>
             <tr>
