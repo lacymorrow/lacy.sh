@@ -605,7 +605,7 @@ Install:
   # or: npx lacy
   # or: brew install lacymorrow/tap/lacy
 
-Code: https://github.com/lacymorrow/lacy (MIT)
+Code: https://github.com/lacymorrow/lacy (FSL-1.1-MIT)
 
 Technical details for those interested:
 - Pure ZSH, no external dependencies for detection
@@ -963,7 +963,7 @@ npx lacy
 brew install lacymorrow/tap/lacy
 ```
 
-The code is MIT licensed: [github.com/lacymorrow/lacy](https://github.com/lacymorrow/lacy)
+The code is FSL-1.1-MIT licensed: [github.com/lacymorrow/lacy](https://github.com/lacymorrow/lacy)
 
 ## What's next
 
